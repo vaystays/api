@@ -1,15 +1,11 @@
 ---
-title: API Reference
+title: Direct API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='mailto:scott@getdirect.io?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
@@ -19,221 +15,376 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+The base URL for all endpoints in this doc is:
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+`https://app.getdirect.io/api/public/<ORG_ID>`
+
+where `<ORG_ID>` is the ID of the connected organization.
 
 # Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `your_api_key` with your API key.
 
-let api = kittn.authorize('meowmeowmeow');
-```
+Direct uses API keys to allow access to the API. You can register a new Direct API key by emailing us at [scott@getdirect.io](mailto:scott@getdirect.io?subject=Developer%20Key%20Request).
 
-> Make sure to replace `meowmeowmeow` with your API key.
+Direct expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+`Authorization: your_api_key`
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Accept: application/vnd.direct.v1`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>your_api_key</code> with your personal API key.
 </aside>
 
-# Kittens
+# Properties
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Get All Properties
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl "https://app.getdirect.io/api/public/<ORG_ID>/properties"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+   "properties":[
+      {
+         "id":92,
+         "name":"Westgate Resort Bella Suite",
+         "updated_at":"2018-12-11T23:56:42.904Z"
+      },
+      {
+         "id":39,
+         "name":"La Palme- Sanctuary",
+         "updated_at":"2018-12-11T22:39:54.001Z"
+      }
+   ]
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves all properties connected to your organization.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET /properties`
 
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+## Get a Specific Property
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+curl "https://app.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+   "id":92,
+   "name":"Westgate Resort Bella Suite",
+   "updated_at":"2018-12-11T23:56:42.904Z",
+   "address":{
+      "addressLine1":"3000 Canyons Resort Drive",
+      "addressLine2":"3704",
+      "city":"Park City",
+      "state":"UT",
+      "country":"US",
+      "postalCode":"84098",
+      "lat":40.6845975,
+      "lng":-111.5548417
+   },
+   "features":[
+      "Cycling",
+      "Fishing",
+      ...
+   ],
+   "images":[
+      {
+         "label":"",
+         "uri":"<image url>"
+      }
+   ],
+   "units":[
+      {
+         "id":92,
+         "active":true,
+         "description":null,
+         "propertyType":"PROPERTY_TYPE_CONDO",
+         "currency":"USD",
+         "name":"PCWG3704",
+         "bathrooms":[
+            {
+               "id":185,
+               "roomSubType":"SHOWER_INDOOR_OR_OUTDOOR",
+               "amenities":[]
+            }
+         ],
+         "bedrooms":[
+            {
+               "id":187,
+               "roomSubType":"OTHER_SLEEPING_AREA",
+               "amenities":[]
+            }
+         ],
+         "unitFeatures":[
+            "Air conditioning",
+            "Elevator",
+            ...
+         ]
+      }
+   ]
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint retrieves a specific property.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET /properties/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+ID | The ID of the property to retrieve
+
+# Units
+
+## Get Rates
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID>/rates"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "currency":"USD",
+   "updated_at":"2018-12-11T23:56:43.268Z",
+   "default_nightly_weekend":99.0,
+   "default_nightly_weekday":99.0,
+   "tax_rate":10.42,
+   "discounts":[],
+   "fees":[
+      {
+         "id":322,
+         "name":"Processing Fee",
+         "calculation_type":"percent",
+         "calculation_amount":2.0,
+         "taxable":false,
+         "is_addon":"false"
+      },
+      {
+         "id":49,
+         "name":"Cleaning Fee",
+         "calculation_type":"flat",
+         "calculation_amount":100.0,
+         "taxable":true,
+         "is_addon":"false"
+      }
+   ],
+   "security_deposit":[],
+   "nightlyOverrides":[
+      {
+         "amount":219.0,
+         "nights":[
+            {
+               "min":"2019-01-02",
+               "max":"2019-01-03"
+            }
+         ]
+      }
+   ],
+   "paymentSchedule":[
+      {
+         "dueType":"AT_BOOKING",
+         "amount":50,
+         "type":"percent"
+      },
+      {
+         "dueType":"AT_CHECKIN",
+         "amount":null,
+         "type":"remainder"
+      }
+   ]
+}
+```
+
+This endpoint retrieves a particular unit's rates.
+
+### HTTP Request
+
+`GET /properties/<P_ID>/units/<U_ID>/rates`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+P_ID | The ID of the property to retrieve
+U_ID | The ID of the unit to retrieve
+
+<aside class="notice">
+  The <code>nightlyOverrides</code> block returns price variants for ranges of dates. Each item in the response contains an "amount" and "nights", which is an array of date ranges to which the amount should apply.
+</aside>
+
+## Get Availability
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID>/availability"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "availabilityDefault":"Y",
+   "stayIncrementDefault":"D",
+   "changeOverDefault":"C",
+   "availableUnitCountDefault":1,
+   "updated_at":"2018-12-11T23:56:42.917Z",
+   "default_stay_min":2,
+   "default_stay_max":30,
+   "default_prior_notify_min":1,
+   "dateRange":{
+      "beginDate":"2019-01-02",
+      "endDate":"2022-01-01"
+   },
+   "availability":"YN...",
+   "changeOver":"CC...",
+   "maxStay":"30,30,...",
+   "minPriorNotify":"1,1,...",
+   "minStay":"5,5,...",
+   "stayIncrement":"DD..."
+}
+```
+
+This endpoint retrieves a particular unit's availability.
+
+### HTTP Request
+
+`GET /properties/<P_ID>/units/<U_ID>/availability`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+P_ID | The ID of the property to retrieve
+U_ID | The ID of the unit to retrieve
+
+<aside class="notice">
+  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on. 
+</aside>
+
+### Availability Response Values
+
+Key | Values
+--- | ---
+availability | Y (available) or N (not available)
+changeOver | C (any), I (check in), O (check out), or X (none)
+stayIncrement | D (day) or W (week)
+
+## Get a Quote
+
+```shell
+curl "http://www.lvh.me:5100/api/public/990/properties/92/units/92/quotes" 
+-d '{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}' 
+-H "Authorization: Token test_api_key" 
+-H "Accept: application/vnd.direct.v1" 
+-H "Content-Type: application/json" 
+-X POST
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "orderItems":[
+      {
+         "feeType":"RENTAL",
+         "name":"Rent",
+         "preTaxAmount":892.0,
+         "totalAmount":1001.51,
+         "isAddOn":null
+      },
+      {
+         "feeType":"MISC",
+         "name":"Non-Refundable Damage Waiver Fee",
+         "preTaxAmount":59.0,
+         "totalAmount":59.0,
+         "isAddOn":"false"
+      },
+      {
+         "feeType":"MISC",
+         "name":"Processing Fee",
+         "preTaxAmount":17.84,
+         "totalAmount":17.84,
+         "isAddOn":"false"
+      },
+      {
+         "feeType":"MISC",
+         "name":"Cleaning Fee",
+         "preTaxAmount":100.0,
+         "totalAmount":100.0,
+         "isAddOn":"false"
+      },
+      {
+         "feeType":"MISC",
+         "name":"Resort Fee",
+         "preTaxAmount":20.0,
+         "totalAmount":20.0,
+         "isAddOn":"false"
+      }
+   ],
+   "paymentSchedule":[
+      {
+         "amount":1198.35,
+         "dueDate":"2019-01-02"
+      }
+   ],
+   "rentalAgreement":"<url to PDF>"
+}
+```
+
+This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional) and number of pets (optional).
+
+### HTTP Request
+
+`POST /properties/<P_ID>/units/<U_ID>/quotes`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+P_ID | The ID of the property to retrieve
+U_ID | The ID of the unit to retrieve
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+check_in | The check in date ("YYYY-MM-DD")
+check_out | The check out date ("YYYY-MM-DD")
+adults | The number of adult guests
+children | The number of child guests (optional, default to 0)
+pets | The number of pets (optional, default to 0)
 
