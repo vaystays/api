@@ -388,3 +388,82 @@ adults | The number of adult guests
 children | The number of child guests (optional, default to 0)
 pets | The number of pets (optional, default to 0)
 
+# Reservations
+
+## Get All reservations
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+      "reservations": [
+        {
+            "id": 951,
+            "booking_code": "2VXUAWPE5-ZVCRY7",
+            "updated_at": "2019-01-25T01:04:39.744Z"
+        },
+        {
+            "id": 1811,
+            "booking_code": "EQRMH4-L6QR1EALF",
+            "updated_at": "2019-01-25T01:03:14.583Z"
+        }
+      ]
+   }
+```
+
+This endpoint retrieves all reservations connected to your organization.
+
+### HTTP Request
+
+`GET /reservations`
+
+## Get a Specific Reservation
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 951,
+    "booking_code": "2VXUAWPE5-ZVCRY7",
+    "updated_at": "2019-01-25T01:04:39.744Z",
+    "status": {
+        "cancelled": false,
+        "confirmed": true,
+        "archived": true
+    },
+    "num_guests": 0,
+    "days_booked": 3,
+    "check_in": "2011-10-21",
+    "check_out": "2011-10-23",
+    "customer": {
+        "name": "christopher zepf",
+        "email": "ndirish1@gmail.com",
+        "telephone": null
+    }
+}
+```
+
+This endpoint retrieves a specific reservation.
+
+### HTTP Request
+
+`GET /reservations/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the reservatoion to retrieve
+
