@@ -247,6 +247,12 @@
                   <li>
                     <a href="#get-a-quote" class="toc-h2 toc-link" data-title="Get a Quote">Get a Quote</a>
                   </li>
+                  <li>
+                    <a href="#update-pricing" class="toc-h2 toc-link" data-title="Update Pricing">Update Pricing</a>
+                  </li>
+                  <li>
+                    <a href="#update-minimum-night-stay" class="toc-h2 toc-link" data-title="Update Minimum Night Stay">Update Minimum Night Stay</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -662,6 +668,130 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The number of pets (optional, default to 0)</td>
 </tr>
 </tbody></table>
+<h2 id='update-pricing'>Update Pricing</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/properties/92/units/92/pricing"</span> 
+-d <span class="s1">'{"pricing_array":
+      [
+         {"date":"2019-04-03", "recommended_price":"440", "reason":"High demand"},
+         {"date":"2019-04-04", "recommended_price":"244", "reason":"Low demand"}
+      ]
+   }'</span>
+-H <span class="s2">"Authorization: Token test_api_key"</span> 
+-H <span class="s2">"Accept: application/vnd.direct.v1"</span> 
+-H <span class="s2">"Content-Type: application/json"</span> 
+-X POST
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the nightly price for the speceified unit given and dates found in the json.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/pricing</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>P_ID</td>
+<td>The ID of the property to retrieve</td>
+</tr>
+<tr>
+<td>U_ID</td>
+<td>The ID of the unit to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pricing_array</td>
+<td>An array of pricing objects to process</td>
+</tr>
+<tr>
+<td>date</td>
+<td>The date you wish to update (&quot;YYYY-MM-DD&quot;)</td>
+</tr>
+<tr>
+<td>recommended_price</td>
+<td>The price to set on the specified date</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>The reason for the updated price</td>
+</tr>
+</tbody></table>
+<h2 id='update-minimum-night-stay'>Update Minimum Night Stay</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/properties/92/units/92/stay-length"</span> 
+-d <span class="s1">'{"availability_array":
+      [
+         {"date":"2019-04-03", "min_nights":"5", "reason":"High demand"},
+         {"date":"2019-04-04", "min_nights":"3", "reason":"Low demand"}
+      ]
+   }'</span>
+-H <span class="s2">"Authorization: Token test_api_key"</span> 
+-H <span class="s2">"Accept: application/vnd.direct.v1"</span> 
+-H <span class="s2">"Content-Type: application/json"</span> 
+-X POST
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the minimum night stay for the speceified unit given and dates found in the json.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/stay-length</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>P_ID</td>
+<td>The ID of the property to retrieve</td>
+</tr>
+<tr>
+<td>U_ID</td>
+<td>The ID of the unit to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>availability_array</td>
+<td>An array of availability objects to process</td>
+</tr>
+<tr>
+<td>date</td>
+<td>The date you wish to update (&quot;YYYY-MM-DD&quot;)</td>
+</tr>
+<tr>
+<td>min_nights</td>
+<td>The minimum nights to set on the specified date</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>The reason for the updated</td>
+</tr>
+</tbody></table>
 <h1 id='reservations'>Reservations</h1><h2 id='get-all-reservations'>Get All reservations</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -685,7 +815,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all reservations connected to your organization.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET /reservations</code></p>
 <h2 id='get-a-specific-reservation'>Get a Specific Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
@@ -715,9 +845,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific reservation.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET /reservations/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
