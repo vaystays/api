@@ -388,6 +388,98 @@ adults | The number of adult guests
 children | The number of child guests (optional, default to 0)
 pets | The number of pets (optional, default to 0)
 
+## Update Pricing
+
+```shell
+curl "https://app.getdirect.io/api/public/990/properties/92/units/92/pricing" 
+-d '{"pricing_array":
+      [
+         {"date":"2019-04-03", "recommended_price":"440", "reason":"High demand"},
+         {"date":"2019-04-04", "recommended_price":"244", "reason":"Low demand"}
+      ]
+   }'
+-H "Authorization: Token test_api_key" 
+-H "Accept: application/vnd.direct.v1" 
+-H "Content-Type: application/json" 
+-X POST
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "status": "Success"
+}
+```
+
+This endpoint updates the nightly price for the speceified unit given and dates found in the json.
+
+### HTTP Request
+
+`POST /properties/<P_ID>/units/<U_ID>/pricing`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+P_ID | The ID of the property to retrieve
+U_ID | The ID of the unit to retrieve
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+pricing_array | An array of pricing objects to process  
+date | The date you wish to update ("YYYY-MM-DD")
+recommended_price | The price to set on the specified date
+reason | The reason for the updated price
+
+## Update Minimum Night Stay
+
+```shell
+curl "https://app.getdirect.io/api/public/990/properties/92/units/92/stay-length" 
+-d '{"availability_array":
+      [
+         {"date":"2019-04-03", "min_nights":"5", "reason":"High demand"},
+         {"date":"2019-04-04", "min_nights":"3", "reason":"Low demand"}
+      ]
+   }'
+-H "Authorization: Token test_api_key" 
+-H "Accept: application/vnd.direct.v1" 
+-H "Content-Type: application/json" 
+-X POST
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "status": "Success"
+}
+```
+
+This endpoint updates the minimum night stay for the speceified unit given and dates found in the json.
+
+### HTTP Request
+
+`POST /properties/<P_ID>/units/<U_ID>/stay-length`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+P_ID | The ID of the property to retrieve
+U_ID | The ID of the unit to retrieve
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+availability_array | An array of availability objects to process  
+date | The date you wish to update ("YYYY-MM-DD")
+min_nights | The minimum nights to set on the specified date
+reason | The reason for the updated
+
 # Reservations
 
 ## Get All reservations
