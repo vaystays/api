@@ -215,12 +215,14 @@ curl "https://app.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID
    ],
    "paymentSchedule":[
       {
+         "days":null,
          "dueType":"AT_BOOKING",
          "amount":50,
          "type":"percent"
       },
       {
-         "dueType":"AT_CHECKIN",
+         "days": 7
+         "dueType":"BEFORE_CHECKIN",
          "amount":null,
          "type":"remainder"
       }
