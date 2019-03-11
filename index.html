@@ -264,6 +264,9 @@
                   <li>
                     <a href="#get-a-specific-reservation" class="toc-h2 toc-link" data-title="Get a Specific Reservation">Get a Specific Reservation</a>
                   </li>
+                  <li>
+                    <a href="#create-a-reservation" class="toc-h2 toc-link" data-title="Create a Reservation">Create a Reservation</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -458,12 +461,14 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">],</span><span class="w">
    </span><span class="s2">"paymentSchedule"</span><span class="p">:[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"days"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
          </span><span class="s2">"dueType"</span><span class="p">:</span><span class="s2">"AT_BOOKING"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
          </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"percent"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"dueType"</span><span class="p">:</span><span class="s2">"AT_CHECKIN"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+         </span><span class="s2">"dueType"</span><span class="p">:</span><span class="s2">"BEFORE_CHECKIN"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"amount"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
          </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"remainder"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -859,7 +864,86 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the reservatoion to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+<h2 id='create-a-reservation'>Create a Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/reservations"</span> 
+-d <span class="s1">'{
+    "property_id": 1,
+    "unit_id": 1,
+    "customer": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@test.com",
+      "phone": "1234567890",
+      "address": {
+        "addressLine1": "123 Main Street"
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    },
+    "reservation": {
+      "check_in": "2019-04-03",
+      "check_out": "2019-04-07",
+      "adults": 2,
+      "children": 0,
+      "pets": 0
+    },
+    "payment": {
+      "number": "4111111111111111",
+      "cvv": "123",
+      "expiration_month": "02",
+      "expiration_year": "2020",
+      "name_on_card": "John Doe"
+      "billing_address": {
+        "addressLine1": "123 Main Street"
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    }
+  }'</span>
+-H <span class="s2">"Authorization: Token test_api_key"</span> 
+-H <span class="s2">"Accept: application/vnd.direct.v1"</span> 
+-H <span class="s2">"Content-Type: application/json"</span> 
+-X POST
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"num_guests"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"days_booked"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"check_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-03"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"check_out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-07"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">This</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">updates</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">nightly</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">speceified</span><span class="w"> </span><span class="err">unit</span><span class="w"> </span><span class="err">given</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">dates</span><span class="w"> </span><span class="err">found</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">json.</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP</span><span class="w"> </span><span class="err">Request</span><span class="w">
+
+</span><span class="err">`POST</span><span class="w"> </span><span class="err">/reservations`</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">Parameters</span><span class="w">
+
+</span><span class="err">Parameter</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Description</span><span class="w">
+</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
+</span><span class="err">property_id</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">unique</span><span class="w"> </span><span class="err">identifier</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">property</span><span class="w"> </span><span class="err">being</span><span class="w"> </span><span class="err">booked</span><span class="w">
+</span><span class="err">unit_id</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">unique</span><span class="w"> </span><span class="err">identifier</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">unit</span><span class="w"> </span><span class="err">being</span><span class="w"> </span><span class="err">booked</span><span class="w">
+</span><span class="err">customer</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Information</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">customer</span><span class="w"> </span><span class="err">making</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">inquiry</span><span class="w">
+</span><span class="err">reservation</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Information</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">reservation</span><span class="p">,</span><span class="w"> </span><span class="err">including</span><span class="w"> </span><span class="err">stay</span><span class="w"> </span><span class="err">dates</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">guest</span><span class="w"> </span><span class="err">counts</span><span class="w">
+</span><span class="err">payment</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Payment</span><span class="w"> </span><span class="err">information</span><span class="p">,</span><span class="w"> </span><span class="err">including</span><span class="w"> </span><span class="err">billing</span><span class="w"> </span><span class="err">address</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">credit</span><span class="w"> </span><span class="err">card</span><span class="w"> </span><span class="err">details</span><span class="w">
+
+</span></code></pre><h1 id='errors'>Errors</h1>
 <p>The Direct API uses the following error codes:</p>
 
 <table><thead>
