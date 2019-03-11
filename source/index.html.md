@@ -414,7 +414,7 @@ curl "https://app.getdirect.io/api/public/990/properties/92/units/92/pricing"
 }
 ```
 
-This endpoint updates the nightly price for the speceified unit given and dates found in the json.
+This endpoint updates the nightly price for the specified unit given and dates found in the json.
 
 ### HTTP Request
 
@@ -627,8 +627,9 @@ curl "https://app.getdirect.io/api/public/990/reservations"
     "check_out": "2019-04-07",
     ...
 }
+```
 
-This endpoint updates the nightly price for the speceified unit given and dates found in the json.
+This endpoint creates a new reservation for the requested unit.
 
 ### HTTP Request
 
