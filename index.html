@@ -692,7 +692,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint updates the nightly price for the speceified unit given and dates found in the json.</p>
+<p>This endpoint updates the nightly price for the specified unit given and dates found in the json.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/pricing</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
@@ -926,24 +926,39 @@ You must replace <code>your_api_key</code> with your personal API key.
     </span><span class="s2">"check_out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-07"</span><span class="p">,</span><span class="w">
     </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-</span><span class="err">This</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">updates</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">nightly</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">speceified</span><span class="w"> </span><span class="err">unit</span><span class="w"> </span><span class="err">given</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">dates</span><span class="w"> </span><span class="err">found</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">json.</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP</span><span class="w"> </span><span class="err">Request</span><span class="w">
-
-</span><span class="err">`POST</span><span class="w"> </span><span class="err">/reservations`</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">Request</span><span class="w"> </span><span class="err">Parameters</span><span class="w">
-
-</span><span class="err">Parameter</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Description</span><span class="w">
-</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
-</span><span class="err">property_id</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">unique</span><span class="w"> </span><span class="err">identifier</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">property</span><span class="w"> </span><span class="err">being</span><span class="w"> </span><span class="err">booked</span><span class="w">
-</span><span class="err">unit_id</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">unique</span><span class="w"> </span><span class="err">identifier</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">unit</span><span class="w"> </span><span class="err">being</span><span class="w"> </span><span class="err">booked</span><span class="w">
-</span><span class="err">customer</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Information</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">customer</span><span class="w"> </span><span class="err">making</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">inquiry</span><span class="w">
-</span><span class="err">reservation</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Information</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">reservation</span><span class="p">,</span><span class="w"> </span><span class="err">including</span><span class="w"> </span><span class="err">stay</span><span class="w"> </span><span class="err">dates</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">guest</span><span class="w"> </span><span class="err">counts</span><span class="w">
-</span><span class="err">payment</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Payment</span><span class="w"> </span><span class="err">information</span><span class="p">,</span><span class="w"> </span><span class="err">including</span><span class="w"> </span><span class="err">billing</span><span class="w"> </span><span class="err">address</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">credit</span><span class="w"> </span><span class="err">card</span><span class="w"> </span><span class="err">details</span><span class="w">
-
-</span></code></pre><h1 id='errors'>Errors</h1>
+</span></code></pre>
+<p>This endpoint creates a new reservation for the requested unit.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST /reservations</code></p>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>property_id</td>
+<td>The unique identifier of the property being booked</td>
+</tr>
+<tr>
+<td>unit_id</td>
+<td>The unique identifier of the unit being booked</td>
+</tr>
+<tr>
+<td>customer</td>
+<td>Information about the customer making the inquiry</td>
+</tr>
+<tr>
+<td>reservation</td>
+<td>Information about the reservation, including stay dates and guest counts</td>
+</tr>
+<tr>
+<td>payment</td>
+<td>Payment information, including billing address and credit card details</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
 <p>The Direct API uses the following error codes:</p>
 
 <table><thead>
