@@ -561,3 +561,86 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the reservatoion to retrieve
 
+## Create a Reservation
+
+```shell
+curl "https://app.getdirect.io/api/public/990/reservations" 
+-d '{
+    "property_id": 1,
+    "unit_id": 1,
+    "customer": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@test.com",
+      "phone": "1234567890",
+      "address": {
+        "addressLine1": "123 Main Street"
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    },
+    "reservation": {
+      "check_in": "2019-04-03",
+      "check_out": "2019-04-07",
+      "adults": 2,
+      "children": 0,
+      "pets": 0
+    },
+    "payment": {
+      "number": "4111111111111111",
+      "cvv": "123",
+      "expiration_month": "02",
+      "expiration_year": "2020",
+      "name_on_card": "John Doe"
+      "billing_address": {
+        "addressLine1": "123 Main Street"
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    }
+  }'
+-H "Authorization: Token test_api_key" 
+-H "Accept: application/vnd.direct.v1" 
+-H "Content-Type: application/json" 
+-X POST
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 951,
+    "booking_code": "2VXUAWPE5-ZVCRY7",
+    "updated_at": "2019-01-25T01:04:39.744Z",
+    "cancelled": false,
+    "confirmed": false,
+    "archived": false,
+    "num_guests": 1,
+    "days_booked": 3,
+    "check_in": "2019-04-03",
+    "check_out": "2019-04-07",
+    ...
+}
+
+This endpoint updates the nightly price for the speceified unit given and dates found in the json.
+
+### HTTP Request
+
+`POST /reservations`
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+property_id | The unique identifier of the property being booked
+unit_id | The unique identifier of the unit being booked
+customer | Information about the customer making the inquiry
+reservation | Information about the reservation, including stay dates and guest counts
+payment | Payment information, including billing address and credit card details
+
