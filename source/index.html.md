@@ -88,7 +88,7 @@ This endpoint retrieves all properties connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of properties to return, up to 50. Default is 20.
+_limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
 _offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
 
 ## Get a Specific Property
@@ -538,7 +538,7 @@ This endpoint retrieves all reservations connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of reservations to return, up to 50. Default is 20.
+_limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
 _offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
 
 ## Get a Specific Reservation
