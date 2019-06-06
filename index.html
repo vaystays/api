@@ -331,12 +331,29 @@ You must replace <code>your_api_key</code> with your personal API key.
          </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"La Palme- Sanctuary"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2018-12-11T22:39:54.001Z"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all properties connected to your organization.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /properties</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (optional)</td>
+<td>Maximum number of properties to return, up to 50. Default is 20.</td>
+</tr>
+<tr>
+<td>_offset (optional)</td>
+<td>Number of properties to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+</tbody></table>
 <h2 id='get-a-specific-property'>Get a Specific Property</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -403,7 +420,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>This endpoint retrieves a specific property.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /properties/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -478,7 +495,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>This endpoint retrieves a particular unit&#39;s rates.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -529,7 +546,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>This endpoint retrieves a particular unit&#39;s availability.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/availability</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -629,7 +646,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional) and number of pets (optional).</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/quotes</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -695,7 +712,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>This endpoint updates the nightly price for the specified unit given and dates found in the json.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/pricing</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -757,7 +774,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>This endpoint updates the minimum night stay for the speceified unit given and dates found in the json.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/stay-length</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -809,19 +826,44 @@ You must replace <code>your_api_key</code> with your personal API key.
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">,</span><span class="w">
             </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"check_in_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-27T15:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"check_out_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-02T23:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1811</span><span class="p">,</span><span class="w">
             </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQRMH4-L6QR1EALF"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:03:14.583Z"</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:03:14.583Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"check_in_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-13T15:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"check_out_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-16T23:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all reservations connected to your organization.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET /reservations</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (optional)</td>
+<td>Maximum number of reservations to return, up to 50. Default is 20.</td>
+</tr>
+<tr>
+<td>_offset (optional)</td>
+<td>Number of reservations to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+</tbody></table>
 <h2 id='get-a-specific-reservation'>Get a Specific Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -852,7 +894,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>This endpoint retrieves a specific reservation.</p>
 <h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET /reservations/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
