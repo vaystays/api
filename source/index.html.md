@@ -73,7 +73,8 @@ curl "https://app.getdirect.io/api/public/<ORG_ID>/properties"
          "name":"La Palme- Sanctuary",
          "updated_at":"2018-12-11T22:39:54.001Z"
       }
-   ]
+   ],
+   "total_count": 2
 }
 ```
 
@@ -82,6 +83,13 @@ This endpoint retrieves all properties connected to your organization.
 ### HTTP Request
 
 `GET /properties`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of properties to return, up to 50. Default is 20.
+_offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
 
 ## Get a Specific Property
 
@@ -500,14 +508,23 @@ curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations"
         {
             "id": 951,
             "booking_code": "2VXUAWPE5-ZVCRY7",
-            "updated_at": "2019-01-25T01:04:39.744Z"
+            "updated_at": "2019-01-25T01:04:39.744Z",
+            "check_in_time": "2019-04-27T15:00:00.000-05:00",
+            "check_out_time": "2019-05-02T23:00:00.000-05:00",
+            "unit_id": 1,
+            "property_id": 1
         },
         {
             "id": 1811,
             "booking_code": "EQRMH4-L6QR1EALF",
-            "updated_at": "2019-01-25T01:03:14.583Z"
+            "updated_at": "2019-01-25T01:03:14.583Z",
+            "check_in_time": "2019-03-13T15:00:00.000-05:00",
+            "check_out_time": "2019-03-16T23:00:00.000-05:00",
+            "unit_id": 2,
+            "property_id": 1
         }
-      ]
+      ],
+      "total_count": 2
    }
 ```
 
@@ -516,6 +533,13 @@ This endpoint retrieves all reservations connected to your organization.
 ### HTTP Request
 
 `GET /reservations`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of reservations to return, up to 50. Default is 20.
+_offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
 
 ## Get a Specific Reservation
 
