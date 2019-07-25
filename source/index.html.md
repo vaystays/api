@@ -565,10 +565,17 @@ curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations/<ID>"
     "days_booked": 3,
     "check_in": "2011-10-21",
     "check_out": "2011-10-23",
+    "channel": "booking.com",
     "customer": {
         "name": "christopher zepf",
         "email": "ndirish1@gmail.com",
-        "telephone": null
+        "telephone": null,
+        "location": {
+          "city": "Chicago",
+          "state": "IL",
+          "postal_code": null,
+          "country": "USA"
+        }
     }
 }
 ```
