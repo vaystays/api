@@ -347,7 +347,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>_limit (optional)</td>
-<td>Maximum number of properties to return, up to 50. Default is 20.</td>
+<td>Maximum number of properties to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
 <td>_offset (optional)</td>
@@ -857,7 +857,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>_limit (optional)</td>
-<td>Maximum number of reservations to return, up to 50. Default is 20.</td>
+<td>Maximum number of reservations to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
 <td>_offset (optional)</td>
@@ -884,10 +884,17 @@ You must replace <code>your_api_key</code> with your personal API key.
     </span><span class="s2">"days_booked"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"check_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-10-21"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"check_out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-10-23"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"booking.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christopher zepf"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ndirish1@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
