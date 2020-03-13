@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='mailto:scott@getdirect.io?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a>
+  - <a href='mailto:engineering@getdirect.io?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
@@ -36,7 +36,7 @@ curl "api_endpoint_here"
 
 > Make sure to replace `your_api_key` with your API key.
 
-Direct uses API keys to allow access to the API. You can register a new Direct API key by emailing us at [scott@getdirect.io](mailto:scott@getdirect.io?subject=Developer%20Key%20Request).
+Direct uses API keys to allow access to the API. You can register a new Direct API key by emailing us at [engineering@getdirect.io](mailto:engineering@getdirect.io?subject=Developer%20Key%20Request).
 
 Direct expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
