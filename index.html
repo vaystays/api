@@ -236,6 +236,34 @@
               </ul>
           </li>
           <li>
+            <a href="#reservations" class="toc-h1 toc-link" data-title="Reservations">Reservations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-reservations" class="toc-h2 toc-link" data-title="List Reservations">List Reservations</a>
+                  </li>
+                  <li>
+                    <a href="#create-reservation" class="toc-h2 toc-link" data-title="Create Reservation">Create Reservation</a>
+                  </li>
+                  <li>
+                    <a href="#get-reservation" class="toc-h2 toc-link" data-title="Get Reservation">Get Reservation</a>
+                  </li>
+                  <li>
+                    <a href="#update-reservation" class="toc-h2 toc-link" data-title="Update Reservation">Update Reservation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#statements" class="toc-h1 toc-link" data-title="Statements">Statements</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-statements" class="toc-h2 toc-link" data-title="Get All Statements">Get All Statements</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-statement" class="toc-h2 toc-link" data-title="Get a Specific Statement">Get a Specific Statement</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#units" class="toc-h1 toc-link" data-title="Units">Units</a>
               <ul class="toc-list-h2">
                   <li>
@@ -245,27 +273,13 @@
                     <a href="#get-availability" class="toc-h2 toc-link" data-title="Get Availability">Get Availability</a>
                   </li>
                   <li>
-                    <a href="#get-a-quote" class="toc-h2 toc-link" data-title="Get a Quote">Get a Quote</a>
+                    <a href="#create-a-quote" class="toc-h2 toc-link" data-title="Create a Quote">Create a Quote</a>
                   </li>
                   <li>
                     <a href="#update-pricing" class="toc-h2 toc-link" data-title="Update Pricing">Update Pricing</a>
                   </li>
                   <li>
                     <a href="#update-minimum-night-stay" class="toc-h2 toc-link" data-title="Update Minimum Night Stay">Update Minimum Night Stay</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#reservations" class="toc-h1 toc-link" data-title="Reservations">Reservations</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-all-reservations" class="toc-h2 toc-link" data-title="Get All reservations">Get All reservations</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-reservation" class="toc-h2 toc-link" data-title="Get a Specific Reservation">Get a Specific Reservation</a>
-                  </li>
-                  <li>
-                    <a href="#create-a-reservation" class="toc-h2 toc-link" data-title="Create a Reservation">Create a Reservation</a>
                   </li>
               </ul>
           </li>
@@ -432,6 +446,803 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the property to retrieve</td>
 </tr>
 </tbody></table>
+<h1 id='reservations'>Reservations</h1><h2 id='list-reservations'>List Reservations</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"reservations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"check_in_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-27T15:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"check_out_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-02T23:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1811</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQRMH4-L6QR1EALF"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:03:14.583Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"check_in_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-13T15:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"check_out_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-16T23:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all reservations connected to your organization.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /reservations</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (optional)</td>
+<td>Maximum number of reservations to return, up to 100. Default is 20.</td>
+</tr>
+<tr>
+<td>_offset (optional)</td>
+<td>Number of reservations to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+</tbody></table>
+<h2 id='create-reservation'>Create Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/reservations"</span>
+-d <span class="s1">'{
+    "property_id": 1,
+    "unit_id": 1,
+    "customer": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@test.com",
+      "phone": "1234567890",
+      "address": {
+        "addressLine1": "123 Main Street"
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    },
+    "reservation": {
+      "check_in": "2019-04-03",
+      "check_out": "2019-04-07",
+      "adults": 2,
+      "children": 0,
+      "pets": 0
+    },
+    "payment": {
+      "number": "4111111111111111",
+      "cvv": "123",
+      "expiration_month": "02",
+      "expiration_year": "2020",
+      "name_on_card": "John Doe"
+      "billing_address": {
+        "addressLine1": "123 Main Street"
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    }
+  }'</span>
+-H <span class="s2">"Authorization: Token test_api_key"</span>
+-H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+-H <span class="s2">"Content-Type: application/json"</span>
+-X POST
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"num_guests"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"days_booked"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"check_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-03"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"check_out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-07"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a new reservation for the requested unit.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST /reservations</code></p>
+<h2 id='get-reservation'>Get Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"num_guests"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"days_booked"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"check_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-10-21"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"check_out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-10-23"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"booking.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christopher zepf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ndirish1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific reservation.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET /reservations/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the reservatoion to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>property_id</td>
+<td>The unique identifier of the property being booked</td>
+</tr>
+<tr>
+<td>unit_id</td>
+<td>The unique identifier of the unit being booked</td>
+</tr>
+<tr>
+<td>customer</td>
+<td>Information about the customer making the inquiry</td>
+</tr>
+<tr>
+<td>reservation</td>
+<td>Information about the reservation, including stay dates and guest counts</td>
+</tr>
+<tr>
+<td>payment</td>
+<td>Payment information, including billing address and credit card details</td>
+</tr>
+</tbody></table>
+<h2 id='update-reservation'>Update Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/3/reservations/100030030467"</span>
+-d <span class="s1">'{"door_code": "1AT9B3"}'</span>
+-H <span class="s2">"Authorization: Token test_api_key"</span>
+-H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+-H <span class="s2">"Content-Type: application/json"</span>
+-X PUT
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030467</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHBNSIAFTSZE9XVJ"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"door_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1AT9B3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T16:35:51.725Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000002</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000002</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"num_guests"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"days_booked"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_booked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-04T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"check_in_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-28T17:00:00.000+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"check_out_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-22T11:00:00.000+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partial"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stay_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"guest"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rent_total"</span><span class="p">:</span><span class="w"> </span><span class="mi">7400</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"extras_total"</span><span class="p">:</span><span class="w"> </span><span class="mi">628</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"booking_total"</span><span class="p">:</span><span class="w"> </span><span class="mi">8123</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"direct"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quote_line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475410</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">740000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">296.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"room_rate"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.715Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.715Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475411</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weekly Discount"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">35520</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.8</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"discount"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.726Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.726Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475412</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Management Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">8450</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fees"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.735Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.735Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"frequency_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per_stay"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"included_in_base_rent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"los_ranges_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+               </span><span class="s2">"default_calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475413</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">27475</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.9</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fees"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.744Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.744Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"frequency_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per_stay"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"included_in_base_rent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"los_ranges_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+               </span><span class="s2">"default_calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.9</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475414</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linen Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fees"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.758Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.758Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"frequency_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per_stay"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"included_in_base_rent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"los_ranges_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+               </span><span class="s2">"default_calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475415</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fees"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.770Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.770Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"frequency_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per_stay"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"included_in_base_rent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"los_ranges_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+               </span><span class="s2">"default_calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475416</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fees"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.786Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.786Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"frequency_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per_stay"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"included_in_base_rent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"los_ranges_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+               </span><span class="s2">"default_calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">150.0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475417</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional Guest Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fees"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.803Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.803Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"frequency_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per_stay"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"included_in_base_rent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"additional_guest_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"los_ranges_at_creation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+               </span><span class="s2">"default_calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475418</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">25009</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.55</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taxes"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.814Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.814Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"tax_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales tax"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475419</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">20078</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.85</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taxes"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.826Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.826Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"tax_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City tax"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030475420</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Booking Total"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">812392</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"total"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quote"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itemizable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030030459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.837Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T17:47:26.837Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"split"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cancellation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"occurrence_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"debit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"credit_account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"price_paid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4061.96"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_remaining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4061.96"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_cancelled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-28T16:35:51.725Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maryanne Nitzsche"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amandahowe@lehnerjacobson.name"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210.820.9588"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the door code for the specified reservation given.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PUT /reservations/&lt;R_ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>R_ID</td>
+<td>The ID of the reservation to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>door_code</td>
+<td>The code to unlock the property&#39;s door</td>
+</tr>
+</tbody></table>
+<h1 id='statements'>Statements</h1><h2 id='get-all-statements'>Get All Statements</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/statements"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"statements"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030003979</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"document_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Statement for Dia Osinski: 02/01/20 - 02/29/20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">597850</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"processed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-06T22:54:33.757Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payee_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payee_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002763</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"current_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1432288</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visibility_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visible"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payee_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"property_contact"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deferred_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030003980</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"document_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Statement for Prince Moore: 02/01/20 - 02/29/20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">-16563</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"processed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payee_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payee_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002764</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"optional_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"current_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">-16563</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"visibility_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visible"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payee_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"property_contact"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deferred_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all statements connected to your organization.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET /statements</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (optional)</td>
+<td>Maximum number of statements to return, up to 100. Default is 20.</td>
+</tr>
+<tr>
+<td>_offset (optional)</td>
+<td>Number of statements to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-statement'>Get a Specific Statement</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/statements/&lt;ID&gt;"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030003979</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"document_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Statement for Dia Osinski: 02/01/20 - 02/29/20"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">597850</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-29"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"processed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-06T22:54:33.757Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payee_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payee_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002763</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optional_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"optional_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1432288</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"visibility_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"visible"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payee_role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"property_contact"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deferred_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payouts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unit_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Property: Francisco Villa - "</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payout_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030032337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ZJUGQFLIEEPDJ0R"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"guest_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Benton Schmitt"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nights"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"gross_revenue"</span><span class="p">:</span><span class="w"> </span><span class="mf">2807.66</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mgmt_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">561.53</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deductions"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"net_to_owner"</span><span class="p">:</span><span class="w"> </span><span class="mf">2246.13</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"unit_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Property: Casa Barbara - "</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payout_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030032329</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VSHWQ88X1HEGT1SS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"guest_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wiley Frami I"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nights"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"gross_revenue"</span><span class="p">:</span><span class="w"> </span><span class="mf">5097.5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mgmt_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">1019.5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deductions"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"net_to_owner"</span><span class="p">:</span><span class="w"> </span><span class="mf">4078.0</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"payouts_subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">632413</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit_expenses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000052</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Casa Barbara"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dashboard_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dashboard/blackrock-beach-properties/properties/100030000047"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"gross_report_totals"</span><span class="p">:</span><span class="w"> </span><span class="mi">12037</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"work_reports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002342</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"service_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-07T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">6616</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yardwork"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"vendor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Armando Connelly III"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"deductions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                     </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002484</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">6616</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yardwork"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exceeded_scope"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deduction_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WorkReport"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002342</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002763</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T18:10:14.239Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T18:10:14.239Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                     </span><span class="p">}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002399</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"service_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5421</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bought new door knobs"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"vendor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gerard Maggio IV"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"deductions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                     </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002538</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5421</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bought new door knobs"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase_required"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deduction_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WorkReport"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002399</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002763</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T18:10:17.080Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T18:10:17.080Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                     </span><span class="p">}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000164</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Francisco Villa"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dashboard_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/dashboard/blackrock-beach-properties/properties/100030000157"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"gross_report_totals"</span><span class="p">:</span><span class="w"> </span><span class="mi">22526</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"work_reports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002413</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"service_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">12237</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fixed pool heater"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"vendor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gerard Maggio IV"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"deductions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                     </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002552</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">12237</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fixed pool heater"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase_required"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deduction_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WorkReport"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002413</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002763</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T18:10:17.826Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T18:10:17.826Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002653</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;This is the adjustment notes&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deduction_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WorkReport"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002413</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002763</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-06T22:53:58.032Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-06T22:53:58.032Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                     </span><span class="p">}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002315</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"service_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T11:00:00.000Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"total_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10289</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replaced door knobs"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"vendor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fixit Team"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"deductions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                     </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002463</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10289</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replaced door knobs"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase_required"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deduction_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WorkReport"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"deductable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002315</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030002763</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T18:10:13.068Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-24T18:10:13.068Z"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                     </span><span class="p">}</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"expenses_subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">345.63</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific statement.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET /statements/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the statement to retrieve</td>
+</tr>
+</tbody></table>
 <h1 id='units'>Units</h1><h2 id='get-rates'>Get Rates</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -493,9 +1304,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s rates.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -544,9 +1355,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s availability.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/availability</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -564,7 +1375,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tbody></table>
 
 <aside class="notice">
-  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on. 
+  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
 </aside>
 <h3 id='availability-response-values'>Availability Response Values</h3>
 <table><thead>
@@ -586,11 +1397,11 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>D (day) or W (week)</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-quote'>Get a Quote</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.lvh.me:5100/api/public/990/properties/92/units/92/quotes"</span> 
--d <span class="s1">'{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}'</span> 
--H <span class="s2">"Authorization: Token test_api_key"</span> 
--H <span class="s2">"Accept: application/vnd.direct.v1"</span> 
--H <span class="s2">"Content-Type: application/json"</span> 
+<h2 id='create-a-quote'>Create a Quote</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.lvh.me:5100/api/public/990/properties/92/units/92/quotes"</span>
+-d <span class="s1">'{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}'</span>
+-H <span class="s2">"Authorization: Token test_api_key"</span>
+-H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+-H <span class="s2">"Content-Type: application/json"</span>
 -X POST
 </code></pre>
 <blockquote>
@@ -644,9 +1455,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional) and number of pets (optional).</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/quotes</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -662,7 +1473,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the unit to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters'>Request Parameters</h3>
+<h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -690,16 +1501,16 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The number of pets (optional, default to 0)</td>
 </tr>
 </tbody></table>
-<h2 id='update-pricing'>Update Pricing</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/properties/92/units/92/pricing"</span> 
+<h2 id='update-pricing'>Update Pricing</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/properties/92/units/92/pricing"</span>
 -d <span class="s1">'{"pricing_array":
       [
          {"date":"2019-04-03", "recommended_price":"440", "reason":"High demand"},
          {"date":"2019-04-04", "recommended_price":"244", "reason":"Low demand"}
       ]
    }'</span>
--H <span class="s2">"Authorization: Token test_api_key"</span> 
--H <span class="s2">"Accept: application/vnd.direct.v1"</span> 
--H <span class="s2">"Content-Type: application/json"</span> 
+-H <span class="s2">"Authorization: Token test_api_key"</span>
+-H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+-H <span class="s2">"Content-Type: application/json"</span>
 -X POST
 </code></pre>
 <blockquote>
@@ -710,9 +1521,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the nightly price for the specified unit given and dates found in the json.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/pricing</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -728,7 +1539,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the unit to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-2'>Request Parameters</h3>
+<h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -752,16 +1563,16 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The reason for the updated price</td>
 </tr>
 </tbody></table>
-<h2 id='update-minimum-night-stay'>Update Minimum Night Stay</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/properties/92/units/92/stay-length"</span> 
+<h2 id='update-minimum-night-stay'>Update Minimum Night Stay</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/properties/92/units/92/stay-length"</span>
 -d <span class="s1">'{"availability_array":
       [
          {"date":"2019-04-03", "min_nights":"5", "reason":"High demand"},
          {"date":"2019-04-04", "min_nights":"3", "reason":"Low demand"}
       ]
    }'</span>
--H <span class="s2">"Authorization: Token test_api_key"</span> 
--H <span class="s2">"Accept: application/vnd.direct.v1"</span> 
--H <span class="s2">"Content-Type: application/json"</span> 
+-H <span class="s2">"Authorization: Token test_api_key"</span>
+-H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+-H <span class="s2">"Content-Type: application/json"</span>
 -X POST
 </code></pre>
 <blockquote>
@@ -772,9 +1583,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the minimum night stay for the speceified unit given and dates found in the json.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/stay-length</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -790,7 +1601,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the unit to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-3'>Request Parameters</h3>
+<h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -812,199 +1623,6 @@ You must replace <code>your_api_key</code> with your personal API key.
 <tr>
 <td>reason</td>
 <td>The reason for the updated</td>
-</tr>
-</tbody></table>
-<h1 id='reservations'>Reservations</h1><h2 id='get-all-reservations'>Get All reservations</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations"</span>
-  -H <span class="s2">"Authorization: Token your_api_key"</span>
-  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"reservations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"check_in_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-27T15:00:00.000-05:00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"check_out_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-02T23:00:00.000-05:00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1811</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EQRMH4-L6QR1EALF"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:03:14.583Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"check_in_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-13T15:00:00.000-05:00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"check_out_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-16T23:00:00.000-05:00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-   </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all reservations connected to your organization.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
-<p><code>GET /reservations</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>_limit (optional)</td>
-<td>Maximum number of reservations to return, up to 100. Default is 20.</td>
-</tr>
-<tr>
-<td>_offset (optional)</td>
-<td>Number of reservations to skip over, where the ordering is consistent but unspecified.</td>
-</tr>
-</tbody></table>
-<h2 id='get-a-specific-reservation'>Get a Specific Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
-  -H <span class="s2">"Authorization: Token your_api_key"</span>
-  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"num_guests"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"days_booked"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"check_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-10-21"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"check_out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-10-23"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"booking.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christopher zepf"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ndirish1@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific reservation.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
-<p><code>GET /reservations/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the reservatoion to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='create-a-reservation'>Create a Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/reservations"</span> 
--d <span class="s1">'{
-    "property_id": 1,
-    "unit_id": 1,
-    "customer": {
-      "first_name": "John",
-      "last_name": "Doe",
-      "email": "john.doe@test.com",
-      "phone": "1234567890",
-      "address": {
-        "addressLine1": "123 Main Street"
-        "addressLine2": "",
-        "city": "Chicago",
-        "state": "IL",
-        "country": "US",
-        "postal_code": "60654"
-      }
-    },
-    "reservation": {
-      "check_in": "2019-04-03",
-      "check_out": "2019-04-07",
-      "adults": 2,
-      "children": 0,
-      "pets": 0
-    },
-    "payment": {
-      "number": "4111111111111111",
-      "cvv": "123",
-      "expiration_month": "02",
-      "expiration_year": "2020",
-      "name_on_card": "John Doe"
-      "billing_address": {
-        "addressLine1": "123 Main Street"
-        "addressLine2": "",
-        "city": "Chicago",
-        "state": "IL",
-        "country": "US",
-        "postal_code": "60654"
-      }
-    }
-  }'</span>
--H <span class="s2">"Authorization: Token test_api_key"</span> 
--H <span class="s2">"Accept: application/vnd.direct.v1"</span> 
--H <span class="s2">"Content-Type: application/json"</span> 
--X POST
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"num_guests"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"days_booked"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"check_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-03"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"check_out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-07"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint creates a new reservation for the requested unit.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
-<p><code>POST /reservations</code></p>
-<h3 id='request-parameters-4'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>property_id</td>
-<td>The unique identifier of the property being booked</td>
-</tr>
-<tr>
-<td>unit_id</td>
-<td>The unique identifier of the unit being booked</td>
-</tr>
-<tr>
-<td>customer</td>
-<td>Information about the customer making the inquiry</td>
-</tr>
-<tr>
-<td>reservation</td>
-<td>Information about the reservation, including stay dates and guest counts</td>
-</tr>
-<tr>
-<td>payment</td>
-<td>Payment information, including billing address and credit card details</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
