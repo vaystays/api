@@ -171,6 +171,455 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the property to retrieve
 
+# Reservations
+
+## Get All reservations
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+      "reservations": [
+        {
+            "id": 951,
+            "booking_code": "2VXUAWPE5-ZVCRY7",
+            "updated_at": "2019-01-25T01:04:39.744Z",
+            "check_in_time": "2019-04-27T15:00:00.000-05:00",
+            "check_out_time": "2019-05-02T23:00:00.000-05:00",
+            "unit_id": 1,
+            "property_id": 1
+        },
+        {
+            "id": 1811,
+            "booking_code": "EQRMH4-L6QR1EALF",
+            "updated_at": "2019-01-25T01:03:14.583Z",
+            "check_in_time": "2019-03-13T15:00:00.000-05:00",
+            "check_out_time": "2019-03-16T23:00:00.000-05:00",
+            "unit_id": 2,
+            "property_id": 1
+        }
+      ],
+      "total_count": 2
+   }
+```
+
+This endpoint retrieves all reservations connected to your organization.
+
+### HTTP Request
+
+`GET /reservations`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
+_offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
+
+## Get a Specific Reservation
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 951,
+    "booking_code": "2VXUAWPE5-ZVCRY7",
+    "updated_at": "2019-01-25T01:04:39.744Z",
+    "status": {
+        "cancelled": false,
+        "confirmed": true,
+        "archived": true
+    },
+    "num_guests": 0,
+    "days_booked": 3,
+    "check_in": "2011-10-21",
+    "check_out": "2011-10-23",
+    "channel": "booking.com",
+    "customer": {
+        "name": "christopher zepf",
+        "email": "ndirish1@gmail.com",
+        "telephone": null,
+        "location": {
+          "city": "Chicago",
+          "state": "IL",
+          "postal_code": null,
+          "country": "USA"
+        }
+    }
+}
+```
+
+This endpoint retrieves a specific reservation.
+
+### HTTP Request
+
+`GET /reservations/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the reservatoion to retrieve
+
+## Create a Reservation
+
+```shell
+curl "https://app.getdirect.io/api/public/990/reservations"
+-d '{
+    "property_id": 1,
+    "unit_id": 1,
+    "customer": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@test.com",
+      "phone": "1234567890",
+      "address": {
+        "addressLine1": "123 Main Street"
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    },
+    "reservation": {
+      "check_in": "2019-04-03",
+      "check_out": "2019-04-07",
+      "adults": 2,
+      "children": 0,
+      "pets": 0
+    },
+    "payment": {
+      "number": "4111111111111111",
+      "cvv": "123",
+      "expiration_month": "02",
+      "expiration_year": "2020",
+      "name_on_card": "John Doe"
+      "billing_address": {
+        "addressLine1": "123 Main Street"
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    }
+  }'
+-H "Authorization: Token test_api_key"
+-H "Accept: application/vnd.direct.v1"
+-H "Content-Type: application/json"
+-X POST
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 951,
+    "booking_code": "2VXUAWPE5-ZVCRY7",
+    "updated_at": "2019-01-25T01:04:39.744Z",
+    "cancelled": false,
+    "confirmed": false,
+    "archived": false,
+    "num_guests": 1,
+    "days_booked": 3,
+    "check_in": "2019-04-03",
+    "check_out": "2019-04-07",
+    ...
+}
+```
+
+This endpoint creates a new reservation for the requested unit.
+
+### HTTP Request
+
+`POST /reservations`
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+property_id | The unique identifier of the property being booked
+unit_id | The unique identifier of the unit being booked
+customer | Information about the customer making the inquiry
+reservation | Information about the reservation, including stay dates and guest counts
+payment | Payment information, including billing address and credit card details
+
+# Statements
+
+## Get All Statements
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/statements"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+      "statements": [
+        {
+            "id": 100030003979,
+            "document_id": null,
+            "name": "Statement for Dia Osinski: 02/01/20 - 02/29/20",
+            "end_balance_cents": 597850,
+            "start_balance_cents": 0,
+            "start_date": "2020-02-01",
+            "end_date": "2020-02-29",
+            "processed_at": "2020-03-06T22:54:33.757Z",
+            "payee_type": "Employee",
+            "payee_id": 100030002763,
+            "optional_id": "123",
+            "optional_note": "123",
+            "current_balance_cents": -1432288,
+            "visibility_status": "visible",
+            "payee_role": "property_contact",
+            "deferred_balance": 0
+        },
+        {
+            "id": 100030003980,
+            "document_id": null,
+            "name": "Statement for Prince Moore: 02/01/20 - 02/29/20",
+            "end_balance_cents": -16563,
+            "start_balance_cents": 0,
+            "start_date": "2020-02-01",
+            "end_date": "2020-02-29",
+            "processed_at": null,
+            "payee_type": "Employee",
+            "payee_id": 100030002764,
+            "optional_id": null,
+            "optional_note": null,
+            "current_balance_cents": -16563,
+            "visibility_status": "visible",
+            "payee_role": "property_contact",
+            "deferred_balance": 0
+        }
+      ],
+      "total_count": 2
+   }
+```
+
+This endpoint retrieves all statements connected to your organization.
+
+### HTTP Request
+
+`GET /statements`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of statements to return, up to 100. Default is 20.
+_offset (optional) | Number of statements to skip over, where the ordering is consistent but unspecified.
+
+## Get a Specific Statement
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/statements/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+      "id": 100030003979,
+      "document_id": null,
+      "name": "Statement for Dia Osinski: 02/01/20 - 02/29/20",
+      "end_balance_cents": 597850,
+      "start_balance_cents": 0,
+      "start_date": "2020-02-01",
+      "end_date": "2020-02-29",
+      "processed_at": "2020-03-06T22:54:33.757Z",
+      "payee_type": "Employee",
+      "payee_id": 100030002763,
+      "optional_id": "123",
+      "optional_note": "123",
+      "current_balance_cents": -1432288,
+      "visibility_status": "visible",
+      "payee_role": "property_contact",
+      "deferred_balance": 0,
+      "payouts": [
+         {
+            "unit_name": "Full Property: Francisco Villa - ",
+            "payout_id": 100030032337,
+            "booking_code": "5ZJUGQFLIEEPDJ0R",
+            "guest_name": "Benton Schmitt",
+            "nights": 10,
+            "gross_revenue": 2807.66,
+            "mgmt_fee": 561.53,
+            "deductions": 0.0,
+            "adjustments": 0.0,
+            "net_to_owner": 2246.13
+         },
+         {
+            "unit_name": "Full Property: Casa Barbara - ",
+            "payout_id": 100030032329,
+            "booking_code": "VSHWQ88X1HEGT1SS",
+            "guest_name": "Wiley Frami I",
+            "nights": 5,
+            "gross_revenue": 5097.5,
+            "mgmt_fee": 1019.5,
+            "deductions": 0.0,
+            "adjustments": 0.0,
+            "net_to_owner": 4078.0
+         }
+      ],
+      "payouts_subtotal": 632413,
+      "unit_expenses": [
+         {
+            "id": 100030000052,
+            "unit_name": "Casa Barbara",
+            "dashboard_url": "/dashboard/blackrock-beach-properties/properties/100030000047",
+            "gross_report_totals": 12037,
+            "work_reports": [
+               {
+                  "id": 100030002342,
+                  "service_date": "2020-02-07T00:00:00.000Z",
+                  "invoice": null,
+                  "total_cents": 6616,
+                  "description": "Yardwork",
+                  "vendor_name": "Armando Connelly III",
+                  "deductions": [
+                     {
+                        "id": 100030002484,
+                        "amount_cents": 6616,
+                        "note": "Yardwork",
+                        "reason": "exceeded_scope",
+                        "deduction_type": null,
+                        "deductable_type": "WorkReport",
+                        "deductable_id": 100030002342,
+                        "employee_id": 100030002763,
+                        "created_at": "2020-02-24T18:10:14.239Z",
+                        "updated_at": "2020-02-24T18:10:14.239Z",
+                        "organization_id": 3
+                     }
+                  ]
+               },
+               {
+                  "id": 100030002399,
+                  "service_date": "2020-02-24T00:00:00.000Z",
+                  "invoice": null,
+                  "total_cents": 5421,
+                  "description": "Bought new door knobs",
+                  "vendor_name": "Gerard Maggio IV",
+                  "deductions": [
+                     {
+                        "id": 100030002538,
+                        "amount_cents": 5421,
+                        "note": "Bought new door knobs",
+                        "reason": "purchase_required",
+                        "deduction_type": null,
+                        "deductable_type": "WorkReport",
+                        "deductable_id": 100030002399,
+                        "employee_id": 100030002763,
+                        "created_at": "2020-02-24T18:10:17.080Z",
+                        "updated_at": "2020-02-24T18:10:17.080Z",
+                        "organization_id": 3
+                     }
+                  ]
+               }
+            ]
+         },
+         {
+            "id": 100030000164,
+            "unit_name": "Francisco Villa",
+            "dashboard_url": "/dashboard/blackrock-beach-properties/properties/100030000157",
+            "gross_report_totals": 22526,
+            "work_reports": [
+               {
+                  "id": 100030002413,
+                  "service_date": "2020-02-24T00:00:00.000Z",
+                  "invoice": null,
+                  "total_cents": 12237,
+                  "description": "Fixed pool heater",
+                  "vendor_name": "Gerard Maggio IV",
+                  "deductions": [
+                     {
+                        "id": 100030002552,
+                        "amount_cents": 12237,
+                        "note": "Fixed pool heater",
+                        "reason": "purchase_required",
+                        "deduction_type": null,
+                        "deductable_type": "WorkReport",
+                        "deductable_id": 100030002413,
+                        "employee_id": 100030002763,
+                        "created_at": "2020-02-24T18:10:17.826Z",
+                        "updated_at": "2020-02-24T18:10:17.826Z",
+                        "organization_id": 3
+                     },
+                     {
+                        "id": 100030002653,
+                        "amount_cents": 0,
+                        "note": "<p>This is the adjustment notes</p>\n",
+                        "reason": null,
+                        "deduction_type": null,
+                        "deductable_type": "WorkReport",
+                        "deductable_id": 100030002413,
+                        "employee_id": 100030002763,
+                        "created_at": "2020-03-06T22:53:58.032Z",
+                        "updated_at": "2020-03-06T22:53:58.032Z",
+                        "organization_id": 3
+                     }
+                  ]
+               },
+               {
+                  "id": 100030002315,
+                  "service_date": "2020-02-01T11:00:00.000Z",
+                  "invoice": null,
+                  "total_cents": 10289,
+                  "description": "Replaced door knobs",
+                  "vendor_name": "Fixit Team",
+                  "deductions": [
+                     {
+                        "id": 100030002463,
+                        "amount_cents": 10289,
+                        "note": "Replaced door knobs",
+                        "reason": "purchase_required",
+                        "deduction_type": null,
+                        "deductable_type": "WorkReport",
+                        "deductable_id": 100030002315,
+                        "employee_id": 100030002763,
+                        "created_at": "2020-02-24T18:10:13.068Z",
+                        "updated_at": "2020-02-24T18:10:13.068Z",
+                        "organization_id": 3
+                     }
+                  ]
+               }
+            ]
+         }
+      ],
+      "expenses_subtotal": 345.63
+   }
+```
+
+This endpoint retrieves a specific statement.
+
+### HTTP Request
+
+`GET /statements/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the statement to retrieve
+
 # Units
 
 ## Get Rates
@@ -302,7 +751,7 @@ P_ID | The ID of the property to retrieve
 U_ID | The ID of the unit to retrieve
 
 <aside class="notice">
-  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on. 
+  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
 </aside>
 
 ### Availability Response Values
@@ -316,11 +765,11 @@ stayIncrement | D (day) or W (week)
 ## Get a Quote
 
 ```shell
-curl "http://www.lvh.me:5100/api/public/990/properties/92/units/92/quotes" 
--d '{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}' 
--H "Authorization: Token test_api_key" 
--H "Accept: application/vnd.direct.v1" 
--H "Content-Type: application/json" 
+curl "http://www.lvh.me:5100/api/public/990/properties/92/units/92/quotes"
+-d '{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}'
+-H "Authorization: Token test_api_key"
+-H "Accept: application/vnd.direct.v1"
+-H "Content-Type: application/json"
 -X POST
 ```
 
@@ -401,16 +850,16 @@ pets | The number of pets (optional, default to 0)
 ## Update Pricing
 
 ```shell
-curl "https://app.getdirect.io/api/public/990/properties/92/units/92/pricing" 
+curl "https://app.getdirect.io/api/public/990/properties/92/units/92/pricing"
 -d '{"pricing_array":
       [
          {"date":"2019-04-03", "recommended_price":"440", "reason":"High demand"},
          {"date":"2019-04-04", "recommended_price":"244", "reason":"Low demand"}
       ]
    }'
--H "Authorization: Token test_api_key" 
--H "Accept: application/vnd.direct.v1" 
--H "Content-Type: application/json" 
+-H "Authorization: Token test_api_key"
+-H "Accept: application/vnd.direct.v1"
+-H "Content-Type: application/json"
 -X POST
 ```
 
@@ -439,7 +888,7 @@ U_ID | The ID of the unit to retrieve
 
 Parameter | Description
 --------- | -----------
-pricing_array | An array of pricing objects to process  
+pricing_array | An array of pricing objects to process
 date | The date you wish to update ("YYYY-MM-DD")
 recommended_price | The price to set on the specified date
 reason | The reason for the updated price
@@ -447,16 +896,16 @@ reason | The reason for the updated price
 ## Update Minimum Night Stay
 
 ```shell
-curl "https://app.getdirect.io/api/public/990/properties/92/units/92/stay-length" 
+curl "https://app.getdirect.io/api/public/990/properties/92/units/92/stay-length"
 -d '{"availability_array":
       [
          {"date":"2019-04-03", "min_nights":"5", "reason":"High demand"},
          {"date":"2019-04-04", "min_nights":"3", "reason":"Low demand"}
       ]
    }'
--H "Authorization: Token test_api_key" 
--H "Accept: application/vnd.direct.v1" 
--H "Content-Type: application/json" 
+-H "Authorization: Token test_api_key"
+-H "Accept: application/vnd.direct.v1"
+-H "Content-Type: application/json"
 -X POST
 ```
 
@@ -485,194 +934,7 @@ U_ID | The ID of the unit to retrieve
 
 Parameter | Description
 --------- | -----------
-availability_array | An array of availability objects to process  
+availability_array | An array of availability objects to process
 date | The date you wish to update ("YYYY-MM-DD")
 min_nights | The minimum nights to set on the specified date
 reason | The reason for the updated
-
-# Reservations
-
-## Get All reservations
-
-```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations"
-  -H "Authorization: Token your_api_key"
-  -H "Accept: application/vnd.direct.v1"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-   {
-      "reservations": [
-        {
-            "id": 951,
-            "booking_code": "2VXUAWPE5-ZVCRY7",
-            "updated_at": "2019-01-25T01:04:39.744Z",
-            "check_in_time": "2019-04-27T15:00:00.000-05:00",
-            "check_out_time": "2019-05-02T23:00:00.000-05:00",
-            "unit_id": 1,
-            "property_id": 1
-        },
-        {
-            "id": 1811,
-            "booking_code": "EQRMH4-L6QR1EALF",
-            "updated_at": "2019-01-25T01:03:14.583Z",
-            "check_in_time": "2019-03-13T15:00:00.000-05:00",
-            "check_out_time": "2019-03-16T23:00:00.000-05:00",
-            "unit_id": 2,
-            "property_id": 1
-        }
-      ],
-      "total_count": 2
-   }
-```
-
-This endpoint retrieves all reservations connected to your organization.
-
-### HTTP Request
-
-`GET /reservations`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-_limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
-_offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
-
-## Get a Specific Reservation
-
-```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations/<ID>"
-  -H "Authorization: Token your_api_key"
-  -H "Accept: application/vnd.direct.v1"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "id": 951,
-    "booking_code": "2VXUAWPE5-ZVCRY7",
-    "updated_at": "2019-01-25T01:04:39.744Z",
-    "status": {
-        "cancelled": false,
-        "confirmed": true,
-        "archived": true
-    },
-    "num_guests": 0,
-    "days_booked": 3,
-    "check_in": "2011-10-21",
-    "check_out": "2011-10-23",
-    "channel": "booking.com",
-    "customer": {
-        "name": "christopher zepf",
-        "email": "ndirish1@gmail.com",
-        "telephone": null,
-        "location": {
-          "city": "Chicago",
-          "state": "IL",
-          "postal_code": null,
-          "country": "USA"
-        }
-    }
-}
-```
-
-This endpoint retrieves a specific reservation.
-
-### HTTP Request
-
-`GET /reservations/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the reservatoion to retrieve
-
-## Create a Reservation
-
-```shell
-curl "https://app.getdirect.io/api/public/990/reservations" 
--d '{
-    "property_id": 1,
-    "unit_id": 1,
-    "customer": {
-      "first_name": "John",
-      "last_name": "Doe",
-      "email": "john.doe@test.com",
-      "phone": "1234567890",
-      "address": {
-        "addressLine1": "123 Main Street"
-        "addressLine2": "",
-        "city": "Chicago",
-        "state": "IL",
-        "country": "US",
-        "postal_code": "60654"
-      }
-    },
-    "reservation": {
-      "check_in": "2019-04-03",
-      "check_out": "2019-04-07",
-      "adults": 2,
-      "children": 0,
-      "pets": 0
-    },
-    "payment": {
-      "number": "4111111111111111",
-      "cvv": "123",
-      "expiration_month": "02",
-      "expiration_year": "2020",
-      "name_on_card": "John Doe"
-      "billing_address": {
-        "addressLine1": "123 Main Street"
-        "addressLine2": "",
-        "city": "Chicago",
-        "state": "IL",
-        "country": "US",
-        "postal_code": "60654"
-      }
-    }
-  }'
--H "Authorization: Token test_api_key" 
--H "Accept: application/vnd.direct.v1" 
--H "Content-Type: application/json" 
--X POST
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "id": 951,
-    "booking_code": "2VXUAWPE5-ZVCRY7",
-    "updated_at": "2019-01-25T01:04:39.744Z",
-    "cancelled": false,
-    "confirmed": false,
-    "archived": false,
-    "num_guests": 1,
-    "days_booked": 3,
-    "check_in": "2019-04-03",
-    "check_out": "2019-04-07",
-    ...
-}
-```
-
-This endpoint creates a new reservation for the requested unit.
-
-### HTTP Request
-
-`POST /reservations`
-
-### Request Parameters
-
-Parameter | Description
---------- | -----------
-property_id | The unique identifier of the property being booked
-unit_id | The unique identifier of the unit being booked
-customer | Information about the customer making the inquiry
-reservation | Information about the reservation, including stay dates and guest counts
-payment | Payment information, including billing address and credit card details
-
