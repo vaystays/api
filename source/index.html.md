@@ -173,7 +173,7 @@ ID | The ID of the property to retrieve
 
 # Reservations
 
-## Get All reservations
+## List Reservations
 
 ```shell
 curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations"
@@ -222,58 +222,7 @@ Parameter | Description
 _limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
 _offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
 
-## Get a Specific Reservation
-
-```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations/<ID>"
-  -H "Authorization: Token your_api_key"
-  -H "Accept: application/vnd.direct.v1"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "id": 951,
-    "booking_code": "2VXUAWPE5-ZVCRY7",
-    "updated_at": "2019-01-25T01:04:39.744Z",
-    "status": {
-        "cancelled": false,
-        "confirmed": true,
-        "archived": true
-    },
-    "num_guests": 0,
-    "days_booked": 3,
-    "check_in": "2011-10-21",
-    "check_out": "2011-10-23",
-    "channel": "booking.com",
-    "customer": {
-        "name": "christopher zepf",
-        "email": "ndirish1@gmail.com",
-        "telephone": null,
-        "location": {
-          "city": "Chicago",
-          "state": "IL",
-          "postal_code": null,
-          "country": "USA"
-        }
-    }
-}
-```
-
-This endpoint retrieves a specific reservation.
-
-### HTTP Request
-
-`GET /reservations/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the reservatoion to retrieve
-
-## Create a Reservation
+## Create Reservation
 
 ```shell
 curl "https://app.getdirect.io/api/public/990/reservations"
@@ -347,6 +296,57 @@ This endpoint creates a new reservation for the requested unit.
 
 `POST /reservations`
 
+## Get Reservation
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 951,
+    "booking_code": "2VXUAWPE5-ZVCRY7",
+    "updated_at": "2019-01-25T01:04:39.744Z",
+    "status": {
+        "cancelled": false,
+        "confirmed": true,
+        "archived": true
+    },
+    "num_guests": 0,
+    "days_booked": 3,
+    "check_in": "2011-10-21",
+    "check_out": "2011-10-23",
+    "channel": "booking.com",
+    "customer": {
+        "name": "christopher zepf",
+        "email": "ndirish1@gmail.com",
+        "telephone": null,
+        "location": {
+          "city": "Chicago",
+          "state": "IL",
+          "postal_code": null,
+          "country": "USA"
+        }
+    }
+}
+```
+
+This endpoint retrieves a specific reservation.
+
+### HTTP Request
+
+`GET /reservations/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the reservatoion to retrieve
+
 ### Request Parameters
 
 Parameter | Description
@@ -356,6 +356,346 @@ unit_id | The unique identifier of the unit being booked
 customer | Information about the customer making the inquiry
 reservation | Information about the reservation, including stay dates and guest counts
 payment | Payment information, including billing address and credit card details
+
+## Update Reservation
+
+```shell
+curl "https://app.getdirect.io/api/public/3/reservations/100030030467"
+-d '{"door_code": "1AT9B3"}'
+-H "Authorization: Token test_api_key"
+-H "Accept: application/vnd.direct.v1"
+-H "Content-Type: application/json"
+-X PUT
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+      "id": 100030030467,
+      "booking_code": "SHBNSIAFTSZE9XVJ",
+      "door_code": "1AT9B3",
+      "updated_at": "2020-12-28T16:35:51.725Z",
+      "property_id": 100030000002,
+      "unit_id": 100030000002,
+      "status": {
+         "cancelled": true,
+         "confirmed": true,
+         "archived": true
+      },
+      "num_guests": 11,
+      "days_booked": 26,
+      "date_booked": "2019-10-04T00:00:00.000Z",
+      "check_in_time": "2020-03-28T17:00:00.000+00:00",
+      "check_out_time": "2020-04-22T11:00:00.000+00:00",
+      "price_status": "partial",
+      "stay_type": "guest",
+      "rent_total": 7400,
+      "extras_total": 628,
+      "booking_total": 8123,
+      "channel": "direct",
+      "quote_line_items": [
+         {
+            "id": 100030475410,
+            "name": "Room Rate",
+            "total_cents": 740000,
+            "rate": 296.0,
+            "taxable": true,
+            "item_type": "room_rate",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.715Z",
+            "updated_at": "2020-02-24T17:47:26.715Z",
+            "refundable": false,
+            "optional": false,
+            "additional_data": {},
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475411,
+            "name": "Weekly Discount",
+            "total_cents": 35520,
+            "rate": 4.8,
+            "taxable": true,
+            "item_type": "discount",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.726Z",
+            "updated_at": "2020-02-24T17:47:26.726Z",
+            "refundable": false,
+            "optional": false,
+            "additional_data": {},
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475412,
+            "name": "Management Fee",
+            "total_cents": 8450,
+            "rate": 1.2,
+            "taxable": false,
+            "item_type": "fees",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.735Z",
+            "updated_at": "2020-02-24T17:47:26.735Z",
+            "refundable": true,
+            "optional": false,
+            "additional_data": {
+               "frequency_at_creation": "per_stay",
+               "included_in_base_rent": false,
+               "los_ranges_at_creation": [],
+               "default_calculation_amount": 1.2
+            },
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475413,
+            "name": "Processing Fee",
+            "total_cents": 27475,
+            "rate": 3.9,
+            "taxable": false,
+            "item_type": "fees",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.744Z",
+            "updated_at": "2020-02-24T17:47:26.744Z",
+            "refundable": true,
+            "optional": false,
+            "additional_data": {
+               "frequency_at_creation": "per_stay",
+               "included_in_base_rent": false,
+               "los_ranges_at_creation": [],
+               "default_calculation_amount": 3.9
+            },
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475414,
+            "name": "Linen Fee",
+            "total_cents": 2000,
+            "rate": null,
+            "taxable": false,
+            "item_type": "fees",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.758Z",
+            "updated_at": "2020-02-24T17:47:26.758Z",
+            "refundable": true,
+            "optional": false,
+            "additional_data": {
+               "frequency_at_creation": "per_stay",
+               "included_in_base_rent": false,
+               "los_ranges_at_creation": [],
+               "default_calculation_amount": 20.0
+            },
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475415,
+            "name": "Damage Waiver",
+            "total_cents": 9900,
+            "rate": null,
+            "taxable": false,
+            "item_type": "fees",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.770Z",
+            "updated_at": "2020-02-24T17:47:26.770Z",
+            "refundable": true,
+            "optional": false,
+            "additional_data": {
+               "frequency_at_creation": "per_stay",
+               "included_in_base_rent": false,
+               "los_ranges_at_creation": [],
+               "default_calculation_amount": 99.0
+            },
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475416,
+            "name": "Cleaning Fee",
+            "total_cents": 15000,
+            "rate": null,
+            "taxable": false,
+            "item_type": "fees",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.786Z",
+            "updated_at": "2020-02-24T17:47:26.786Z",
+            "refundable": false,
+            "optional": false,
+            "additional_data": {
+               "frequency_at_creation": "per_stay",
+               "included_in_base_rent": false,
+               "los_ranges_at_creation": [],
+               "default_calculation_amount": 150.0
+            },
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475417,
+            "name": "Additional Guest Fee",
+            "total_cents": 0,
+            "rate": null,
+            "taxable": true,
+            "item_type": "fees",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.803Z",
+            "updated_at": "2020-02-24T17:47:26.803Z",
+            "refundable": true,
+            "optional": false,
+            "additional_data": {
+               "frequency_at_creation": "per_stay",
+               "included_in_base_rent": false,
+               "additional_guest_start": 1,
+               "los_ranges_at_creation": [],
+               "default_calculation_amount": 0.0
+            },
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475418,
+            "name": "Sales Tax",
+            "total_cents": 25009,
+            "rate": 3.55,
+            "taxable": false,
+            "item_type": "taxes",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.814Z",
+            "updated_at": "2020-02-24T17:47:26.814Z",
+            "refundable": true,
+            "optional": false,
+            "additional_data": {
+               "tax_type": "Sales tax"
+            },
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475419,
+            "name": "City Tax",
+            "total_cents": 20078,
+            "rate": 2.85,
+            "taxable": false,
+            "item_type": "taxes",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.826Z",
+            "updated_at": "2020-02-24T17:47:26.826Z",
+            "refundable": true,
+            "optional": false,
+            "additional_data": {
+               "tax_type": "City tax"
+            },
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         },
+         {
+            "id": 100030475420,
+            "name": "Booking Total",
+            "total_cents": 812392,
+            "rate": null,
+            "taxable": true,
+            "item_type": "total",
+            "itemizable_type": "Quote",
+            "itemizable_id": 100030030459,
+            "created_at": "2020-02-24T17:47:26.837Z",
+            "updated_at": "2020-02-24T17:47:26.837Z",
+            "refundable": false,
+            "optional": false,
+            "additional_data": {},
+            "organization_id": 3,
+            "split": "no",
+            "cancellation": false,
+            "occurrence_date": null,
+            "debit_account_id": null,
+            "credit_account_id": null
+         }
+      ],
+      "price_paid": "4061.96",
+      "price_remaining": "4061.96",
+      "date_cancelled": "2020-12-28T16:35:51.725Z",
+      "customer": {
+         "name": "Maryanne Nitzsche",
+         "email": "amandahowe@lehnerjacobson.name",
+         "telephone": "210.820.9588",
+         "location": {
+            "city": null,
+            "state": null,
+            "postal_code": null,
+            "country": null
+         }
+      }
+   }
+```
+
+This endpoint updates the door code for the specified reservation given.
+
+### HTTP Request
+
+`PUT /reservations/<R_ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+R_ID | The ID of the reservation to retrieve
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+door_code | The code to unlock the property's door
 
 # Statements
 
@@ -762,7 +1102,7 @@ availability | Y (available) or N (not available)
 changeOver | C (any), I (check in), O (check out), or X (none)
 stayIncrement | D (day) or W (week)
 
-## Get a Quote
+## Create a Quote
 
 ```shell
 curl "http://www.lvh.me:5100/api/public/990/properties/92/units/92/quotes"
