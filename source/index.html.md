@@ -960,6 +960,319 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the statement to retrieve
 
+# Transactions
+## Get All Transactions
+
+```shell
+curl "https://app.getdirect.io/api/public/<ORG_ID>/transactions"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+    "transactions": [
+        {
+            "post_date": "2020-07-31",
+            "je_id": "JE-3AE425",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Cleaning Fee - City Tax",
+            "amount": 19.999
+        },
+        {
+            "post_date": "2020-07-31",
+            "je_id": "JE-3AE425",
+            "id": 100030031640,
+            "general_ledger_account_number": 2308,
+            "account_name": "City Tax",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Cleaning Fee - City Tax",
+            "amount": 19.999
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-0E90AD",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Damage Waiver - City Tax",
+            "amount": 9.9
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-0E90AD",
+            "id": 100030031640,
+            "general_ledger_account_number": 2308,
+            "account_name": "City Tax",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Damage Waiver - City Tax",
+            "amount": 9.9
+        },
+        {
+            "post_date": "2020-07-29",
+            "je_id": "JE-08B396",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Room Rate - City Tax",
+            "amount": 187.615
+        },
+        {
+            "post_date": "2020-07-29",
+            "je_id": "JE-08B396",
+            "id": 100030031640,
+            "general_ledger_account_number": 2308,
+            "account_name": "City Tax",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Room Rate - City Tax",
+            "amount": 187.615
+        },
+        {
+            "post_date": "2020-07-31",
+            "je_id": "JE-7B0435",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Cleaning Fee - Sales Tax",
+            "amount": 9.9995
+        },
+        {
+            "post_date": "2020-07-31",
+            "je_id": "JE-7B0435",
+            "id": 100030031640,
+            "general_ledger_account_number": 2306,
+            "account_name": "Sales Tax",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Cleaning Fee - Sales Tax",
+            "amount": 9.9995
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-E81844",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Damage Waiver - Sales Tax",
+            "amount": 4.95
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-E81844",
+            "id": 100030031640,
+            "general_ledger_account_number": 2306,
+            "account_name": "Sales Tax",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Damage Waiver - Sales Tax",
+            "amount": 4.95
+        },
+        {
+            "post_date": "2020-07-29",
+            "je_id": "JE-4D1B2D",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Room Rate - Sales Tax",
+            "amount": 93.8075
+        },
+        {
+            "post_date": "2020-07-29",
+            "je_id": "JE-4D1B2D",
+            "id": 100030031640,
+            "general_ledger_account_number": 2306,
+            "account_name": "Sales Tax",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Room Rate - Sales Tax",
+            "amount": 93.8075
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-554848",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Management Fee",
+            "amount": 23.88
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-554848",
+            "id": 100030031640,
+            "general_ledger_account_number": 2115,
+            "account_name": "Miscellaneous Fees/Charges - Guests",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Management Fee",
+            "amount": 23.88
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-554847",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Processing Fee",
+            "amount": 77.61
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-554847",
+            "id": 100030031640,
+            "general_ledger_account_number": 2117,
+            "account_name": "Payment Processing Fees Paid",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Processing Fee",
+            "amount": 77.61
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-554846",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Damage Waiver",
+            "amount": 99.0
+        },
+        {
+            "post_date": "2020-07-01",
+            "je_id": "JE-554846",
+            "id": 100030031640,
+            "general_ledger_account_number": 2108,
+            "account_name": "Damage Waiver Fees - Guests",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Damage Waiver",
+            "amount": 99.0
+        },
+        {
+            "post_date": "2020-07-31",
+            "je_id": "JE-554845",
+            "id": 100030031640,
+            "general_ledger_account_number": 2002,
+            "account_name": "Advance Reservations Deposits",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Cleaning Fee",
+            "amount": 199.99
+        },
+        {
+            "post_date": "2020-07-31",
+            "je_id": "JE-554845",
+            "id": 100030031640,
+            "general_ledger_account_number": 2102,
+            "account_name": "Amenity Fees - Guests",
+            "unit_id": 100030000004,
+            "portfolio": null,
+            "subportfolio": "Hammock Beach",
+            "unit_group": "Lodge: Three Bedroom Oceanview",
+            "type": "Trust",
+            "description": "Cleaning Fee",
+            "amount": 199.99
+        }
+    ],
+    "total_count": 75690
+}
+```
+
+This endpoint retrieves all transactions connected to your organization.
+
+### HTTP Request
+
+`GET /transactions`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of transactions to return, up to 100. Default is 20.
+_offset (optional) | Number of transactions to skip over, where the ordering is consistent but unspecified.
+
+
 # Units
 
 ## Get Rates
