@@ -264,6 +264,14 @@
               </ul>
           </li>
           <li>
+            <a href="#transactions" class="toc-h1 toc-link" data-title="Transactions">Transactions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-transactions" class="toc-h2 toc-link" data-title="Get All Transactions">Get All Transactions</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#units" class="toc-h1 toc-link" data-title="Units">Units</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1243,6 +1251,338 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the statement to retrieve</td>
 </tr>
 </tbody></table>
+<h1 id='transactions'>Transactions</h1><h2 id='get-all-transactions'>Get All Transactions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/transactions"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-3AE425"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee - City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.999</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-3AE425"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2308</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee - City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.999</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-0E90AD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver - City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-0E90AD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2308</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver - City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-08B396"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate - City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">187.615</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-08B396"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2308</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate - City Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">187.615</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-7B0435"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee - Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9995</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-7B0435"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2306</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee - Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9995</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-E81844"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver - Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.95</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-E81844"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2306</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver - Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.95</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-4D1B2D"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate - Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">93.8075</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-4D1B2D"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2306</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate - Sales Tax"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">93.8075</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-554848"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Management Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.88</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-554848"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2115</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Miscellaneous Fees/Charges - Guests"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Management Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.88</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-554847"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.61</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-554847"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2117</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment Processing Fees Paid"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.61</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-554846"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-554846"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2108</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver Fees - Guests"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-554845"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advance Reservations Deposits"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"je_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JE-554845"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031640</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"general_ledger_account_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2102</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amenity Fees - Guests"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000004</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subportfolio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hammock Beach"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">75690</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all transactions connected to your organization.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET /transactions</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (optional)</td>
+<td>Maximum number of transactions to return, up to 100. Default is 20.</td>
+</tr>
+<tr>
+<td>_offset (optional)</td>
+<td>Number of transactions to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+</tbody></table>
 <h1 id='units'>Units</h1><h2 id='get-rates'>Get Rates</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -1304,9 +1644,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s rates.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1355,9 +1695,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s availability.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/availability</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
+<h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1455,9 +1795,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional) and number of pets (optional).</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/quotes</code></p>
-<h3 id='url-parameters-10'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1521,9 +1861,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the nightly price for the specified unit given and dates found in the json.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/pricing</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1583,9 +1923,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the minimum night stay for the speceified unit given and dates found in the json.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/stay-length</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
