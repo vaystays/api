@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='mailto:scott@getdirect.io?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a>
+  - <a href='mailto:wes@directsoftware.com?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
@@ -17,9 +17,9 @@ search: true
 
 Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right.
 
-The base URL for all endpoints in this doc is:
+Staging: `https://staging.getdirect.io/api/public/<ORG_ID>`
 
-`https://app.getdirect.io/api/public/<ORG_ID>`
+Production: `https://app.getdirect.io/api/public/<ORG_ID>`
 
 where `<ORG_ID>` is the ID of the connected organization.
 
@@ -48,12 +48,112 @@ Direct expects for the API key to be included in all API requests to the server 
 You must replace <code>your_api_key</code> with your personal API key.
 </aside>
 
+# Promotions
+
+## Get All Promotions
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/promotions"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   [
+      {
+         "id": 100030000042,
+         "special_type": "percent",
+         "amount": 30,
+         "req_nights": 3,
+         "travel_date_start": "2020-05-01",
+         "travel_end_date": "2020-07-31",
+         "promo_start_date": "2020-03-23",
+         "promo_end_date": "2020-04-30",
+         "days_of_week": null,
+         "code_req": true,
+         "coupon_code": "STAYAGAIN3N",
+         "name": "30% Off 3+ Nights",
+         "internal_name": "30PCT",
+         "distro_list": null,
+         "portfolio_id": 100030000018,
+         "subportfolio_id": 100030000013,
+         "created_at": "2020-03-23T19:33:11.462Z",
+         "updated_at": "2020-04-21T19:34:00.294Z",
+         "active": false,
+         "organization_id": 3
+      },
+      { ... }
+   ]
+```
+
+This endpoint retrieves all promotions connected to your organization.
+
+### HTTP Request
+
+`GET /promotions`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of promotions to return, up to 100. Default is 20.
+_offset (optional) | Number of promotions to skip over, where the ordering is consistent but unspecified.
+
+## Get a Specific Promotion
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/promotions/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+      "id": 100030000042,
+      "special_type": "percent",
+      "amount": 30,
+      "req_nights": 3,
+      "travel_date_start": "2020-05-01",
+      "travel_end_date": "2020-07-31",
+      "promo_start_date": "2020-03-23",
+      "promo_end_date": "2020-04-30",
+      "days_of_week": null,
+      "code_req": true,
+      "coupon_code": "STAYAGAIN3N",
+      "name": "30% Off 3+ Nights",
+      "internal_name": "30PCT",
+      "distro_list": null,
+      "portfolio_id": 100030000018,
+      "subportfolio_id": 100030000013,
+      "created_at": "2020-03-23T19:33:11.462Z",
+      "updated_at": "2020-04-21T19:34:00.294Z",
+      "active": false,
+      "organization_id": 3
+   }
+```
+
+This endpoint retrieves a specific promotion.
+
+### HTTP Request
+
+`GET /promotions/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the promotion to retrieve
+
 # Properties
 
 ## Get All Properties
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/properties"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -94,7 +194,7 @@ _offset (optional) | Number of properties to skip over, where the ordering is co
 ## Get a Specific Property
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -176,7 +276,7 @@ ID | The ID of the property to retrieve
 ## List Reservations
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/reservations"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -225,7 +325,7 @@ _offset (optional) | Number of reservations to skip over, where the ordering is 
 ## Create Reservation
 
 ```shell
-curl "https://app.getdirect.io/api/public/990/reservations"
+curl "https://staging.getdirect.io/api/public/990/reservations"
 -d '{
     "property_id": 1,
     "unit_id": 1,
@@ -299,7 +399,7 @@ This endpoint creates a new reservation for the requested unit.
 ## Get Reservation
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/reservations/<ID>"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/reservations/<ID>"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -360,7 +460,7 @@ payment | Payment information, including billing address and credit card details
 ## Update Reservation
 
 ```shell
-curl "https://app.getdirect.io/api/public/3/reservations/100030030467"
+curl "https://staging.getdirect.io/api/public/3/reservations/100030030467"
 -d '{"door_code": "1AT9B3"}'
 -H "Authorization: Token test_api_key"
 -H "Accept: application/vnd.direct.v1"
@@ -697,12 +797,619 @@ Parameter | Description
 --------- | -----------
 door_code | The code to unlock the property's door
 
+# Reviews
+
+## Get All Reviews
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/reviews"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   [
+      {
+         "id": 100030000012,
+         "unit_id": 100030000053,
+         "booking_id": 100030031551,
+         "title": "Great luxury property for families ",
+         "body": "<p>Testing the review. Great location! Super clean&nbsp;</p>\n",
+         "name": "Lauren A Flaugher",
+         "check_in_date": "2020-05-24T00:00:00.000Z",
+         "status": "published",
+         "rating": 5,
+         "created_at": "2020-05-22T19:10:21.967Z",
+         "updated_at": "2020-05-22T19:18:02.117Z",
+         "reviewed_date": "2020-05-22T19:10:21.965Z",
+         "check_out_date": "2020-05-31T00:00:00.000Z",
+         "where_from": null,
+         "organization_id": 3,
+         "customer_id": null
+      },
+      { ... }
+   ]
+```
+
+This endpoint retrieves all reviews connected to your organization.
+
+### HTTP Request
+
+`GET /reviews`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of reviews to return, up to 100. Default is 20.
+_offset (optional) | Number of reviews to skip over, where the ordering is consistent but unspecified.
+
+## Get a Specific Review
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/reviews/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+      "id": 100030000012,
+      "unit_id": 100030000053,
+      "booking_id": 100030031551,
+      "title": "Great luxury property for families ",
+      "body": "<p>Testing the review. Great location! Super clean&nbsp;</p>\n",
+      "name": "Lauren A Flaugher",
+      "check_in_date": "2020-05-24T00:00:00.000Z",
+      "status": "published",
+      "rating": 5,
+      "created_at": "2020-05-22T19:10:21.967Z",
+      "updated_at": "2020-05-22T19:18:02.117Z",
+      "reviewed_date": "2020-05-22T19:10:21.965Z",
+      "check_out_date": "2020-05-31T00:00:00.000Z",
+      "where_from": null,
+      "organization_id": 3,
+      "customer_id": null
+   }
+```
+
+This endpoint retrieves a specific review.
+
+### HTTP Request
+
+`GET /reviews/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the review to retrieve
+
+# Search
+
+## Get Listings
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/search"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   {
+      "results": [
+         {
+            "average_default_nightly_price": 296,
+            "bookable_nightly_price": 296,
+            "currency": "usd",
+            "property": {
+               "id": 100030000171,
+               "name": "The Pointe Resort",
+               "active": true,
+               "multi_unit": true,
+               "summary_accommodations": null,
+               "summary_description": "<p style=\"text-align:left;\"><span style=\"color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;\">A spacious luxury condominium spanning 2000+ square feet, The Pointe 3-bedroom allows you to come together with friends and family in an expansive open floor plan with kitchen, dining, and living room, while still providing tranquil personal space with each of the three bedrooms. </span></p>\n<p style=\"text-align:left;\"><span style=\"color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;\">Between poolside relaxing and beach dreaming, use the stainless steel kitchen to prepare small bites, full meals, or cocktails and enjoy around the kitchen island, curl up on the modern plush couch to indulge in the upcoming sporting event, or just kick back on one of the three balconies with wood trellis accents.</span></p>\n<p style=\"text-align:left;\"><span style=\"color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;\">The master bedroom comes with an office nook if you are inclined to do some work while visiting The Pointe, and if you’d rather relax, this bedroom is equipped with a flat screen television, bathroom with bathtub and separate shower, and entrance onto its private balcony or patio.</span></p>\n<p style=\"text-align:left;\"><span style=\"color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;\">The bedroom off of the living room is discretely tucked away by closing off the sleek farm doors, and features a bathroom with separate bathtub and shower, dual sinks, and water closet.</span></p>\n<p><span style=\"color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;\">The final bedroom includes two double beds, flat screen tv, office space, bathroom, and entry to its own private balcony or patio.</span></p>\n<p style=\"text-align:left;\"><span style=\"color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;\">Each 3-bedroom comes with washer and dryer, so you can feel productive while doing some poolside lounging.</span></p>\n",
+               "summary_headline": "The Pointe - Three Bedroom with Plunge Pool",
+               "summary_rules": null,
+               "features_adventure": {
+                  "SPORTS_BASKETBALL_COURT": {
+                     "label": "Basketball court",
+                     "value": true
+                  },
+                  { ... }
+               },
+               "features_attractions": {
+                  "ATTRACTIONS_ARBORETUM": {
+                     "label": "Arboretum",
+                     "value": true
+                  },
+                  { ... }
+               },
+               "features_car": {
+                  "CAR_NECESSARY": {
+                     "label": "Necessary",
+                     "value": false
+                  },
+                  { ... }
+               },
+               "features_leisure": {
+                  "LEISURE_ANTIQUING": {
+                     "label": "Antiquing",
+                     "value": true
+                  },
+                  { ... }
+               },
+               "features_local": {
+                  "LOCAL_ATM_BANK": {
+                     "label": "ATM",
+                     "value": false
+                  },
+                  { ... }
+               },
+               "features_location": {
+                  "LOCATION_TYPE_BEACH": {
+                     "label": "Beach",
+                     "value": true
+                  },
+                  { ... }
+               },
+               "property_type": "condo_hotel",
+               "organization_id": 3,
+               "created_at": "2019-03-26T17:31:39.052Z",
+               "updated_at": "2021-01-19T21:48:31.103Z",
+               "manager_info_visible": false,
+               "registration_id": "",
+               "external_id": null,
+               "extra": {},
+               "unit_code": "",
+               "features_cleaning": {}
+            },
+            "location": {
+               "id": 100030000258,
+               "adr_street": "10711 E COUNTY HWY 30A ",
+               "adr_unit": "",
+               "adr_city": "Rosemary Beach",
+               "adr_state": "FL",
+               "adr_country": "United States",
+               "adr_postal_code": "32461",
+               "geo_latitude": 30.27991669999999,
+               "geo_longitude": -86.0110212,
+               "locationable_type": "Property",
+               "locationable_id": 100030000171,
+               "created_at": "2019-03-26T17:31:39.065Z",
+               "updated_at": "2020-03-05T16:58:14.327Z",
+               "organization_id": 3,
+               "exact": false
+            },
+            "distance": 1298.3491129728013,
+            "listings": [
+               {
+                  "listing": {
+                     "id": 100030000206,
+                     "currency": "usd",
+                     "unit_id": 100030000182,
+                     "tax_rate": 5.0,
+                     "brand_id": 100030000048,
+                     "instant_booking": true,
+                     "refund_policy": null,
+                     "refund_policy_custom": null,
+                     "featured": false,
+                     "created_at": "2019-03-26T17:34:19.547Z",
+                     "updated_at": "2021-01-19T21:48:30.803Z",
+                     "enabled_distribution_homeaway": false,
+                     "enabled_distribution_booking": false,
+                     "enabled_distribution_airbnb": false,
+                     "airbnb_refund_policy": null,
+                     "booking_dot_com_refund_policy": null,
+                     "homeaway_refund_policy": null,
+                     "adj_tax": 0.0,
+                     "max_night_with_tax_rate": 0,
+                     "exclude_tax": false,
+                     "tax_adjustable": false,
+                     "organization_id": 3,
+                     "slug": "the-pointe-resort",
+                     "is_multi_unit": true,
+                     "is_room_type": true,
+                     "rate_inflator": null
+                  },
+                  "unit": {
+                     "id": 100030000182,
+                     "name": "Three Bedroom with Plunge Pool",
+                     "active": true,
+                     "summary_description": null,
+                     "features_accommodations": {
+                        "ACCOMMODATIONS_TYPE_BED_AND_BREAKFAST": {
+                           "label": "Bed and breakfast",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_amenities": {
+                        "AMENITIES_AIR_CONDITIONING": {
+                           "label": "Air conditioning",
+                           "value": true
+                        },
+                        { ... }
+                     },
+                     "features_dining": {
+                        "KITCHEN_DINING_AREA": {
+                           "label": "Dining area",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_entertainment": {
+                        "ENTERTAINMENT_BOOKS": {
+                           "label": "Books",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_outdoor": {
+                        "OUTDOOR_BALCONY": {
+                           "label": "Balcony",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_spa": {
+                        "POOL_SPA_COMMUNAL_POOL": {
+                           "label": "Communal pool",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_suitability": {
+                        "SUITABILITY_CHILDREN_WELCOME": {
+                           "label": "Children welcome",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_themes": {
+                        "THEMES_ADVENTURE": {
+                           "label": "Adventure",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "num_bathrooms": 3.0,
+                     "num_bedrooms": 4,
+                     "num_lounge": null,
+                     "num_sleep": 6,
+                     "num_sleep_in_beds": 6,
+                     "unit_type": "condo",
+                     "property_id": 100030000171,
+                     "created_at": "2019-03-26T17:34:16.398Z",
+                     "updated_at": "2021-01-19T21:48:30.805Z",
+                     "check_in_instructions": {},
+                     "emergency_contact_phone": null,
+                     "emergency_contact_first_name": null,
+                     "emergency_contact_last_name": null,
+                     "portfolio_id": 100030000018,
+                     "external_id": null,
+                     "external_contract_id": 100030000015,
+                     "airbnb_headline": "Three Bedroom with Plunge Pool",
+                     "pointcentral_customer_id": null,
+                     "organization_id": 3,
+                     "extra": {},
+                     "subportfolio_id": 100030000013,
+                     "unit_group_id": 100030000021,
+                     "rate_group_id": 100030000060,
+                     "size": null,
+                     "measurement_type": "sq_feet",
+                     "minimum_age": null,
+                     "features_safety": {
+                        "SMOKE_DETECTOR": {
+                           "label": "Smoke Detector",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "guest_controls_description": null,
+                     "unit_code": "RRCDD",
+                     "enabled_on_kaba": false,
+                     "room_type_id": 100030000001
+                  },
+                  "pricing": {
+                     "id": 100030000298,
+                     "default_nightly_weekday": "425.0",
+                     "default_nightly_weekend": "630.0",
+                     "discount_full_week": "5.0",
+                     "discount_full_month": "15.0",
+                     "pricing_calendar": {
+                        "17-05-2021": {
+                           "note": "unit range 100030000303 has updated this pricing",
+                           "weekly": "1.0",
+                           "monthly": "5.0",
+                           "range_type": "high",
+                           "nightlyWeekday": "600.0",
+                           "nightlyWeekend": "600.0"
+                        },
+                        { ... }
+                     },
+                     "unit_listing_id": 100030000206,
+                     "created_at": "2020-02-04T19:05:31.120Z",
+                     "updated_at": "2020-11-11T20:56:23.782Z",
+                     "organization_id": 3,
+                     "unit_id": 100030000182,
+                     "additional_guest_amount_cents": null,
+                     "additional_guest_start": 1
+                  },
+                  "average_default_nightly_price": 483.57,
+                  "bookable_nightly_price": 660.0,
+                  "can_fit_guests": true,
+                  "num_bathrooms": 3.0,
+                  "num_bedrooms": 4,
+                  "bookable": true,
+                  "can_stay": true,
+                  "bookable_nightly_price_before_promotion": 660.0,
+                  "available": true,
+                  "booked": false,
+                  "changeover": [
+                     "any",
+                     "any"
+                  ],
+                  "instant_booking": true
+               },
+               {
+                  "listing": {
+                     "id": 100030000249,
+                     "currency": "usd",
+                     "unit_id": 100030000183,
+                     "tax_rate": 5.0,
+                     "brand_id": 100030000048,
+                     "instant_booking": true,
+                     "refund_policy": "day30",
+                     "refund_policy_custom": "",
+                     "featured": false,
+                     "created_at": "2020-02-04T19:13:04.952Z",
+                     "updated_at": "2021-01-19T21:48:31.098Z",
+                     "enabled_distribution_homeaway": true,
+                     "enabled_distribution_booking": true,
+                     "enabled_distribution_airbnb": true,
+                     "airbnb_refund_policy": "moderate",
+                     "booking_dot_com_refund_policy": "day30",
+                     "homeaway_refund_policy": "strict",
+                     "adj_tax": 0.0,
+                     "max_night_with_tax_rate": 0,
+                     "exclude_tax": false,
+                     "tax_adjustable": false,
+                     "organization_id": 3,
+                     "slug": "the-pointe-resort",
+                     "is_multi_unit": true,
+                     "is_room_type": true,
+                     "rate_inflator": null
+                  },
+                  "unit": {
+                     "id": 100030000183,
+                     "name": "Three Bedroom with Plunge Pool",
+                     "active": true,
+                     "summary_description": "<p style=\"text-align:start;\"><span style=\"color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;\">Condo | 2,000+ Square Feet</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;\">Sleeps:</span> <span style=\"color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;\">6</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;\">Bathrooms:</span> <span style=\"color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;\">3 | Bedrooms:</span> <span style=\"color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;\">3</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;\">Pool View</span></p>\n",
+                     "features_accommodations": {
+                        "ACCOMMODATIONS_TYPE_BED_AND_BREAKFAST": {
+                           "label": "Bed and breakfast",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_amenities": {
+                        "AMENITIES_AIR_CONDITIONING": {
+                           "label": "Air conditioning",
+                           "value": true
+                        },
+                        { ... }
+                     },
+                     "features_dining": {
+                        "KITCHEN_DINING_AREA": {
+                           "label": "Dining area",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_entertainment": {
+                        "ENTERTAINMENT_BOOKS": {
+                           "label": "Books",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_outdoor": {
+                        "OUTDOOR_BALCONY": {
+                           "label": "Balcony",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_spa": {
+                        "POOL_SPA_COMMUNAL_POOL": {
+                           "label": "Communal pool",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_suitability": {
+                        "SUITABILITY_CHILDREN_WELCOME": {
+                           "label": "Children welcome",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "features_themes": {
+                        "THEMES_ADVENTURE": {
+                           "label": "Adventure",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "num_bathrooms": 3.0,
+                     "num_bedrooms": 4,
+                     "num_lounge": null,
+                     "num_sleep": 6,
+                     "num_sleep_in_beds": 6,
+                     "unit_type": "condo",
+                     "property_id": 100030000171,
+                     "created_at": "2019-03-26T17:36:25.261Z",
+                     "updated_at": "2021-01-19T21:48:31.099Z",
+                     "check_in_instructions": {},
+                     "emergency_contact_phone": null,
+                     "emergency_contact_first_name": null,
+                     "emergency_contact_last_name": null,
+                     "portfolio_id": 100030000018,
+                     "external_id": null,
+                     "external_contract_id": 100030000015,
+                     "airbnb_headline": "Three Bedroom with Plunge Pool",
+                     "pointcentral_customer_id": null,
+                     "organization_id": 3,
+                     "extra": {},
+                     "subportfolio_id": 100030000013,
+                     "unit_group_id": 100030000021,
+                     "rate_group_id": 100030000060,
+                     "size": null,
+                     "measurement_type": "sq_feet",
+                     "minimum_age": null,
+                     "features_safety": {
+                        "SMOKE_DETECTOR": {
+                           "label": "Smoke Detector",
+                           "value": false
+                        },
+                        { ... }
+                     },
+                     "guest_controls_description": null,
+                     "unit_code": null,
+                     "enabled_on_kaba": false,
+                     "room_type_id": 100030000001
+                  },
+                  "pricing": {
+                     "id": 100030000299,
+                     "default_nightly_weekday": "275.0",
+                     "default_nightly_weekend": "350.0",
+                     "discount_full_week": "3.0",
+                     "discount_full_month": "5.0",
+                     "pricing_calendar": {
+                        "09-01-2021": {
+                           "note": "unit range 100030000302 has updated this pricing",
+                           "weekly": "1.0",
+                           "monthly": "5.0",
+                           "range_type": "high",
+                           "nightlyWeekday": "600.0",
+                           "nightlyWeekend": "600.0"
+                        },
+                        { ... }
+                     },
+                     "unit_listing_id": null,
+                     "created_at": "2020-02-04T19:05:31.160Z",
+                     "updated_at": "2020-11-11T20:56:24.874Z",
+                     "organization_id": 3,
+                     "unit_id": 100030000183,
+                     "additional_guest_amount_cents": null,
+                     "additional_guest_start": 1
+                  },
+                  "average_default_nightly_price": 296.43,
+                  "bookable_nightly_price": 660.0,
+                  "can_fit_guests": true,
+                  "num_bathrooms": 3.0,
+                  "num_bedrooms": 4,
+                  "bookable": true,
+                  "can_stay": true,
+                  "bookable_nightly_price_before_promotion": 660.0,
+                  "available": true,
+                  "booked": false,
+                  "changeover": [
+                     "any",
+                     "any"
+                  ],
+                  "instant_booking": true
+               }
+            ],
+            "bookable": true,
+            "featured": false,
+            "num_bathrooms": 3,
+            "num_bedrooms": 4,
+            "name": "The Pointe Resort",
+            "multi_unit": true,
+            "room_type_property": true,
+            "default_unit_id": 100030000182,
+            "featured_image": {
+               "id": 100030000739,
+               "image": {
+                  "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c8c8061fae336b1e4efbd5f2f59ced44303380e6442148524889fef6e639061e",
+                  "tiny": {
+                     "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/tiny_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=82321b1a8f742353f8fedd9f8a77c5ca8cc3d068dfbca100c70e80d1f32a0e3b"
+                  },
+                  "small": {
+                     "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/small_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c399b0f0a7c60da1f94ec4c1f0c41444d1912f9335cac14183bb2c4c72cdc83a"
+                  },
+                  "medium": {
+                     "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/medium_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9c3c7a5a086a9f0b71230f087954b1445a64399e961d94b8810e0f138390bfb5"
+                  },
+                  "large": {
+                     "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/large_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9158641e75c8492ee6589f00b11e53cf93e44711884c0aadf774c35b370e2140"
+                  },
+                  "xlarge": {
+                     "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/xlarge_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b18f957dc2825bf537d668d10ef7fca8d8827cfa8e38d6019f7a69ec4ce577c1"
+                  }
+               },
+               "image_processing": false,
+               "label": "",
+               "order": 0,
+               "property_id": 100030000171,
+               "created_at": "2020-03-05T16:55:26.899Z",
+               "updated_at": "2020-03-05T16:55:33.172Z",
+               "height": 683,
+               "width": 1024,
+               "organization_id": 3
+            },
+            "search_type": "dated",
+            "slug": "the-pointe-resort",
+            "can_fit_guests": true,
+            "instant_booking": true,
+            "review_count": 0,
+            "review_average": null,
+            "bookable_nightly_price_before_promotion": 0
+         }
+      ],
+      "min_price": 10,
+      "max_price": 999,
+      "total_pages": 1,
+      "total_properties": 1,
+      "max_bedrooms": 4,
+      "max_baths": 3.0,
+      "max_guests": 6
+   }
+```
+
+This endpoint retrieves all reviews connected to your organization.
+
+### HTTP Request
+
+`GET /search`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (required) | Maximum number of reviews to return, up to 100. Default is 20.
+_booking_range (required) | A stringified json object of the booking range days.
+_brand_id (required) | The unique ID of the Direct brand.
+_amenities (optional) | A stringified json object of amenities to filter by.
+_num_bathrooms (optional) | Filter by listings with a minimum number of bathrooms.
+_num_bedrooms (optional) | Filter by listings with a minimum number of bedrooms.
+_num_guests (optional) | Filter by listings with a minimum number of guests.
+_page (optional) | Set the page of results returned.
+
 # Statements
 
 ## Get All Statements
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/statements"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/statements"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -769,7 +1476,7 @@ _offset (optional) | Number of statements to skip over, where the ordering is co
 ## Get a Specific Statement
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/statements/<ID>"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/statements/<ID>"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -964,7 +1671,7 @@ ID | The ID of the statement to retrieve
 ## Get All Transactions
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/transactions"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -1275,10 +1982,61 @@ _offset (optional) | Number of transactions to skip over, where the ordering is 
 
 # Units
 
+## Get Promotions
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID>/promotions"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   [
+      {
+         "id": 100030000045,
+         "special_type": "percent",
+         "amount": 10,
+         "req_nights": 2,
+         "travel_date_start": "2020-05-01",
+         "travel_end_date": "2020-05-31",
+         "promo_start_date": "2020-03-26",
+         "promo_end_date": "2020-04-30",
+         "days_of_week": null,
+         "code_req": null,
+         "coupon_code": null,
+         "name": "winter special",
+         "internal_name": "winter",
+         "distro_list": null,
+         "portfolio_id": 100030000018,
+         "subportfolio_id": null,
+         "created_at": "2020-03-26T15:09:32.313Z",
+         "updated_at": "2020-03-26T15:09:32.313Z",
+         "active": true,
+         "organization_id": 3
+      },
+      { ... }
+   ]
+```
+
+This endpoint retrieves a particular unit's promotions.
+
+### HTTP Request
+
+`GET /properties/<P_ID>/units/<U_ID>/promotions`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+P_ID | The ID of the property to retrieve
+U_ID | The ID of the unit to retrieve
+
 ## Get Rates
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID>/rates"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID>/rates"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -1357,10 +2115,57 @@ U_ID | The ID of the unit to retrieve
   The <code>nightlyOverrides</code> block returns price variants for ranges of dates. Each item in the response contains an "amount" and "nights", which is an array of date ranges to which the amount should apply.
 </aside>
 
+## Get Reviews
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID>/reviews"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   [
+      {
+         "id": 100030000012,
+         "unit_id": 100030000053,
+         "booking_id": 100030031551,
+         "title": "Great luxury property for families ",
+         "body": "<p>Testing the review. Great location! Super clean&nbsp;</p>\n",
+         "name": "Lauren A Flaugher",
+         "check_in_date": "2020-05-24T00:00:00.000Z",
+         "status": "published",
+         "rating": 5,
+         "created_at": "2020-05-22T19:10:21.967Z",
+         "updated_at": "2020-05-22T19:18:02.117Z",
+         "reviewed_date": "2020-05-22T19:10:21.965Z",
+         "check_out_date": "2020-05-31T00:00:00.000Z",
+         "where_from": null,
+         "organization_id": 3,
+         "customer_id": null
+      },
+      { ... }
+   ]
+```
+
+This endpoint retrieves a particular unit's reviews.
+
+### HTTP Request
+
+`GET /properties/<P_ID>/units/<U_ID>/reviews`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+P_ID | The ID of the property to retrieve
+U_ID | The ID of the unit to retrieve
+
 ## Get Availability
 
 ```shell
-curl "https://app.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID>/availability"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<U_ID>/availability"
   -H "Authorization: Token your_api_key"
   -H "Accept: application/vnd.direct.v1"
 ```
@@ -1503,7 +2308,7 @@ pets | The number of pets (optional, default to 0)
 ## Update Pricing
 
 ```shell
-curl "https://app.getdirect.io/api/public/990/properties/92/units/92/pricing"
+curl "https://staging.getdirect.io/api/public/990/properties/92/units/92/pricing"
 -d '{"pricing_array":
       [
          {"date":"2019-04-03", "recommended_price":"440", "reason":"High demand"},
@@ -1549,7 +2354,7 @@ reason | The reason for the updated price
 ## Update Minimum Night Stay
 
 ```shell
-curl "https://app.getdirect.io/api/public/990/properties/92/units/92/stay-length"
+curl "https://staging.getdirect.io/api/public/990/properties/92/units/92/stay-length"
 -d '{"availability_array":
       [
          {"date":"2019-04-03", "min_nights":"5", "reason":"High demand"},
