@@ -225,6 +225,17 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#promotions" class="toc-h1 toc-link" data-title="Promotions">Promotions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-promotions" class="toc-h2 toc-link" data-title="Get All Promotions">Get All Promotions</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-promotion" class="toc-h2 toc-link" data-title="Get a Specific Promotion">Get a Specific Promotion</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#properties" class="toc-h1 toc-link" data-title="Properties">Properties</a>
               <ul class="toc-list-h2">
                   <li>
@@ -253,6 +264,25 @@
               </ul>
           </li>
           <li>
+            <a href="#reviews" class="toc-h1 toc-link" data-title="Reviews">Reviews</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-reviews" class="toc-h2 toc-link" data-title="Get All Reviews">Get All Reviews</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-review" class="toc-h2 toc-link" data-title="Get a Specific Review">Get a Specific Review</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#search" class="toc-h1 toc-link" data-title="Search">Search</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-listings" class="toc-h2 toc-link" data-title="Get Listings">Get Listings</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#statements" class="toc-h1 toc-link" data-title="Statements">Statements</a>
               <ul class="toc-list-h2">
                   <li>
@@ -275,7 +305,13 @@
             <a href="#units" class="toc-h1 toc-link" data-title="Units">Units</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-promotions" class="toc-h2 toc-link" data-title="Get Promotions">Get Promotions</a>
+                  </li>
+                  <li>
                     <a href="#get-rates" class="toc-h2 toc-link" data-title="Get Rates">Get Rates</a>
+                  </li>
+                  <li>
+                    <a href="#get-reviews" class="toc-h2 toc-link" data-title="Get Reviews">Get Reviews</a>
                   </li>
                   <li>
                     <a href="#get-availability" class="toc-h2 toc-link" data-title="Get Availability">Get Availability</a>
@@ -296,7 +332,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='mailto:scott@getdirect.io?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a></li>
+            <li><a href='mailto:wes@directsoftware.com?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -305,9 +341,9 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right.</p>
 
-<p>The base URL for all endpoints in this doc is:</p>
+<p>Staging: <code>https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;</code></p>
 
-<p><code>https://app.getdirect.io/api/public/&lt;ORG_ID&gt;</code></p>
+<p>Production: <code>https://app.getdirect.io/api/public/&lt;ORG_ID&gt;</code></p>
 
 <p>where <code>&lt;ORG_ID&gt;</code> is the ID of the connected organization.</p>
 <h1 id='authentication'>Authentication</h1>
@@ -334,7 +370,104 @@ curl <span class="s2">"api_endpoint_here"</span>
 <aside class="notice">
 You must replace <code>your_api_key</code> with your personal API key.
 </aside>
-<h1 id='properties'>Properties</h1><h2 id='get-all-properties'>Get All Properties</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/properties"</span>
+<h1 id='promotions'>Promotions</h1><h2 id='get-all-promotions'>Get All Promotions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/promotions"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000042</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"special_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"req_nights"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"travel_date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-01"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"travel_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"promo_start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-23"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"promo_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-30"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"days_of_week"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"code_req"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STAYAGAIN3N"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30% Off 3+ Nights"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30PCT"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"distro_list"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"portfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000018</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"subportfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000013</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-23T19:33:11.462Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-21T19:34:00.294Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all promotions connected to your organization.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /promotions</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (optional)</td>
+<td>Maximum number of promotions to return, up to 100. Default is 20.</td>
+</tr>
+<tr>
+<td>_offset (optional)</td>
+<td>Number of promotions to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-promotion'>Get a Specific Promotion</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/promotions/&lt;ID&gt;"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000042</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"special_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"req_nights"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"travel_date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"travel_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"promo_start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-23"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"promo_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"days_of_week"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code_req"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STAYAGAIN3N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30% Off 3+ Nights"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30PCT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"distro_list"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"portfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000018</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subportfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000013</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-23T19:33:11.462Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-21T19:34:00.294Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific promotion.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /promotions/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the promotion to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='properties'>Properties</h1><h2 id='get-all-properties'>Get All Properties</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -358,9 +491,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all properties connected to your organization.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET /properties</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -376,7 +509,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>Number of properties to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-property'>Get a Specific Property</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;ID&gt;"</span>
+<h2 id='get-a-specific-property'>Get a Specific Property</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -440,9 +573,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific property.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET /properties/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -454,7 +587,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the property to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='reservations'>Reservations</h1><h2 id='list-reservations'>List Reservations</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations"</span>
+<h1 id='reservations'>Reservations</h1><h2 id='list-reservations'>List Reservations</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -486,9 +619,9 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all reservations connected to your organization.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET /reservations</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -504,7 +637,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>Number of reservations to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
-<h2 id='create-reservation'>Create Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/reservations"</span>
+<h2 id='create-reservation'>Create Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/990/reservations"</span>
 -d <span class="s1">'{
     "property_id": 1,
     "unit_id": 1,
@@ -568,9 +701,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a new reservation for the requested unit.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST /reservations</code></p>
-<h2 id='get-reservation'>Get Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
+<h2 id='get-reservation'>Get Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -605,9 +738,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific reservation.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET /reservations/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -647,7 +780,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>Payment information, including billing address and credit card details</td>
 </tr>
 </tbody></table>
-<h2 id='update-reservation'>Update Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/3/reservations/100030030467"</span>
+<h2 id='update-reservation'>Update Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/3/reservations/100030030467"</span>
 -d <span class="s1">'{"door_code": "1AT9B3"}'</span>
 -H <span class="s2">"Authorization: Token test_api_key"</span>
 -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -965,9 +1098,9 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the door code for the specified reservation given.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>PUT /reservations/&lt;R_ID&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -991,7 +1124,628 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The code to unlock the property&#39;s door</td>
 </tr>
 </tbody></table>
-<h1 id='statements'>Statements</h1><h2 id='get-all-statements'>Get All Statements</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/statements"</span>
+<h1 id='reviews'>Reviews</h1><h2 id='get-all-reviews'>Get All Reviews</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reviews"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000012</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000053</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031551</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Great luxury property for families "</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Testing the review. Great location! Super clean&amp;nbsp;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lauren A Flaugher"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"check_in_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:10:21.967Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:18:02.117Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"reviewed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:10:21.965Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"check_out_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"where_from"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all reviews connected to your organization.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET /reviews</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (optional)</td>
+<td>Maximum number of reviews to return, up to 100. Default is 20.</td>
+</tr>
+<tr>
+<td>_offset (optional)</td>
+<td>Number of reviews to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-review'>Get a Specific Review</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reviews/&lt;ID&gt;"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000012</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000053</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031551</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Great luxury property for families "</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Testing the review. Great location! Super clean&amp;nbsp;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lauren A Flaugher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"check_in_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:10:21.967Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:18:02.117Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reviewed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:10:21.965Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"check_out_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"where_from"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific review.</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET /reviews/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-9'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the review to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='search'>Search</h1><h2 id='get-listings'>Get Listings</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/search"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"average_default_nightly_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">296</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bookable_nightly_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">296</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"property"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000171</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Pointe Resort"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"multi_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"summary_accommodations"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"summary_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:left;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;</span><span class="se">\"</span><span class="s2">&gt;A spacious luxury condominium spanning 2000+ square feet, The Pointe 3-bedroom allows you to come together with friends and family in an expansive open floor plan with kitchen, dining, and living room, while still providing tranquil personal space with each of the three bedrooms. &lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:left;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;</span><span class="se">\"</span><span class="s2">&gt;Between poolside relaxing and beach dreaming, use the stainless steel kitchen to prepare small bites, full meals, or cocktails and enjoy around the kitchen island, curl up on the modern plush couch to indulge in the upcoming sporting event, or just kick back on one of the three balconies with wood trellis accents.&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:left;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;</span><span class="se">\"</span><span class="s2">&gt;The master bedroom comes with an office nook if you are inclined to do some work while visiting The Pointe, and if you’d rather relax, this bedroom is equipped with a flat screen television, bathroom with bathtub and separate shower, and entrance onto its private balcony or patio.&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:left;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;</span><span class="se">\"</span><span class="s2">&gt;The bedroom off of the living room is discretely tucked away by closing off the sleek farm doors, and features a bathroom with separate bathtub and shower, dual sinks, and water closet.&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;</span><span class="se">\"</span><span class="s2">&gt;The final bedroom includes two double beds, flat screen tv, office space, bathroom, and entry to its own private balcony or patio.&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:left;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(42,42,42);background-color: rgb(255,255,255);font-size: 15px;font-family: webfontregular, Arial, Helvetica, sans-serif;</span><span class="se">\"</span><span class="s2">&gt;Each 3-bedroom comes with washer and dryer, so you can feel productive while doing some poolside lounging.&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"summary_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Pointe - Three Bedroom with Plunge Pool"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"summary_rules"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"features_adventure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"SPORTS_BASKETBALL_COURT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Basketball court"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="s2">"features_attractions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"ATTRACTIONS_ARBORETUM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arboretum"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="s2">"features_car"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"CAR_NECESSARY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Necessary"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="s2">"features_leisure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"LEISURE_ANTIQUING"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Antiquing"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="s2">"features_local"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"LOCAL_ATM_BANK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ATM"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="s2">"features_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"LOCATION_TYPE_BEACH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beach"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="s2">"property_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"condo_hotel"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:31:39.052Z"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T21:48:31.103Z"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"manager_info_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"registration_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"extra"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+               </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"features_cleaning"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000258</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"adr_street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10711 E COUNTY HWY 30A "</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"adr_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"adr_city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rosemary Beach"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"adr_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FL"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"adr_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"adr_postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32461"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"geo_latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.27991669999999</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"geo_longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-86.0110212</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"locationable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Property"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"locationable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000171</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:31:39.065Z"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-05T16:58:14.327Z"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"exact"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">1298.3491129728013</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"listings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000206</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000182</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000048</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"instant_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"refund_policy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"refund_policy_custom"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"featured"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:34:19.547Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T21:48:30.803Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"enabled_distribution_homeaway"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"enabled_distribution_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"enabled_distribution_airbnb"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"airbnb_refund_policy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"booking_dot_com_refund_policy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"homeaway_refund_policy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"adj_tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"max_night_with_tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"exclude_tax"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"tax_adjustable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the-pointe-resort"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"is_multi_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"is_room_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"rate_inflator"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000182</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Bedroom with Plunge Pool"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"summary_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"features_accommodations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"ACCOMMODATIONS_TYPE_BED_AND_BREAKFAST"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bed and breakfast"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_amenities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"AMENITIES_AIR_CONDITIONING"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Air conditioning"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_dining"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"KITCHEN_DINING_AREA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining area"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_entertainment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"ENTERTAINMENT_BOOKS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Books"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_outdoor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"OUTDOOR_BALCONY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Balcony"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_spa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"POOL_SPA_COMMUNAL_POOL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Communal pool"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_suitability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"SUITABILITY_CHILDREN_WELCOME"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Children welcome"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_themes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"THEMES_ADVENTURE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adventure"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"num_bathrooms"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"num_bedrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"num_lounge"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"num_sleep"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"num_sleep_in_beds"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"condo"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000171</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:34:16.398Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T21:48:30.805Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"check_in_instructions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                     </span><span class="s2">"emergency_contact_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"emergency_contact_first_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"emergency_contact_last_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"portfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000018</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"external_contract_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000015</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"airbnb_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Bedroom with Plunge Pool"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"pointcentral_customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"extra"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                     </span><span class="s2">"subportfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000013</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000021</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"rate_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000060</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"measurement_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sq_feet"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"minimum_age"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"features_safety"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"SMOKE_DETECTOR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smoke Detector"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"guest_controls_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RRCDD"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"enabled_on_kaba"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"room_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000001</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000298</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"default_nightly_weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"425.0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"default_nightly_weekend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"630.0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"discount_full_week"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"discount_full_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"pricing_calendar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"17-05-2021"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unit range 100030000303 has updated this pricing"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"weekly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"monthly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"range_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"nightlyWeekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600.0"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"nightlyWeekend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600.0"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"unit_listing_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000206</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-04T19:05:31.120Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-11T20:56:23.782Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000182</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"additional_guest_amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"additional_guest_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"average_default_nightly_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">483.57</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"bookable_nightly_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">660.0</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"can_fit_guests"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"num_bathrooms"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"num_bedrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"bookable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"can_stay"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"bookable_nightly_price_before_promotion"</span><span class="p">:</span><span class="w"> </span><span class="mf">660.0</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"booked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"changeover"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                     </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"any"</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
+                  </span><span class="s2">"instant_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"listing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000249</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000183</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000048</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"instant_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"refund_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day30"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"refund_policy_custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"featured"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-04T19:13:04.952Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T21:48:31.098Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"enabled_distribution_homeaway"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"enabled_distribution_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"enabled_distribution_airbnb"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"airbnb_refund_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"booking_dot_com_refund_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day30"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"homeaway_refund_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"strict"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"adj_tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"max_night_with_tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"exclude_tax"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"tax_adjustable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the-pointe-resort"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"is_multi_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"is_room_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"rate_inflator"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000183</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Bedroom with Plunge Pool"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"summary_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:start;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;</span><span class="se">\"</span><span class="s2">&gt;Condo | 2,000+ Square Feet&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:start;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;</span><span class="se">\"</span><span class="s2">&gt;Sleeps:&lt;/span&gt; &lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;</span><span class="se">\"</span><span class="s2">&gt;6&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:start;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;</span><span class="se">\"</span><span class="s2">&gt;Bathrooms:&lt;/span&gt; &lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;</span><span class="se">\"</span><span class="s2">&gt;3 | Bedrooms:&lt;/span&gt; &lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;</span><span class="se">\"</span><span class="s2">&gt;3&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align:start;</span><span class="se">\"</span><span class="s2">&gt;&lt;span style=</span><span class="se">\"</span><span class="s2">color: rgb(26,25,25);background-color: rgb(255,255,255);font-size: 14px;font-family: inherit;</span><span class="se">\"</span><span class="s2">&gt;Pool View&lt;/span&gt;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"features_accommodations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"ACCOMMODATIONS_TYPE_BED_AND_BREAKFAST"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bed and breakfast"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_amenities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"AMENITIES_AIR_CONDITIONING"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Air conditioning"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_dining"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"KITCHEN_DINING_AREA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining area"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_entertainment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"ENTERTAINMENT_BOOKS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Books"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_outdoor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"OUTDOOR_BALCONY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Balcony"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_spa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"POOL_SPA_COMMUNAL_POOL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Communal pool"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_suitability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"SUITABILITY_CHILDREN_WELCOME"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Children welcome"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"features_themes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"THEMES_ADVENTURE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adventure"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"num_bathrooms"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"num_bedrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"num_lounge"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"num_sleep"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"num_sleep_in_beds"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"condo"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000171</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T17:36:25.261Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T21:48:31.099Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"check_in_instructions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                     </span><span class="s2">"emergency_contact_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"emergency_contact_first_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"emergency_contact_last_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"portfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000018</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"external_contract_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000015</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"airbnb_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Bedroom with Plunge Pool"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"pointcentral_customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"extra"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                     </span><span class="s2">"subportfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000013</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000021</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"rate_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000060</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"measurement_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sq_feet"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"minimum_age"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"features_safety"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"SMOKE_DETECTOR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smoke Detector"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"guest_controls_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"enabled_on_kaba"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"room_type_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000001</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000299</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"default_nightly_weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"275.0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"default_nightly_weekend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"350.0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"discount_full_week"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"discount_full_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"pricing_calendar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"09-01-2021"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unit range 100030000302 has updated this pricing"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"weekly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"monthly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"range_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"nightlyWeekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600.0"</span><span class="p">,</span><span class="w">
+                           </span><span class="s2">"nightlyWeekend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"600.0"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+                     </span><span class="p">},</span><span class="w">
+                     </span><span class="s2">"unit_listing_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-04T19:05:31.160Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-11T20:56:24.874Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000183</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"additional_guest_amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"additional_guest_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"average_default_nightly_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">296.43</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"bookable_nightly_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">660.0</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"can_fit_guests"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"num_bathrooms"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"num_bedrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"bookable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"can_stay"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"bookable_nightly_price_before_promotion"</span><span class="p">:</span><span class="w"> </span><span class="mf">660.0</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"booked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"changeover"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                     </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"any"</span><span class="w">
+                  </span><span class="p">],</span><span class="w">
+                  </span><span class="s2">"instant_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"bookable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"featured"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"num_bathrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"num_bedrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Pointe Resort"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multi_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"room_type_property"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"default_unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000182</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"featured_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000739</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20210420T164224Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c8c8061fae336b1e4efbd5f2f59ced44303380e6442148524889fef6e639061e"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"tiny"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/tiny_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20210420T164224Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=82321b1a8f742353f8fedd9f8a77c5ca8cc3d068dfbca100c70e80d1f32a0e3b"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"small"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/small_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20210420T164224Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c399b0f0a7c60da1f94ec4c1f0c41444d1912f9335cac14183bb2c4c72cdc83a"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/medium_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20210420T164224Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9c3c7a5a086a9f0b71230f087954b1445a64399e961d94b8810e0f138390bfb5"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"large"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/large_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20210420T164224Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9158641e75c8492ee6589f00b11e53cf93e44711884c0aadf774c35b370e2140"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="s2">"xlarge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/xlarge_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20210420T164224Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b18f957dc2825bf537d668d10ef7fca8d8827cfa8e38d6019f7a69ec4ce577c1"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="s2">"image_processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"property_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000171</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-05T16:55:26.899Z"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-05T16:55:33.172Z"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">683</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"search_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dated"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the-pointe-resort"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"can_fit_guests"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instant_booking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"review_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"review_average"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bookable_nightly_price_before_promotion"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"min_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_properties"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_bedrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_baths"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_guests"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all reviews connected to your organization.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET /search</code></p>
+<h3 id='url-parameters-10'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (required)</td>
+<td>Maximum number of reviews to return, up to 100. Default is 20.</td>
+</tr>
+<tr>
+<td>_booking_range (required)</td>
+<td>A stringified json object of the booking range days.</td>
+</tr>
+<tr>
+<td>_brand_id (required)</td>
+<td>The unique ID of the Direct brand.</td>
+</tr>
+<tr>
+<td>_amenities (optional)</td>
+<td>A stringified json object of amenities to filter by.</td>
+</tr>
+<tr>
+<td>_num_bathrooms (optional)</td>
+<td>Filter by listings with a minimum number of bathrooms.</td>
+</tr>
+<tr>
+<td>_num_bedrooms (optional)</td>
+<td>Filter by listings with a minimum number of bedrooms.</td>
+</tr>
+<tr>
+<td>_num_guests (optional)</td>
+<td>Filter by listings with a minimum number of guests.</td>
+</tr>
+<tr>
+<td>_page (optional)</td>
+<td>Set the page of results returned.</td>
+</tr>
+</tbody></table>
+<h1 id='statements'>Statements</h1><h2 id='get-all-statements'>Get All Statements</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/statements"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -1041,9 +1795,9 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all statements connected to your organization.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET /statements</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1059,7 +1813,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>Number of statements to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-statement'>Get a Specific Statement</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/statements/&lt;ID&gt;"</span>
+<h2 id='get-a-specific-statement'>Get a Specific Statement</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/statements/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -1237,9 +1991,9 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific statement.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET /statements/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1251,7 +2005,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the statement to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='transactions'>Transactions</h1><h2 id='get-all-transactions'>Get All Transactions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/transactions"</span>
+<h1 id='transactions'>Transactions</h1><h2 id='get-all-transactions'>Get All Transactions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/transactions"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -1272,8 +2026,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee - City Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.999</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.999</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
@@ -1287,8 +2040,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee - City Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.999</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.999</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1302,8 +2054,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver - City Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1317,8 +2068,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver - City Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-29"</span><span class="p">,</span><span class="w">
@@ -1332,8 +2082,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate - City Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">187.615</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">187.615</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-29"</span><span class="p">,</span><span class="w">
@@ -1347,8 +2096,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate - City Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">187.615</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">187.615</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
@@ -1362,8 +2110,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee - Sales Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9995</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9995</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
@@ -1377,8 +2124,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee - Sales Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9995</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9995</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1392,8 +2138,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver - Sales Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.95</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.95</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1407,8 +2152,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver - Sales Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.95</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.95</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-29"</span><span class="p">,</span><span class="w">
@@ -1422,8 +2166,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate - Sales Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">93.8075</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">93.8075</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-29"</span><span class="p">,</span><span class="w">
@@ -1437,8 +2180,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room Rate - Sales Tax"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">93.8075</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">93.8075</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1452,8 +2194,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Management Fee"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.88</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.88</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1467,8 +2208,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Management Fee"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.88</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.88</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1482,8 +2222,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing Fee"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.61</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.61</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1497,8 +2236,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing Fee"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.61</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.61</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1512,8 +2250,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01"</span><span class="p">,</span><span class="w">
@@ -1527,8 +2264,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Damage Waiver"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
@@ -1542,8 +2278,7 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"post_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-31"</span><span class="p">,</span><span class="w">
@@ -1557,17 +2292,16 @@ You must replace <code>your_api_key</code> with your personal API key.
             </span><span class="s2">"unit_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lodge: Three Bedroom Oceanview"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trust"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cleaning Fee"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.99</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">75690</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all transactions connected to your organization.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET /transactions</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1583,7 +2317,59 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>Number of transactions to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
-<h1 id='units'>Units</h1><h2 id='get-rates'>Get Rates</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates"</span>
+<h1 id='units'>Units</h1><h2 id='get-promotions'>Get Promotions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/promotions"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000045</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"special_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"req_nights"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"travel_date_start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-01"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"travel_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"promo_start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-26"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"promo_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-30"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"days_of_week"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"code_req"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"coupon_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"winter special"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"winter"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"distro_list"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"portfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000018</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"subportfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-26T15:09:32.313Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-26T15:09:32.313Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a particular unit&#39;s promotions.</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/promotions</code></p>
+<h3 id='url-parameters-14'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>P_ID</td>
+<td>The ID of the property to retrieve</td>
+</tr>
+<tr>
+<td>U_ID</td>
+<td>The ID of the unit to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='get-rates'>Get Rates</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -1644,9 +2430,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s rates.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
+<h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1666,7 +2452,55 @@ You must replace <code>your_api_key</code> with your personal API key.
 <aside class="notice">
   The <code>nightlyOverrides</code> block returns price variants for ranges of dates. Each item in the response contains an "amount" and "nights", which is an array of date ranges to which the amount should apply.
 </aside>
-<h2 id='get-availability'>Get Availability</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/availability"</span>
+<h2 id='get-reviews'>Get Reviews</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/reviews"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000012</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030000053</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100030031551</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Great luxury property for families "</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Testing the review. Great location! Super clean&amp;nbsp;&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lauren A Flaugher"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"check_in_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-24T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:10:21.967Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:18:02.117Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"reviewed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-22T19:10:21.965Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"check_out_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-31T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"where_from"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a particular unit&#39;s reviews.</p>
+<h3 id='http-request-17'>HTTP Request</h3>
+<p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/reviews</code></p>
+<h3 id='url-parameters-16'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>P_ID</td>
+<td>The ID of the property to retrieve</td>
+</tr>
+<tr>
+<td>U_ID</td>
+<td>The ID of the unit to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='get-availability'>Get Availability</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/availability"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 </code></pre>
@@ -1695,9 +2529,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s availability.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/availability</code></p>
-<h3 id='url-parameters-10'>URL Parameters</h3>
+<h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1795,9 +2629,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional) and number of pets (optional).</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/quotes</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-18'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1841,7 +2675,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The number of pets (optional, default to 0)</td>
 </tr>
 </tbody></table>
-<h2 id='update-pricing'>Update Pricing</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/properties/92/units/92/pricing"</span>
+<h2 id='update-pricing'>Update Pricing</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/990/properties/92/units/92/pricing"</span>
 -d <span class="s1">'{"pricing_array":
       [
          {"date":"2019-04-03", "recommended_price":"440", "reason":"High demand"},
@@ -1861,9 +2695,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the nightly price for the specified unit given and dates found in the json.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/pricing</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
+<h3 id='url-parameters-19'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1903,7 +2737,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The reason for the updated price</td>
 </tr>
 </tbody></table>
-<h2 id='update-minimum-night-stay'>Update Minimum Night Stay</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.getdirect.io/api/public/990/properties/92/units/92/stay-length"</span>
+<h2 id='update-minimum-night-stay'>Update Minimum Night Stay</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/990/properties/92/units/92/stay-length"</span>
 -d <span class="s1">'{"availability_array":
       [
          {"date":"2019-04-03", "min_nights":"5", "reason":"High demand"},
@@ -1923,9 +2757,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the minimum night stay for the speceified unit given and dates found in the json.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/stay-length</code></p>
-<h3 id='url-parameters-13'>URL Parameters</h3>
+<h3 id='url-parameters-20'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
