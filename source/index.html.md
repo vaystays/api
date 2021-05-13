@@ -221,6 +221,26 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
       "Fishing",
       ...
    ],
+   "featured_image": {
+      "id": 100030000739,
+      "image": {
+         "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c8c8061fae336b1e4efbd5f2f59ced44303380e6442148524889fef6e639061e",
+      "tiny": {
+         "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/tiny_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=82321b1a8f742353f8fedd9f8a77c5ca8cc3d068dfbca100c70e80d1f32a0e3b"
+      },
+      "small": {
+         "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/small_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c399b0f0a7c60da1f94ec4c1f0c41444d1912f9335cac14183bb2c4c72cdc83a"
+      },
+      "medium": {
+         "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/medium_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9c3c7a5a086a9f0b71230f087954b1445a64399e961d94b8810e0f138390bfb5"
+      },
+      "large": {
+         "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/large_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9158641e75c8492ee6589f00b11e53cf93e44711884c0aadf774c35b370e2140"
+      },
+      "xlarge": {
+         "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/property/171/property_image/image/739/xlarge_The-Pointe-August-afternoon-_28-1-1024x683.jpg?X-Amz-Expires=86400&X-Amz-Date=20210420T164224Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI7VTIL5G2JOQOLMA%2F20210420%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b18f957dc2825bf537d668d10ef7fca8d8827cfa8e38d6019f7a69ec4ce577c1"
+      }
+   },
    "images":[
       {
          "label":"",
@@ -350,21 +370,7 @@ curl "https://staging.getdirect.io/api/public/990/reservations"
       "children": 0,
       "pets": 0
     },
-    "payment": {
-      "number": "4111111111111111",
-      "cvv": "123",
-      "expiration_month": "02",
-      "expiration_year": "2020",
-      "name_on_card": "John Doe"
-      "billing_address": {
-        "addressLine1": "123 Main Street"
-        "addressLine2": "",
-        "city": "Chicago",
-        "state": "IL",
-        "country": "US",
-        "postal_code": "60654"
-      }
-    }
+    "stripe_customer_id": "cus_000example111"
   }'
 -H "Authorization: Token test_api_key"
 -H "Accept: application/vnd.direct.v1"
@@ -391,6 +397,20 @@ curl "https://staging.getdirect.io/api/public/990/reservations"
 ```
 
 This endpoint creates a new reservation for the requested unit.
+
+In order to create a new reservation you must first generate a Stripe customer and establish a setup intent using your Stripe API keys. Once a customer has been created, a setup intent established, and a payment method attached you can include the generated stripe_customer_id to Direct when calling the new reservation endpoint.
+
+Stripe provides a thorough walk-through of how to setup your payment page with the following guide: [Accept a Payment](https://stripe.com/docs/payments/accept-a-payment?platform=web)
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+property_id | The unique identifier of the property being booked
+unit_id | The unique identifier of the unit being booked
+customer | Information about the customer making the inquiry
+reservation | Information about the reservation, including stay dates and guest counts
+stripe_customer_id | The client side generated ID of the Stripe customer.
 
 ### HTTP Request
 
@@ -446,16 +466,6 @@ This endpoint retrieves a specific reservation.
 Parameter | Description
 --------- | -----------
 ID | The ID of the reservatoion to retrieve
-
-### Request Parameters
-
-Parameter | Description
---------- | -----------
-property_id | The unique identifier of the property being booked
-unit_id | The unique identifier of the unit being booked
-customer | Information about the customer making the inquiry
-reservation | Information about the reservation, including stay dates and guest counts
-payment | Payment information, including billing address and credit card details
 
 ## Update Reservation
 
