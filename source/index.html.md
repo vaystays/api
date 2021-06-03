@@ -23,6 +23,7 @@ Production: `https://app.getdirect.io/api/public/<ORG_ID>`
 
 where `<ORG_ID>` is the ID of the connected organization.
 
+
 # Authentication
 
 > To authorize, use this code:
@@ -48,6 +49,17 @@ Direct expects for the API key to be included in all API requests to the server 
 You must replace <code>your_api_key</code> with your personal API key.
 </aside>
 
+# Rate Limits
+In an effort to ensure that our users experience constant data flow, maintain maximum up-time and ensure API stability, Direct requires partner applications to operate within the following rate limits (per IP address):
+
+| Time period | Limit       |
+| ----------- | ----------- |
+| 1 second    | 2 requests  |
+| 10 seconds  | 20 requests |
+
+The above rate limits are currently applied to all API endpoints
+
+If you receive a 429 Too Many Requests error, you have reached the rate limit. Slow the requests down, spread them more evenly over time and retry. 
 # Promotions
 
 ## Get All Promotions
@@ -341,6 +353,8 @@ Parameter | Description
 --------- | -----------
 _limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
 _offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
+start_date (optional) | The start of a date range to query for reservations that check in after this date
+end_date (optional, but required if start_date present) | The end of a date range to query for reservations that check out before this date
 
 ## Create Reservation
 
