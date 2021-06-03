@@ -225,6 +225,9 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate Limits">Rate Limits</a>
+          </li>
+          <li>
             <a href="#promotions" class="toc-h1 toc-link" data-title="Promotions">Promotions</a>
               <ul class="toc-list-h2">
                   <li>
@@ -370,6 +373,28 @@ curl <span class="s2">"api_endpoint_here"</span>
 <aside class="notice">
 You must replace <code>your_api_key</code> with your personal API key.
 </aside>
+<h1 id='rate-limits'>Rate Limits</h1>
+<p>In an effort to ensure that our users experience constant data flow, maintain maximum up-time and ensure API stability, Direct requires partner applications to operate within the following rate limits (per IP address):</p>
+
+<table><thead>
+<tr>
+<th>Time period</th>
+<th>Limit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1 second</td>
+<td>2 requests</td>
+</tr>
+<tr>
+<td>10 seconds</td>
+<td>20 requests</td>
+</tr>
+</tbody></table>
+
+<p>The above rate limits are currently applied to all API endpoints</p>
+
+<p>If you receive a 429 Too Many Requests error, you have reached the rate limit. Slow the requests down, spread them more evenly over time and retry. </p>
 <h1 id='promotions'>Promotions</h1><h2 id='get-all-promotions'>Get All Promotions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/promotions"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -655,6 +680,14 @@ You must replace <code>your_api_key</code> with your personal API key.
 <tr>
 <td>_offset (optional)</td>
 <td>Number of reservations to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+<tr>
+<td>start_date (optional)</td>
+<td>The start of a date range to query for reservations that check in after this date</td>
+</tr>
+<tr>
+<td>end_date (optional, but required if start_date present)</td>
+<td>The end of a date range to query for reservations that check out before this date</td>
 </tr>
 </tbody></table>
 <h2 id='create-reservation'>Create Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/990/reservations"</span>
