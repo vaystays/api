@@ -50,7 +50,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </aside>
 
 # Rate Limits
-In an effort to ensure that our users experience constant data flow, maintain maximum up-time and ensure API stability, Direct requires partner applications to operate within the following rate limits (per IP address):
+In an effort to ensure that our users experience constant data flow, maintain maximum up-time and ensure API stability, Direct requires partner applications to operate within the following rate limits (per API key):
 
 | Time period | Limit       |
 | ----------- | ----------- |
