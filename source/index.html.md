@@ -217,7 +217,12 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
 {
    "id":92,
    "name":"Westgate Resort Bella Suite",
+   "unit_code":"ABC123",
    "updated_at":"2018-12-11T23:56:42.904Z",
+   "active":true,
+   "summary_description":"<description>",
+   "summary_headline":"<headline>",
+   "summary_rules":"<rules>",
    "address":{
       "addressLine1":"3000 Canyons Resort Drive",
       "addressLine2":"3704",
