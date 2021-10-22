@@ -823,6 +823,56 @@ door_code | The code to unlock the property's door
 
 # Reviews
 
+## Create A Review
+
+```shell
+curl --location --request POST 'https://staging.getdirect.io/api/public/<ORG_ID>/reviews' \
+--header 'Authorization: Token your_api_key' \
+--header "Accept: application/vnd.direct.v1"
+--data-raw '{
+  "booking_code": "ABC123",
+  "title": "review title",
+  "body": "review body",
+  "rating": 5
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "id": 1,
+   "unit_id": 1,
+   "booking_id": 1,
+   "title": "review title",
+   "body": "review body",
+   "name": "Customer Name",
+   "check_in_date": "2020-05-24T00:00:00.000Z",
+   "status": "pending",
+   "rating": 5,
+   "created_at": "2020-05-22T19:10:21.967Z",
+   "updated_at": "2020-05-22T19:18:02.117Z",
+   "reviewed_date": "2020-05-22T19:10:21.965Z",
+   "check_out_date": "2020-05-31T00:00:00.000Z",
+   "where_from": null,
+   "organization_id": 1,
+   "customer_id": null
+}
+```
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+booking_code | The booking code of the stay the customer is reviewing **REQUIRED**
+rating | The rating the customer gave. Must be between 0 and 5 **REQUIRED**
+title | The title the customer gave their review, if any
+body | The body of the review 
+
+### HTTP Request
+
+`POST /reviews`
+
 ## Get All Reviews
 
 ```shell
