@@ -1717,7 +1717,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Cleaning Fee - City Tax",
-            "amount": 19.999
+            "amount": 19.999,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-31",
@@ -1731,7 +1732,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Cleaning Fee - City Tax",
-            "amount": 19.999
+            "amount": 19.999,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1745,7 +1747,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Damage Waiver - City Tax",
-            "amount": 9.9
+            "amount": 9.9,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1759,7 +1762,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Damage Waiver - City Tax",
-            "amount": 9.9
+            "amount": 9.9,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-29",
@@ -1773,7 +1777,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Room Rate - City Tax",
-            "amount": 187.615
+            "amount": 187.615,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-29",
@@ -1787,7 +1792,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Room Rate - City Tax",
-            "amount": 187.615
+            "amount": 187.615,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-31",
@@ -1801,7 +1807,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Cleaning Fee - Sales Tax",
-            "amount": 9.9995
+            "amount": 9.9995,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-31",
@@ -1815,7 +1822,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Cleaning Fee - Sales Tax",
-            "amount": 9.9995
+            "amount": 9.9995,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1829,7 +1837,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Damage Waiver - Sales Tax",
-            "amount": 4.95
+            "amount": 4.95,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1843,7 +1852,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Damage Waiver - Sales Tax",
-            "amount": 4.95
+            "amount": 4.95,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-29",
@@ -1857,7 +1867,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Room Rate - Sales Tax",
-            "amount": 93.8075
+            "amount": 93.8075,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-29",
@@ -1871,7 +1882,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Room Rate - Sales Tax",
-            "amount": 93.8075
+            "amount": 93.8075,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1885,7 +1897,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Management Fee",
-            "amount": 23.88
+            "amount": 23.88,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1899,7 +1912,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Management Fee",
-            "amount": 23.88
+            "amount": 23.88,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1913,7 +1927,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Processing Fee",
-            "amount": 77.61
+            "amount": 77.61,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1927,7 +1942,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Processing Fee",
-            "amount": 77.61
+            "amount": 77.61,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1941,7 +1957,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Damage Waiver",
-            "amount": 99.0
+            "amount": 99.0,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-01",
@@ -1955,7 +1972,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Damage Waiver",
-            "amount": 99.0
+            "amount": 99.0,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-31",
@@ -1969,7 +1987,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Cleaning Fee",
-            "amount": 199.99
+            "amount": 199.99,
+            "created_at": "2020-07-11"
         },
         {
             "post_date": "2020-07-31",
@@ -1983,7 +2002,8 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/transactions"
             "unit_group": "Lodge: Three Bedroom Oceanview",
             "type": "Trust",
             "description": "Cleaning Fee",
-            "amount": 199.99
+            "amount": 199.99,
+            "created_at": "2020-07-11"
         }
     ],
     "total_count": 75690
