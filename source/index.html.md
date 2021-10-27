@@ -1409,7 +1409,7 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/search"
    }
 ```
 
-This endpoint retrieves all reviews connected to your organization.
+This endpoint retrieves all listings connected to your organization.
 
 ### HTTP Request
 
