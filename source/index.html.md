@@ -5,11 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-<<<<<<< HEAD
-  - <a href='mailto:engineering@getdirect.io?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a>
-=======
   - <a href='mailto:wes@directsoftware.com?subject=Developer%20Key%20Request'>Sign Up for a Developer Key</a>
->>>>>>> 69cb405a33fb4e7623ddf973a01e37e35a1e7646
 
 includes:
   - errors
@@ -227,6 +223,11 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
    "summary_description":"<description>",
    "summary_headline":"<headline>",
    "summary_rules":"<rules>",
+   "multi_unit":false,
+   "summary_accommodations": "<accommodations>",
+   "property_type": "townhome",
+   "slug": "westgate-resort-bella-suite",
+   "default_unit_id": 92,
    "address":{
       "addressLine1":"3000 Canyons Resort Drive",
       "addressLine2":"3704",
@@ -272,10 +273,14 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
       {
          "id":92,
          "active":true,
-         "description":null,
+         "description":"<description>",
          "propertyType":"PROPERTY_TYPE_CONDO",
          "currency":"USD",
          "name":"PCWG3704",
+         "occupancy": 7,
+         "bookable_nightl_price": 100,
+         "num_bathrooms": 1,
+         "num_bedrooms": 1,
          "bathrooms":[
             {
                "id":185,
@@ -2326,7 +2331,7 @@ stayIncrement | D (day) or W (week)
 ## Create a Quote
 
 ```shell
-curl "http://www.lvh.me:5100/api/public/990/properties/92/units/92/quotes"
+curl "http://staging.getdirect.io/api/public/990/properties/92/units/92/quotes"
 -d '{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}'
 -H "Authorization: Token test_api_key"
 -H "Accept: application/vnd.direct.v1"
