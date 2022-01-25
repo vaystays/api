@@ -2332,7 +2332,7 @@ stayIncrement | D (day) or W (week)
 
 ```shell
 curl "http://staging.getdirect.io/api/public/990/properties/92/units/92/quotes"
--d '{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}'
+-d '{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0, "addon_fee_ids": [1, 2, 3]}'
 -H "Authorization: Token test_api_key"
 -H "Accept: application/vnd.direct.v1"
 -H "Content-Type: application/json"
@@ -2390,7 +2390,7 @@ curl "http://staging.getdirect.io/api/public/990/properties/92/units/92/quotes"
 }
 ```
 
-This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional) and number of pets (optional).
+This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional), number of pets (optional) and addon fee ids (optional, can be found on the units rates when addon = true).
 
 ### HTTP Request
 
