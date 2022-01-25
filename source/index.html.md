@@ -398,7 +398,8 @@ curl "https://staging.getdirect.io/api/public/990/reservations"
       "children": 0,
       "pets": 0
     },
-    "stripe_customer_id": "cus_000example111"
+    "stripe_customer_id": "cus_000example111",
+    "addon_fee_ids": [1, 2, 3]
   }'
 -H "Authorization: Token test_api_key"
 -H "Accept: application/vnd.direct.v1"
