@@ -369,6 +369,7 @@ _limit (optional) | Maximum number of reservations to return, up to 100. Default
 _offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
 start_date (optional) | The start of a date range to query for reservations that check in after this date
 end_date (optional, but required if start_date present) | The end of a date range to query for reservations that check out before this date
+addon_fee_ids (optional) | Id's of fees that are addons, can be found from unit rates
 
 ## Create Reservation
 
