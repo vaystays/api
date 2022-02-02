@@ -313,10 +313,10 @@ This endpoint retrieves a specific property.
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the property to retrieve
-
+Parameter | Type |Description
+--------- | ---- | -----------
+ID | bigint |The ID of the property to retrieve
+property_type | enum | `apartment` `apartment_building` `barn` `boat` `bnb` `building` `bungalow` `cabin` `caravan` `castle` `chacara` `chalet` `chateau` `condo` `condo_building` `condo_hotel` `cottage` `estate` `farmhouse` `guesthouse` `hotel` `house` `house_boat` `lodge` `mas` `mill` `mobile_home` `recreatioinal_vehicle` `riad` `studio` `tower` `townhome` `villa` `yacht`
 # Reservations
 
 ## List Reservations
