@@ -641,12 +641,19 @@ You must replace <code>your_api_key</code> with your personal API key.
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ID</td>
+<td>bigint</td>
 <td>The ID of the property to retrieve</td>
+</tr>
+<tr>
+<td>property_type</td>
+<td>enum</td>
+<td><code>apartment</code> <code>apartment_building</code> <code>barn</code> <code>boat</code> <code>bnb</code> <code>building</code> <code>bungalow</code> <code>cabin</code> <code>caravan</code> <code>castle</code> <code>chacara</code> <code>chalet</code> <code>chateau</code> <code>condo</code> <code>condo_building</code> <code>condo_hotel</code> <code>cottage</code> <code>estate</code> <code>farmhouse</code> <code>guesthouse</code> <code>hotel</code> <code>house</code> <code>house_boat</code> <code>lodge</code> <code>mas</code> <code>mill</code> <code>mobile_home</code> <code>recreatioinal_vehicle</code> <code>riad</code> <code>studio</code> <code>tower</code> <code>townhome</code> <code>villa</code> <code>yacht</code></td>
 </tr>
 </tbody></table>
 <h1 id='reservations'>Reservations</h1><h2 id='list-reservations'>List Reservations</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations"</span>
