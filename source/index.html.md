@@ -278,7 +278,7 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
          "currency":"USD",
          "name":"PCWG3704",
          "occupancy": 7,
-         "bookable_nightl_price": 100,
+         "bookable_nightly_price": 100,
          "num_bathrooms": 1,
          "num_bedrooms": 1,
          "bathrooms":[
