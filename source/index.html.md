@@ -15,14 +15,13 @@ search: true
 
 # Introduction
 
-Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right.
+Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right. 
 
 Staging: `https://staging.getdirect.io/api/public/<ORG_ID>`
 
 Production: `https://app.getdirect.io/api/public/<ORG_ID>`
 
 where `<ORG_ID>` is the ID of the connected organization.
-
 
 # Authentication
 
@@ -60,6 +59,7 @@ In an effort to ensure that our users experience constant data flow, maintain ma
 The above rate limits are currently applied to all API endpoints
 
 If you receive a 429 Too Many Requests error, you have reached the rate limit. Slow the requests down, spread them more evenly over time and retry. 
+
 # Promotions
 
 ## Get All Promotions
@@ -2504,3 +2504,1192 @@ availability_array | An array of availability objects to process
 date | The date you wish to update ("YYYY-MM-DD")
 min_nights | The minimum nights to set on the specified date
 reason | The reason for the updated
+
+# Webhooks
+
+## Steps for partner implementation 
+
+1. Partner has to share with DirectTech, the URL to which the webhook events need to be triggered.
+
+2. Partner has to to create a service to accept the incoming webhook, return http status of 200 to 300, and notifying successful capture of messages. Any http status other than 200 to 300 will be considered as failure 
+
+3. In the event of failed webhook, the webhook message will be triggered again until it is successful. 
+
+4. All the webhook events will be sent to the same endpoint( Partner URL). Based on the Event type, the partner has to consume it in their end.  
+
+# Reservation Webhook
+
+Below webhook events can be availed in Reservation: 
+
+1. Reservation Create
+
+2. Reservation Update( Cancellation will also be captured)
+
+## Reservation Create
+
+
+> The above webhook returns JSON structured like this:
+
+```json
+   {
+  "event": {
+    "type": "reservation_create",
+    "timestamp": "2022-02-24 18:06:28 +0530",
+    "from": "directsoftware",
+    "entity": "booking",
+    "version": "1.0"
+  },
+  "data": {
+    "booking": {
+      "id": 200000020985,
+      "booking_code": "X7LLMX4",
+      "door_code": null,
+      "updated_at": "2022-02-24T12:36:27.602Z",
+      "property_id": 108900000016,
+      "unit_id": 108900000020,
+      "status": {
+        "cancelled": false,
+        "confirmed": true,
+        "archived": false
+      },
+      "num_guests": 1,
+      "days_booked": 3,
+      "date_booked": "2022-02-24T12:36:27.602Z",
+      "check_in_time": "2022-02-18T00:00:00.000+00:00",
+      "check_out_time": "2022-02-20T00:00:00.000+00:00",
+      "price_status": "not_paid",
+      "stay_type": "guest",
+      "channel": "Direct",
+      "rent_total": 26,
+      "extras_total": 150,
+      "booking_total": 178,
+      "quote_line_items": [
+        {
+          "id": 200001452461,
+          "name": "Room Rate",
+          "total_cents": 2600,
+          "rate": 13.0,
+          "taxable": true,
+          "item_type": "room_rate",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078477,
+          "created_at": "2022-02-24T12:36:04.565Z",
+          "updated_at": "2022-02-24T12:36:04.565Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000012,
+          "credit_account_id": 108900000064
+        },
+        {
+          "id": 200001452462,
+          "name": "Cleaning Fee",
+          "total_cents": 15000,
+          "rate": null,
+          "taxable": true,
+          "item_type": "fees",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078477,
+          "created_at": "2022-02-24T12:36:04.582Z",
+          "updated_at": "2022-02-24T12:36:04.582Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "frequency_at_creation": "per_stay",
+            "included_in_base_rent": false,
+            "los_ranges_at_creation": [
+
+            ],
+            "default_calculation_amount": 150.0
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000003,
+          "credit_account_id": 108900000075
+        },
+        {
+          "id": 200001452463,
+          "name": "Additional Guest Fee",
+          "total_cents": 0,
+          "rate": null,
+          "taxable": true,
+          "item_type": "fees",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078477,
+          "created_at": "2022-02-24T12:36:04.588Z",
+          "updated_at": "2022-02-24T12:36:04.588Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "frequency_at_creation": "per_stay",
+            "included_in_base_rent": false,
+            "additional_guest_start": 1,
+            "los_ranges_at_creation": [
+
+            ],
+            "default_calculation_amount": 0.0
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": null,
+          "occurrence_date": "check_in",
+          "debit_account_id": null,
+          "credit_account_id": null
+        },
+        {
+          "id": 200001452464,
+          "name": "test",
+          "total_cents": 260,
+          "rate": 10.0,
+          "taxable": false,
+          "item_type": "taxes",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078477,
+          "created_at": "2022-02-24T12:36:04.594Z",
+          "updated_at": "2022-02-24T12:36:04.594Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "tax_type": "State tax",
+            "tax_account_id": 200000000080
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000002,
+          "credit_account_id": 108900000033
+        },
+        {
+          "id": 200001452465,
+          "name": "Booking Total",
+          "total_cents": 17860,
+          "rate": null,
+          "taxable": true,
+          "item_type": "total",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078477,
+          "created_at": "2022-02-24T12:36:04.599Z",
+          "updated_at": "2022-02-24T12:36:04.599Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": null,
+          "debit_account_id": null,
+          "credit_account_id": null
+        }
+      ],
+      "price_paid": "0.0",
+      "price_remaining": "178.6",
+      "customer": {
+        "name": "whtest123",
+        "email": "whtest@test.com",
+        "telephone": "934875389475",
+        "location": {
+          "city": null,
+          "state": null,
+          "postal_code": null,
+          "country": null
+        }
+      }
+    }
+  }
+}
+
+```
+
+
+This webhook is triggered whenever a new reservation is created.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of reservation created
+
+## Reservation Update
+
+
+> The above webhook returns JSON structured like this:
+
+```json
+   {
+  "event": {
+    "type": "reservation_update",
+    "timestamp": "2022-02-24 18:10:33 +0530",
+    "from": "directsoftware",
+    "entity": "booking",
+    "version": "1.0"
+  },
+  "data": {
+    "booking": {
+      "id": 200000020985,
+      "booking_code": "X7LLMX4",
+      "door_code": null,
+      "updated_at": "2022-02-24T12:40:33.582Z",
+      "property_id": 108900000016,
+      "unit_id": 108900000020,
+      "status": {
+        "cancelled": false,
+        "confirmed": true,
+        "archived": false
+      },
+      "num_guests": 2,
+      "days_booked": 3,
+      "date_booked": "2022-02-24T12:36:27.602Z",
+      "check_in_time": "2022-02-18T00:00:00.000+00:00",
+      "check_out_time": "2022-02-20T00:00:00.000+00:00",
+      "price_status": "not_paid",
+      "stay_type": "guest",
+      "channel": "Direct",
+      "rent_total": 26,
+      "extras_total": 165,
+      "booking_total": 193,
+      "quote_line_items": [
+        {
+          "id": 200001452512,
+          "name": "Room Rate",
+          "total_cents": 2600,
+          "rate": 13.0,
+          "taxable": true,
+          "item_type": "room_rate",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.565Z",
+          "updated_at": "2022-02-24T12:36:04.565Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000012,
+          "credit_account_id": 108900000064
+        },
+        {
+          "id": 200001452513,
+          "name": "Cleaning Fee",
+          "total_cents": 15000,
+          "rate": null,
+          "taxable": true,
+          "item_type": "fees",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.582Z",
+          "updated_at": "2022-02-24T12:36:04.582Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "frequency_at_creation": "per_stay",
+            "included_in_base_rent": false,
+            "los_ranges_at_creation": [
+
+            ],
+            "default_calculation_amount": 150.0
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000003,
+          "credit_account_id": 108900000075
+        },
+        {
+          "id": 200001452515,
+          "name": "test",
+          "total_cents": 260,
+          "rate": 10.0,
+          "taxable": false,
+          "item_type": "taxes",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.594Z",
+          "updated_at": "2022-02-24T12:36:04.594Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "tax_type": "State tax",
+            "tax_account_id": 200000000080
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000002,
+          "credit_account_id": 108900000033
+        },
+        {
+          "id": 200001452516,
+          "name": "Booking Total",
+          "total_cents": 19360,
+          "rate": null,
+          "taxable": true,
+          "item_type": "total",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.599Z",
+          "updated_at": "2022-02-24T12:40:27.506Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": null,
+          "debit_account_id": null,
+          "credit_account_id": null
+        },
+        {
+          "id": 200001452514,
+          "name": "Additional Guest Fee",
+          "total_cents": 1500,
+          "rate": null,
+          "taxable": true,
+          "item_type": "fees",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.588Z",
+          "updated_at": "2022-02-24T12:40:27.397Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "custom_edit": true,
+            "frequency_at_creation": "per_stay",
+            "included_in_base_rent": false,
+            "additional_guest_start": 1,
+            "los_ranges_at_creation": [
+
+            ],
+            "default_calculation_amount": 0.0
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": null,
+          "occurrence_date": "check_in",
+          "debit_account_id": null,
+          "credit_account_id": null
+        }
+      ],
+      "price_paid": "0.0",
+      "price_remaining": "193.6",
+      "customer": {
+        "name": "whtest123",
+        "email": "whtest@test.com",
+        "telephone": "934875389475",
+        "location": {
+          "city": null,
+          "state": null,
+          "postal_code": null,
+          "country": null
+        }
+      }
+    }
+  }
+}
+```
+
+This webhook is triggered whenever a reservation is updated . 
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation 
+
+
+
+## Reservation Cancellation Webhook
+
+> The structure of JSON triggered by Webhook is as below:
+
+```json
+   [
+      {
+  "event": {
+    "type": "reservation_update",
+    "timestamp": "2022-02-24 18:12:54 +0530",
+    "from": "directsoftware",
+    "entity": "booking",
+    "version": "1.0"
+  },
+  "data": {
+    "booking": {
+      "id": 200000020985,
+      "booking_code": "X7LLMX4",
+      "door_code": null,
+      "updated_at": "2022-02-24T12:42:46.398Z",
+      "property_id": 108900000016,
+      "unit_id": 108900000020,
+      "status": {
+        "cancelled": true,
+        "confirmed": true,
+        "archived": false
+      },
+      "num_guests": 2,
+      "days_booked": 3,
+      "date_booked": "2022-02-24T12:36:27.602Z",
+      "check_in_time": "2022-02-18T00:00:00.000+00:00",
+      "check_out_time": "2022-02-20T00:00:00.000+00:00",
+      "price_status": "not_paid",
+      "stay_type": "guest",
+      "channel": "Direct",
+      "rent_total": 26,
+      "extras_total": 165,
+      "booking_total": 193,
+      "quote_line_items": [
+        {
+          "id": 200001452512,
+          "name": "Room Rate",
+          "total_cents": 2600,
+          "rate": 13.0,
+          "taxable": true,
+          "item_type": "room_rate",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.565Z",
+          "updated_at": "2022-02-24T12:36:04.565Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000012,
+          "credit_account_id": 108900000064
+        },
+        {
+          "id": 200001452513,
+          "name": "Cleaning Fee",
+          "total_cents": 15000,
+          "rate": null,
+          "taxable": true,
+          "item_type": "fees",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.582Z",
+          "updated_at": "2022-02-24T12:36:04.582Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "frequency_at_creation": "per_stay",
+            "included_in_base_rent": false,
+            "los_ranges_at_creation": [
+
+            ],
+            "default_calculation_amount": 150.0
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000003,
+          "credit_account_id": 108900000075
+        },
+        {
+          "id": 200001452515,
+          "name": "test",
+          "total_cents": 260,
+          "rate": 10.0,
+          "taxable": false,
+          "item_type": "taxes",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.594Z",
+          "updated_at": "2022-02-24T12:36:04.594Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "tax_type": "State tax",
+            "tax_account_id": 200000000080
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": "arrival",
+          "debit_account_id": 108900000002,
+          "credit_account_id": 108900000033
+        },
+        {
+          "id": 200001452516,
+          "name": "Booking Total",
+          "total_cents": 19360,
+          "rate": null,
+          "taxable": true,
+          "item_type": "total",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.599Z",
+          "updated_at": "2022-02-24T12:40:27.506Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": null,
+          "debit_account_id": null,
+          "credit_account_id": null
+        },
+        {
+          "id": 200001452514,
+          "name": "Additional Guest Fee",
+          "total_cents": 1500,
+          "rate": null,
+          "taxable": true,
+          "item_type": "fees",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078480,
+          "created_at": "2022-02-24T12:36:04.588Z",
+          "updated_at": "2022-02-24T12:40:27.397Z",
+          "refundable": true,
+          "optional": false,
+          "additional_data": {
+            "custom_edit": true,
+            "frequency_at_creation": "per_stay",
+            "included_in_base_rent": false,
+            "additional_guest_start": 1,
+            "los_ranges_at_creation": [
+
+            ],
+            "default_calculation_amount": 0.0
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": null,
+          "occurrence_date": "check_in",
+          "debit_account_id": null,
+          "credit_account_id": null
+        }
+      ],
+      "price_paid": "0.0",
+      "price_remaining": "193.6",
+      "date_cancelled": "2022-02-24T12:42:46.398Z",
+      "customer": {
+        "name": "whtest123",
+        "email": "whtest@test.com",
+        "telephone": "934875389475",
+        "location": {
+          "city": null,
+          "state": null,
+          "postal_code": null,
+          "country": null
+        }
+      }
+    }
+  }
+}
+   ]
+```
+
+This webhook is triggered whenever a reservation is cancelled . It is triggered as Reservation Update event with status of cancellation as 'true' but provided seperately for better clarity.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation 
+
+# Promotions Webhook
+
+Below webhook events can be availed in Promotions: 
+
+1. Promotion Creation Webhook
+
+2. Promotion Update Webhook and
+
+3. Promotion Delete Webhook
+
+## Promotion Creation Webhook
+
+> The above webhook triggers JSON structure like this:
+
+```json
+   [
+      {
+  "event": {
+    "type": "promotion_create",
+    "timestamp": "2022-02-24 18:03:32 +0530",
+    "from": "directsoftware",
+    "entity": "promotion",
+    "version": "1.0"
+  },
+  "data": {
+    "promotion": {
+      "id": 200000000086,
+      "special_type": "flat",
+      "amount": 8,
+      "req_nights": null,
+      "travel_date_start": "2022-02-24",
+      "travel_end_date": "2022-02-24",
+      "promo_start_date": "2022-02-24",
+      "promo_end_date": "2022-02-24",
+      "days_of_week": null,
+      "code_req": false,
+      "coupon_code": null,
+      "name": "BS_WH_PM",
+      "internal_name": "",
+      "distro_list": null,
+      "portfolio_id": 108900000004,
+      "subportfolio_id": null,
+      "created_at": "2022-02-24T12:33:31.956Z",
+      "updated_at": "2022-02-24T12:33:31.956Z",
+      "active": true,
+      "organization_id": 890
+    }
+  }
+}
+
+   ]
+```
+
+This Webhook is triggered whenever a Promotion is created.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+## Promotion Update Webhook
+
+> The above webhook triggers JSON structure like this
+
+```json
+  {
+  "event": {
+    "type": "promotion_update",
+    "timestamp": "2022-02-24 18:04:39 +0530",
+    "from": "directsoftware",
+    "entity": "promotion",
+    "version": "1.0"
+  },
+  "data": {
+    "promotion": {
+      "id": 200000000086,
+      "special_type": "flat",
+      "amount": 15,
+      "req_nights": 1,
+      "travel_date_start": "2022-02-24",
+      "travel_end_date": "2022-02-24",
+      "promo_start_date": "2022-02-24",
+      "promo_end_date": "2022-02-24",
+      "days_of_week": null,
+      "code_req": false,
+      "coupon_code": null,
+      "name": "BS_WH_PM123",
+      "internal_name": "",
+      "distro_list": null,
+      "portfolio_id": 108900000004,
+      "subportfolio_id": null,
+      "created_at": "2022-02-24T12:33:31.956Z",
+      "updated_at": "2022-02-24T12:34:39.735Z",
+      "active": true,
+      "organization_id": 890
+    }
+  }
+}
+
+```
+
+This Webhook is triggered whenever a Promotion is Updated.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+
+## Promotion Delete Webhook
+
+
+> The above webhook triggers JSON structure like this
+
+```json
+   {
+  "event": {
+    "type": "promotion_delete",
+    "timestamp": "2022-02-24 18:05:15 +0530",
+    "from": "directsoftware",
+    "entity": "promotion",
+    "version": "1.0"
+  },
+  "data": {
+    "promotion": {
+      "id": 200000000086,
+      "special_type": "flat",
+      "amount": 15,
+      "req_nights": 1,
+      "travel_date_start": "2022-02-24",
+      "travel_end_date": "2022-02-24",
+      "promo_start_date": "2022-02-24",
+      "promo_end_date": "2022-02-24",
+      "days_of_week": null,
+      "code_req": false,
+      "coupon_code": null,
+      "name": "BS_WH_PM123",
+      "internal_name": "",
+      "distro_list": null,
+      "portfolio_id": 108900000004,
+      "subportfolio_id": null,
+      "created_at": "2022-02-24T12:33:31.956Z",
+      "updated_at": "2022-02-24T12:34:39.735Z",
+      "active": true,
+      "organization_id": 890
+    }
+  }
+}
+```
+This Webhook is triggered whenever a Promotion is Deleted.
+
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+
+
+# Properties Webhook
+
+Below webhook events can be availed in Property: 
+
+1. Property Create Webhook
+
+2. Property Update Webhook and
+
+3. Promotion Delete Webhook
+
+## Property Create Webhook
+
+> The above webhook triggers JSON structure like this
+
+```json
+   {
+  "event": {
+    "type": "property_create",
+    "timestamp": "2022-02-24 17:53:33 +0530",
+    "from": "directsoftware",
+    "entity": "property",
+    "version": "1.0"
+  },
+  "data": {
+    "property": {
+      "id": 200000002284,
+      "name": "WH_Test_Prop",
+      "unit_code": null,
+      "updated_at": "2022-02-24T12:23:32.877Z",
+      "active": false,
+      "summary_description": null,
+      "summary_headline": null,
+      "summary_rules": null,
+      "address": {
+        "addressLine1": "566 Avenida Vélez Sarsfield",
+        "addressLine2": "",
+        "city": "",
+        "state": "B",
+        "country": "AR",
+        "postalCode": "C1282",
+        "lat": -34.6412514,
+        "lng": -58.3893694
+      },
+      "features": {
+      },
+      "featured_image": null,
+      "images": [
+
+      ],
+      "units": [
+
+      ]
+    }
+  }
+}
+```
+
+This Webhook is triggered whenever a property is created.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+
+## Property Update Webhook
+
+> The above webhook triggers JSON structure like this
+
+```json
+   {
+  "event": {
+    "type": "property_update",
+    "timestamp": "2022-02-24 17:53:32 +0530",
+    "from": "directsoftware",
+    "entity": "property",
+    "version": "1.0"
+  },
+  "data": {
+    "property": {
+      "id": 200000002284,
+      "name": "WH_Test_Prop",
+      "unit_code": null,
+      "updated_at": "2022-02-24T12:23:32.723Z",
+      "active": null,
+      "summary_description": null,
+      "summary_headline": null,
+      "summary_rules": null,
+      "address": {
+        "addressLine1": "566 Avenida Vélez Sarsfield",
+        "addressLine2": "",
+        "city": "",
+        "state": "B",
+        "country": "AR",
+        "postalCode": "C1282",
+        "lat": -34.6412514,
+        "lng": -58.3893694
+      },
+      "features": {
+      },
+      "featured_image": null,
+      "images": [
+
+      ],
+      "units": [
+
+      ]
+    }
+  }
+}
+```
+
+This Webhook is triggered whenever a property is updated and hence it will be triggered for update across each tab.
+For a single property, if multiple updates are done simultaneously, multiple webhook push are expected.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+
+## Property Delete Webhook
+
+> The above webhook triggers JSON structure like this
+
+```json
+   {
+  "event": {
+    "type": "property_delete",
+    "timestamp": "2022-02-24 18:14:55 +0530",
+    "from": "directsoftware",
+    "entity": "property",
+    "version": "1.0"
+  },
+  "data": {
+    "property": {
+      "id": 200000002284,
+      "name": "WH_Test_Prop",
+      "unit_code": null,
+      "updated_at": "2022-02-24T12:23:32.877Z",
+      "active": false,
+      "summary_description": null,
+      "summary_headline": null,
+      "summary_rules": null,
+      "address": {
+        "addressLine1": null,
+        "addressLine2": null,
+        "city": null,
+        "state": null,
+        "country": null,
+        "postalCode": null,
+        "lat": null,
+        "lng": null
+      },
+      "features": {
+      },
+      "featured_image": null,
+      "images": [
+
+      ],
+      "units": [
+
+      ]
+    }
+  }
+}
+
+```
+
+This Webhook is triggered whenever a property is Updated.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+# Unit Rates Webhook
+
+Below webhook events can be availed in Unit Rates: 
+
+1. Unit Rate Update Webhook
+
+
+## Unit Rate Update Webhook
+
+> The above webhook triggers JSON structure like this
+
+```json
+   {
+  "event": {
+    "type": "unit_rate_update",
+    "timestamp": "2022-02-24 18:16:25 +0530",
+    "from": "directsoftware",
+    "entity": "unit_rate",
+    "version": "1.0"
+  },
+  "data": {
+    "unit_rate": {
+      "currency": "USD",
+      "updated_at": "2022-02-24T12:46:25.269Z",
+      "default_nightly_weekend": 22.0,
+      "default_nightly_weekday": 15.0,
+      "tax_rate": 10.0,
+      "adj_tax": 0.0,
+      "max_night_with_tax_rate": 0,
+      "exclude_tax": false,
+      "tax_adjustable": false,
+      "discounts": [
+        {
+          "name": "Week discount",
+          "range": [
+            7,
+            27
+          ],
+          "percent": "0.75"
+        }
+      ],
+      "fees": [
+        {
+          "id": 200000007800,
+          "name": "Cleaning Fee",
+          "calculation_type": "flat",
+          "calculation_amount": "150.0",
+          "taxable": true,
+          "is_addon": "false"
+        }
+      ],
+      "security_deposit": [
+
+      ],
+      "nightlyOverrides": [
+
+      ],
+      "paymentSchedule": [
+        {
+          "days": null,
+          "dueType": "AT_BOOKING",
+          "type": "percent",
+          "amount": 100
+        }
+      ]
+    }
+  }
+}
+
+```
+
+This Webhook is triggered whenever a unit rate is updated.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+
+# Unit Availability Webhook
+
+Below webhook events can be availed in Unit Availability: 
+
+1. Unit Availability Update Webhook
+
+## Unit Availability Update Webhook
+
+> The above webhook triggers JSON structure like this
+
+```json
+   {
+  "event": {
+    "type": "unit_availability_update",
+    "timestamp": "2022-02-24 18:17:11 +0530",
+    "from": "directsoftware",
+    "entity": "unit_availability",
+    "version": "1.0"
+  },
+  "data": {
+    "unit_availability": {
+      "availabilityDefault": "Y",
+      "stayIncrementDefault": "D",
+      "changeOverDefault": "C",
+      "availableUnitCountDefault": 1,
+      "updated_at": "2022-02-24T12:47:11.540Z",
+      "default_stay_min": 2,
+      "default_stay_max": 7,
+      "default_prior_notify_min": null,
+      "dateRange": {
+        "beginDate": "2022-02-24",
+        "endDate": "2025-02-23"
+      },
+      "availability": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+      "changeOver": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+      "maxStay": "7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7",
+      "minPriorNotify": ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      "minStay": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
+      "stayIncrement": "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+    }
+  }
+}
+```
+
+This Webhook is triggered whenever a unit availability is updated.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+# Statements Webhook
+
+Below webhook events can be availed in Statement: 
+
+1. Statement Update Webhook
+
+## Statement Update Webhook
+> The above webhook triggers JSON structure like this
+
+```json
+  {
+  "event": {
+    "type": "statement_update",
+    "timestamp": "2022-02-24 18:16:25 +0530",
+    "from": "directsoftware",
+    "entity": "statement",
+    "version": "1.0"
+  },
+  "data": {
+    "statement": {
+    "id": 108900000010,
+    "document_id": null,
+    "name": "Statement for Naman Patel: 05/01/19 - 05/31/19",
+    "end_balance_cents": 0,
+    "start_balance_cents": 0,
+    "start_date": "2019-05-01",
+    "end_date": "2019-05-31",
+    "processed_at": null,
+    "payee_type": "Employee",
+    "payee_id": 108900000003,
+    "optional_id": null,
+    "optional_note": "faked_value",
+    "current_balance_cents": 0,
+    "visibility_status": "visible",
+    "payee_role": "organization_owner",
+    "deferred_balance": 0,
+    "invoices": [],
+    "invoices_subtotal": 0
+  }
+}
+
+```
+
+This Webhook is triggered whenever a statement gets updated.
+
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
+# Reviews Webhook
+
+Below webhook events can be availed in Review: 
+
+1. Review Update Webhook
+
+## Review Update Webhook
+
+> The above webhook triggers JSON structure like this
+
+```json
+   {
+  "event": {
+    "type": "review_update",
+    "timestamp": "2022-02-24 18:16:25 +0530",
+    "from": "directsoftware",
+    "entity": "review",
+    "version": "1.0"
+  },
+  "data": {
+    "review": {
+    "id": 200000000895,
+    "unit_id": 200000000895,
+    "booking_id": 200000020636,
+    "title": "this stay was awesome",
+    "body": "<p>awesome possum</p>\n",
+    "name": "Lauren A Flaugher",
+    "check_in_date": "2021-08-12T00:00:00.000Z",
+    "status": "published",
+    "rating": 5,
+    "created_at": "2021-08-18T17:10:44.054Z",
+    "updated_at": "2021-08-31T16:15:26.952Z",
+    "reviewed_date": "2021-08-18T17:10:44.045Z",
+    "check_out_date": "2021-08-14T00:00:00.000Z",
+    "where_from": null,
+    "organization_id": 890,
+    "customer_id": 200000039981,
+    "response": "Testing a response.",
+    "responded_at": null
+}
+}
+```
+
+This Webhook is triggered whenever a review gets updated.
+### URL Parameters
+
+Attribute | Type | Description
+--------- | ----------- | -----------
+event | Object | Contains the details of the event triggered 
+data | Object | Contains the details of updated reservation
+
