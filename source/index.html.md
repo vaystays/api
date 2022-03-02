@@ -369,6 +369,7 @@ _limit (optional) | Maximum number of reservations to return, up to 100. Default
 _offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
 start_date (optional) | The start of a date range to query for reservations that check in after this date
 end_date (optional, but required if start_date present) | The end of a date range to query for reservations that check out before this date
+addon_fee_ids (optional) | Id's of fees that are addons, can be found from unit rates
 
 ## Create Reservation
 
@@ -398,7 +399,8 @@ curl "https://staging.getdirect.io/api/public/990/reservations"
       "children": 0,
       "pets": 0
     },
-    "stripe_customer_id": "cus_000example111"
+    "stripe_customer_id": "cus_000example111",
+    "addon_fee_ids": [1, 2, 3]
   }'
 -H "Authorization: Token test_api_key"
 -H "Accept: application/vnd.direct.v1"
@@ -2332,7 +2334,7 @@ stayIncrement | D (day) or W (week)
 
 ```shell
 curl "http://staging.getdirect.io/api/public/990/properties/92/units/92/quotes"
--d '{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}'
+-d '{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0, "addon_fee_ids": [1, 2, 3]}'
 -H "Authorization: Token test_api_key"
 -H "Accept: application/vnd.direct.v1"
 -H "Content-Type: application/json"
@@ -2390,7 +2392,7 @@ curl "http://staging.getdirect.io/api/public/990/properties/92/units/92/quotes"
 }
 ```
 
-This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional) and number of pets (optional).
+This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional), number of pets (optional) and addon fee ids (optional, can be found on the units rates when addon = true).
 
 ### HTTP Request
 
