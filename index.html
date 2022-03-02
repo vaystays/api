@@ -608,7 +608,7 @@ You must replace <code>your_api_key</code> with your personal API key.
          </span><span class="s2">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"PCWG3704"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"occupancy"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"bookable_nightl_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"bookable_nightly_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
          </span><span class="s2">"num_bathrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
          </span><span class="s2">"num_bedrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
          </span><span class="s2">"bathrooms"</span><span class="p">:[</span><span class="w">
@@ -713,6 +713,10 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>end_date (optional, but required if start_date present)</td>
 <td>The end of a date range to query for reservations that check out before this date</td>
 </tr>
+<tr>
+<td>addon_fee_ids (optional)</td>
+<td>Id&#39;s of fees that are addons, can be found from unit rates</td>
+</tr>
 </tbody></table>
 <h2 id='create-reservation'>Create Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/990/reservations"</span>
 -d <span class="s1">'{
@@ -739,7 +743,8 @@ You must replace <code>your_api_key</code> with your personal API key.
       "children": 0,
       "pets": 0
     },
-    "stripe_customer_id": "cus_000example111"
+    "stripe_customer_id": "cus_000example111",
+    "addon_fee_ids": [1, 2, 3]
   }'</span>
 -H <span class="s2">"Authorization: Token test_api_key"</span>
 -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -2716,7 +2721,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 <h2 id='create-a-quote'>Create a Quote</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://staging.getdirect.io/api/public/990/properties/92/units/92/quotes"</span>
--d <span class="s1">'{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0}'</span>
+-d <span class="s1">'{"check_in": "2019-02-01", "check_out": "2019-02-05", "adults": 1, "children": 0, "pets": 0, "addon_fee_ids": [1, 2, 3]}'</span>
 -H <span class="s2">"Authorization: Token test_api_key"</span>
 -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
 -H <span class="s2">"Content-Type: application/json"</span>
@@ -2772,7 +2777,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="s2">"rentalAgreement"</span><span class="p">:</span><span class="s2">"&lt;url to PDF&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional) and number of pets (optional).</p>
+<p>This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional), number of pets (optional) and addon fee ids (optional, can be found on the units rates when addon = true).</p>
 <h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/quotes</code></p>
 <h3 id='url-parameters-18'>URL Parameters</h3>
