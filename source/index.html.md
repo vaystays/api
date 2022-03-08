@@ -3346,33 +3346,33 @@ data | Object | Contains the details of updated reservation
 > The above webhook triggers JSON structure like this
 
 ```json
-   {
+  {
   "event": {
     "type": "property_update",
-    "timestamp": "2022-02-24 17:53:32 +0530",
+    "timestamp": "2022-03-07 18:34:20 +0530",
     "from": "directsoftware",
     "entity": "property",
     "version": "1.0"
   },
   "data": {
     "property": {
-      "id": 200000002284,
-      "name": "WH_Test_Prop",
+      "id": 200000002365,
+      "name": "Webhook_Test_Prop",
       "unit_code": null,
-      "updated_at": "2022-02-24T12:23:32.723Z",
-      "active": null,
+      "updated_at": "2022-03-07T13:03:50.697Z",
+      "active": false,
       "summary_description": null,
-      "summary_headline": null,
+      "summary_headline": "WH_Test_Prop",
       "summary_rules": null,
       "address": {
-        "addressLine1": "566 Avenida Vélez Sarsfield",
+        "addressLine1": "1048 Avenida Eva Perón",
         "addressLine2": "",
-        "city": "",
+        "city": "CJN",
         "state": "B",
         "country": "AR",
-        "postalCode": "C1282",
-        "lat": -34.6412514,
-        "lng": -58.3893694
+        "postalCode": "C1424",
+        "lat": -34.6297065,
+        "lng": -58.4402317
       },
       "features": {
       },
@@ -3381,7 +3381,79 @@ data | Object | Contains the details of updated reservation
 
       ],
       "units": [
+        {
+          "id": 200000002139,
+          "unit_code": null,
+          "active": false,
+          "description": "",
+          "propertyType": "PROPERTY_TYPE_APARTMENT",
+          "currency": "USD",
+          "name": "Full Property: Webhook_Test_Prop",
+          "occupancy": 1,
+          "bathrooms": [
+            {
+              "id": 200000004979,
+              "roomSubType": "FULL_BATH",
+              "amenities": [
 
+              ]
+            }
+          ],
+          "bedrooms": [
+            {
+              "id": 200000006832,
+              "roomSubType": "LIVING_SLEEPING_COMBO",
+              "amenities": [
+                "Twin/single bed - 1"
+              ]
+            },
+            {
+              "id": 200000006833,
+              "roomSubType": "BEDROOM",
+              "amenities": [
+                "Twin/single bed - 1"
+              ]
+            }
+          ],
+          "unitFeatures": {
+            "ACCOMMODATIONS_TYPE_BED_AND_BREAKFAST": {
+              "label": "Bed and breakfast",
+              "value": true
+            },
+            "AMENITIES_AIR_CONDITIONING": {
+              "label": "Air conditioning",
+              "value": true
+            },
+            "KITCHEN_DINING_AREA": {
+              "label": "Dining area",
+              "value": true
+            },
+            "ENTERTAINMENT_BOOKS": {
+              "label": "Books",
+              "value": true
+            },
+            "ENTERTAINMENT_DVD": {
+              "label": "DVD Player",
+              "value": true
+            },
+            "OUTDOOR_BALCONY": {
+              "label": "Balcony",
+              "value": true
+            },
+            "OUTDOOR_BICYCLE": {
+              "label": "Bicycle",
+              "value": true
+            },
+            "POOL_SPA_COMMUNAL_POOL": {
+              "label": "Communal pool",
+              "value": true
+            },
+            "THEMES_ADVENTURE": {
+              "label": "Adventure",
+              "value": true
+            }
+          }
+        }
       ]
     }
   }
