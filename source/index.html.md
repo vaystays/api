@@ -2517,7 +2517,7 @@ reason | The reason for the updated
 
 4. All the webhook events will be sent to the same endpoint( Partner URL). Based on the Event type, the partner has to consume it in their end.  
 
-# Reservation Webhook
+## Reservation
 
 Below webhook events can be availed in Reservation: 
 
@@ -2914,7 +2914,7 @@ data | Object | Contains the details of updated reservation
 
 
 
-## Reservation Cancellation Webhook
+## Reservation Cancellation
 
 > The structure of JSON triggered by Webhook is as below:
 
@@ -3109,7 +3109,7 @@ Attribute | Type | Description
 event | Object | Contains the details of the event triggered 
 data | Object | Contains the details of updated reservation 
 
-# Promotions Webhook
+## Promotions
 
 Below webhook events can be availed in Promotions: 
 
@@ -3119,8 +3119,7 @@ Below webhook events can be availed in Promotions:
 
 3. Promotion Delete Webhook
 
-## Promotion Creation Webhook
-
+## Promotion Creation
 > The above webhook triggers JSON structure like this:
 
 ```json
@@ -3171,7 +3170,7 @@ Attribute | Type | Description
 event | Object | Contains the details of the event triggered 
 data | Object | Contains the details of updated reservation
 
-## Promotion Update Webhook
+## Promotion Update
 
 > The above webhook triggers JSON structure like this
 
@@ -3222,7 +3221,7 @@ event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
-## Promotion Delete Webhook
+## Promotion Delete
 
 
 > The above webhook triggers JSON structure like this
@@ -3274,7 +3273,7 @@ data | Object | Contains the details of updated reservation
 
 
 
-# Properties Webhook
+## Properties Webhook
 
 Below webhook events can be availed in Property: 
 
@@ -3284,7 +3283,7 @@ Below webhook events can be availed in Property:
 
 3. Promotion Delete Webhook
 
-## Property Create Webhook
+## Property Create
 
 > The above webhook triggers JSON structure like this
 
@@ -3341,7 +3340,7 @@ event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
-## Property Update Webhook
+## Property Update
 
 > The above webhook triggers JSON structure like this
 
@@ -3471,7 +3470,7 @@ event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
-## Property Delete Webhook
+## Property Delete
 
 > The above webhook triggers JSON structure like this
 
@@ -3528,14 +3527,14 @@ Attribute | Type | Description
 event | Object | Contains the details of the event triggered 
 data | Object | Contains the details of updated reservation
 
-# Unit Rates Webhook
+## Unit Rates
 
 Below webhook events can be availed in Unit Rates: 
 
 1. Unit Rate Update Webhook
 
 
-## Unit Rate Update Webhook
+## Unit Rate Update
 
 > The above webhook triggers JSON structure like this
 
@@ -3609,13 +3608,13 @@ event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
-# Unit Availability Webhook
+## Unit Availability
 
 Below webhook events can be availed in Unit Availability: 
 
 1. Unit Availability Update Webhook
 
-## Unit Availability Update Webhook
+## Unit Availability Update
 
 > The above webhook triggers JSON structure like this
 
@@ -3662,13 +3661,13 @@ Attribute | Type | Description
 event | Object | Contains the details of the event triggered 
 data | Object | Contains the details of updated reservation
 
-# Statements Webhook
+## Statements
 
 Below webhook events can be availed in Statement: 
 
 1. Statement Update Webhook
 
-## Statement Update Webhook
+## Statement Update
 > The above webhook triggers JSON structure like this
 
 ```json
@@ -3714,13 +3713,13 @@ Attribute | Type | Description
 event | Object | Contains the details of the event triggered 
 data | Object | Contains the details of updated reservation
 
-# Reviews Webhook
+## Reviews
 
 Below webhook events can be availed in Review: 
 
 1. Review Update Webhook
 
-## Review Update Webhook
+## Review Update
 
 > The above webhook triggers JSON structure like this
 
