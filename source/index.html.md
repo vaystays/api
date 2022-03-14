@@ -2509,7 +2509,7 @@ reason | The reason for the updated
 
 ## Steps for partner implementation 
 
-1. Partner has to share with DirectTech, the URL to which the webhook events need to be triggered.
+1. Partner has to share with Direct, the URL to which the webhook events need to be triggered.
 
 2. Partner has to to create a service to accept the incoming webhook, return http status of 200 to 300, and notifying successful capture of messages. Any http status other than 200 to 300 will be considered as failure 
 
