@@ -3113,11 +3113,11 @@ data | Object | Contains the details of updated reservation
 
 Below webhook events can be availed in Promotions: 
 
-1. Promotion Creation Webhook
+1. Promotion Creation
 
-2. Promotion Update Webhook and
+2. Promotion Update and
 
-3. Promotion Delete Webhook
+3. Promotion Delete
 
 ## Promotion Creation
 > The above webhook triggers JSON structure like this:
@@ -3273,15 +3273,15 @@ data | Object | Contains the details of updated reservation
 
 
 
-## Properties Webhook
+## Properties
 
 Below webhook events can be availed in Property: 
 
-1. Property Create Webhook
+1. Property Create
 
-2. Property Update Webhook and
+2. Property Update and
 
-3. Promotion Delete Webhook
+3. Promotion Delete
 
 ## Property Create
 
@@ -3531,7 +3531,7 @@ data | Object | Contains the details of updated reservation
 
 Below webhook events can be availed in Unit Rates: 
 
-1. Unit Rate Update Webhook
+1. Unit Rate Update 
 
 
 ## Unit Rate Update
@@ -3612,7 +3612,7 @@ data | Object | Contains the details of updated reservation
 
 Below webhook events can be availed in Unit Availability: 
 
-1. Unit Availability Update Webhook
+1. Unit Availability Update 
 
 ## Unit Availability Update
 
@@ -3665,7 +3665,7 @@ data | Object | Contains the details of updated reservation
 
 Below webhook events can be availed in Statement: 
 
-1. Statement Update Webhook
+1. Statement Update 
 
 ## Statement Update
 > The above webhook triggers JSON structure like this
@@ -3717,7 +3717,7 @@ data | Object | Contains the details of updated reservation
 
 Below webhook events can be availed in Review: 
 
-1. Review Update Webhook
+1. Review Update 
 
 ## Review Update
 
