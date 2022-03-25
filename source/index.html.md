@@ -2534,47 +2534,48 @@ Below webhook events can be availed in Reservation:
    {
   "event": {
     "type": "reservation_create",
-    "timestamp": "2022-02-24 18:06:28 +0530",
+    "timestamp": "2022-03-24 18:19:58 +0530",
     "from": "directsoftware",
-    "entity": "booking",
+    "organization_id": 890,
+    "entity": "reservation",
     "version": "1.0"
   },
   "data": {
-    "booking": {
-      "id": 200000020985,
-      "booking_code": "X7LLMX4",
+    "reservation": {
+      "id": 200000020991,
+      "booking_code": "N6LQXLZ",
       "door_code": null,
-      "updated_at": "2022-02-24T12:36:27.602Z",
-      "property_id": 108900000016,
-      "unit_id": 108900000020,
+      "updated_at": "2022-03-24T12:49:57.567Z",
+      "property_id": 108900000002,
+      "unit_id": 108900000002,
       "status": {
         "cancelled": false,
         "confirmed": true,
         "archived": false
       },
       "num_guests": 1,
-      "days_booked": 3,
-      "date_booked": "2022-02-24T12:36:27.602Z",
-      "check_in_time": "2022-02-18T00:00:00.000+00:00",
-      "check_out_time": "2022-02-20T00:00:00.000+00:00",
+      "days_booked": 4,
+      "date_booked": "2022-03-24T12:49:57.567Z",
+      "check_in_time": "2022-03-25T12:00:00.000+00:00",
+      "check_out_time": "2022-03-28T12:00:00.000+00:00",
       "price_status": "not_paid",
       "stay_type": "guest",
       "channel": "Direct",
-      "rent_total": 26,
-      "extras_total": 150,
-      "booking_total": 178,
+      "rent_total": 4193,
+      "extras_total": 0,
+      "booking_total": 4193,
       "quote_line_items": [
         {
-          "id": 200001452461,
+          "id": 200001453269,
           "name": "Room Rate",
-          "total_cents": 2600,
-          "rate": 13.0,
+          "total_cents": 419300,
+          "rate": 1397.67,
           "taxable": true,
           "item_type": "room_rate",
           "itemizable_type": "Quote",
-          "itemizable_id": 200000078477,
-          "created_at": "2022-02-24T12:36:04.565Z",
-          "updated_at": "2022-02-24T12:36:04.565Z",
+          "itemizable_id": 200000078521,
+          "created_at": "2022-03-24T12:49:22.260Z",
+          "updated_at": "2022-03-24T12:49:22.260Z",
           "refundable": false,
           "optional": false,
           "additional_data": {
@@ -2587,44 +2588,16 @@ Below webhook events can be availed in Reservation:
           "credit_account_id": 108900000064
         },
         {
-          "id": 200001452462,
-          "name": "Cleaning Fee",
-          "total_cents": 15000,
-          "rate": null,
-          "taxable": true,
-          "item_type": "fees",
-          "itemizable_type": "Quote",
-          "itemizable_id": 200000078477,
-          "created_at": "2022-02-24T12:36:04.582Z",
-          "updated_at": "2022-02-24T12:36:04.582Z",
-          "refundable": true,
-          "optional": false,
-          "additional_data": {
-            "frequency_at_creation": "per_stay",
-            "included_in_base_rent": false,
-            "los_ranges_at_creation": [
-
-            ],
-            "default_calculation_amount": 150.0
-          },
-          "organization_id": 890,
-          "split": "no",
-          "cancellation": false,
-          "occurrence_date": "arrival",
-          "debit_account_id": 108900000003,
-          "credit_account_id": 108900000075
-        },
-        {
-          "id": 200001452463,
+          "id": 200001453270,
           "name": "Additional Guest Fee",
           "total_cents": 0,
           "rate": null,
           "taxable": true,
           "item_type": "fees",
           "itemizable_type": "Quote",
-          "itemizable_id": 200000078477,
-          "created_at": "2022-02-24T12:36:04.588Z",
-          "updated_at": "2022-02-24T12:36:04.588Z",
+          "itemizable_id": 200000078521,
+          "created_at": "2022-03-24T12:49:22.280Z",
+          "updated_at": "2022-03-24T12:49:22.280Z",
           "refundable": true,
           "optional": false,
           "additional_data": {
@@ -2644,40 +2617,38 @@ Below webhook events can be availed in Reservation:
           "credit_account_id": null
         },
         {
-          "id": 200001452464,
-          "name": "test",
-          "total_cents": 260,
-          "rate": 10.0,
+          "id": 200001453271,
+          "name": "Security Deposit",
+          "total_cents": 1000,
+          "rate": null,
           "taxable": false,
-          "item_type": "taxes",
+          "item_type": "deposit",
           "itemizable_type": "Quote",
-          "itemizable_id": 200000078477,
-          "created_at": "2022-02-24T12:36:04.594Z",
-          "updated_at": "2022-02-24T12:36:04.594Z",
-          "refundable": true,
+          "itemizable_id": 200000078521,
+          "created_at": "2022-03-24T12:49:22.285Z",
+          "updated_at": "2022-03-24T12:49:22.285Z",
+          "refundable": false,
           "optional": false,
           "additional_data": {
-            "tax_type": "State tax",
-            "tax_account_id": 200000000080
           },
           "organization_id": 890,
           "split": "no",
           "cancellation": false,
-          "occurrence_date": "arrival",
-          "debit_account_id": 108900000002,
-          "credit_account_id": 108900000033
+          "occurrence_date": null,
+          "debit_account_id": null,
+          "credit_account_id": null
         },
         {
-          "id": 200001452465,
+          "id": 200001453272,
           "name": "Booking Total",
-          "total_cents": 17860,
+          "total_cents": 419300,
           "rate": null,
           "taxable": true,
           "item_type": "total",
           "itemizable_type": "Quote",
-          "itemizable_id": 200000078477,
-          "created_at": "2022-02-24T12:36:04.599Z",
-          "updated_at": "2022-02-24T12:36:04.599Z",
+          "itemizable_id": 200000078521,
+          "created_at": "2022-03-24T12:49:22.290Z",
+          "updated_at": "2022-03-24T12:49:22.290Z",
           "refundable": false,
           "optional": false,
           "additional_data": {
@@ -2691,11 +2662,11 @@ Below webhook events can be availed in Reservation:
         }
       ],
       "price_paid": "0.0",
-      "price_remaining": "178.6",
+      "price_remaining": "4193.0",
       "customer": {
-        "name": "whtest123",
-        "email": "whtest@test.com",
-        "telephone": "934875389475",
+        "name": "WHTest",
+        "email": "test_mail@test.com",
+        "telephone": "97864785348",
         "location": {
           "city": null,
           "state": null,
@@ -2706,6 +2677,7 @@ Below webhook events can be availed in Reservation:
     }
   }
 }
+
 
 ```
 
@@ -2728,47 +2700,48 @@ data | Object | Contains the details of reservation created
    {
   "event": {
     "type": "reservation_update",
-    "timestamp": "2022-02-24 18:10:33 +0530",
+    "timestamp": "2022-03-24 18:21:37 +0530",
     "from": "directsoftware",
-    "entity": "booking",
+    "organization_id": 890,
+    "entity": "reservation",
     "version": "1.0"
   },
   "data": {
-    "booking": {
-      "id": 200000020985,
-      "booking_code": "X7LLMX4",
+    "reservation": {
+      "id": 200000020991,
+      "booking_code": "N6LQXLZ",
       "door_code": null,
-      "updated_at": "2022-02-24T12:40:33.582Z",
-      "property_id": 108900000016,
-      "unit_id": 108900000020,
+      "updated_at": "2022-03-24T12:51:36.951Z",
+      "property_id": 108900000002,
+      "unit_id": 108900000002,
       "status": {
         "cancelled": false,
         "confirmed": true,
         "archived": false
       },
       "num_guests": 2,
-      "days_booked": 3,
-      "date_booked": "2022-02-24T12:36:27.602Z",
-      "check_in_time": "2022-02-18T00:00:00.000+00:00",
-      "check_out_time": "2022-02-20T00:00:00.000+00:00",
+      "days_booked": 4,
+      "date_booked": "2022-03-24T12:49:57.567Z",
+      "check_in_time": "2022-03-25T12:00:00.000+00:00",
+      "check_out_time": "2022-03-28T12:00:00.000+00:00",
       "price_status": "not_paid",
       "stay_type": "guest",
       "channel": "Direct",
-      "rent_total": 26,
-      "extras_total": 165,
-      "booking_total": 193,
+      "rent_total": 4193,
+      "extras_total": 0,
+      "booking_total": 4193,
       "quote_line_items": [
         {
-          "id": 200001452512,
+          "id": 200001453297,
           "name": "Room Rate",
-          "total_cents": 2600,
-          "rate": 13.0,
+          "total_cents": 419300,
+          "rate": 1397.67,
           "taxable": true,
           "item_type": "room_rate",
           "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.565Z",
-          "updated_at": "2022-02-24T12:36:04.565Z",
+          "itemizable_id": 200000078523,
+          "created_at": "2022-03-24T12:49:22.260Z",
+          "updated_at": "2022-03-24T12:49:22.260Z",
           "refundable": false,
           "optional": false,
           "additional_data": {
@@ -2781,90 +2754,16 @@ data | Object | Contains the details of reservation created
           "credit_account_id": 108900000064
         },
         {
-          "id": 200001452513,
-          "name": "Cleaning Fee",
-          "total_cents": 15000,
-          "rate": null,
-          "taxable": true,
-          "item_type": "fees",
-          "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.582Z",
-          "updated_at": "2022-02-24T12:36:04.582Z",
-          "refundable": true,
-          "optional": false,
-          "additional_data": {
-            "frequency_at_creation": "per_stay",
-            "included_in_base_rent": false,
-            "los_ranges_at_creation": [
-
-            ],
-            "default_calculation_amount": 150.0
-          },
-          "organization_id": 890,
-          "split": "no",
-          "cancellation": false,
-          "occurrence_date": "arrival",
-          "debit_account_id": 108900000003,
-          "credit_account_id": 108900000075
-        },
-        {
-          "id": 200001452515,
-          "name": "test",
-          "total_cents": 260,
-          "rate": 10.0,
-          "taxable": false,
-          "item_type": "taxes",
-          "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.594Z",
-          "updated_at": "2022-02-24T12:36:04.594Z",
-          "refundable": true,
-          "optional": false,
-          "additional_data": {
-            "tax_type": "State tax",
-            "tax_account_id": 200000000080
-          },
-          "organization_id": 890,
-          "split": "no",
-          "cancellation": false,
-          "occurrence_date": "arrival",
-          "debit_account_id": 108900000002,
-          "credit_account_id": 108900000033
-        },
-        {
-          "id": 200001452516,
-          "name": "Booking Total",
-          "total_cents": 19360,
-          "rate": null,
-          "taxable": true,
-          "item_type": "total",
-          "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.599Z",
-          "updated_at": "2022-02-24T12:40:27.506Z",
-          "refundable": false,
-          "optional": false,
-          "additional_data": {
-          },
-          "organization_id": 890,
-          "split": "no",
-          "cancellation": false,
-          "occurrence_date": null,
-          "debit_account_id": null,
-          "credit_account_id": null
-        },
-        {
-          "id": 200001452514,
+          "id": 200001453298,
           "name": "Additional Guest Fee",
-          "total_cents": 1500,
+          "total_cents": 0,
           "rate": null,
           "taxable": true,
           "item_type": "fees",
           "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.588Z",
-          "updated_at": "2022-02-24T12:40:27.397Z",
+          "itemizable_id": 200000078523,
+          "created_at": "2022-03-24T12:49:22.280Z",
+          "updated_at": "2022-03-24T12:51:33.824Z",
           "refundable": true,
           "optional": false,
           "additional_data": {
@@ -2883,14 +2782,58 @@ data | Object | Contains the details of reservation created
           "occurrence_date": "check_in",
           "debit_account_id": null,
           "credit_account_id": null
+        },
+        {
+          "id": 200001453299,
+          "name": "Security Deposit",
+          "total_cents": 1000,
+          "rate": null,
+          "taxable": false,
+          "item_type": "deposit",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078523,
+          "created_at": "2022-03-24T12:49:22.285Z",
+          "updated_at": "2022-03-24T12:49:22.285Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": null,
+          "debit_account_id": null,
+          "credit_account_id": null
+        },
+        {
+          "id": 200001453300,
+          "name": "Booking Total",
+          "total_cents": 419300,
+          "rate": null,
+          "taxable": true,
+          "item_type": "total",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078523,
+          "created_at": "2022-03-24T12:49:22.290Z",
+          "updated_at": "2022-03-24T12:49:22.290Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": null,
+          "debit_account_id": null,
+          "credit_account_id": null
         }
       ],
       "price_paid": "0.0",
-      "price_remaining": "193.6",
+      "price_remaining": "4193.0",
       "customer": {
-        "name": "whtest123",
-        "email": "whtest@test.com",
-        "telephone": "934875389475",
+        "name": "WHTest",
+        "email": "test_mail@test.com",
+        "telephone": "97864785348",
         "location": {
           "city": null,
           "state": null,
@@ -2901,6 +2844,7 @@ data | Object | Contains the details of reservation created
     }
   }
 }
+
 ```
 
 This webhook is triggered whenever a reservation is updated . 
@@ -2923,50 +2867,52 @@ data | Object | Contains the details of updated reservation
       {
   "event": {
     "type": "reservation_update",
-    "timestamp": "2022-02-24 18:12:54 +0530",
+    "timestamp": "2022-03-24 18:22:44 +0530",
     "from": "directsoftware",
-    "entity": "booking",
+    "organization_id": 890,
+    "entity": "reservation",
     "version": "1.0"
   },
   "data": {
-    "booking": {
-      "id": 200000020985,
-      "booking_code": "X7LLMX4",
+    "reservation": {
+      "id": 200000020991,
+      "booking_code": "N6LQXLZ",
       "door_code": null,
-      "updated_at": "2022-02-24T12:42:46.398Z",
-      "property_id": 108900000016,
-      "unit_id": 108900000020,
+      "updated_at": "2022-03-24T12:52:44.286Z",
+      "property_id": 108900000002,
+      "unit_id": 108900000002,
       "status": {
         "cancelled": true,
         "confirmed": true,
         "archived": false
       },
       "num_guests": 2,
-      "days_booked": 3,
-      "date_booked": "2022-02-24T12:36:27.602Z",
-      "check_in_time": "2022-02-18T00:00:00.000+00:00",
-      "check_out_time": "2022-02-20T00:00:00.000+00:00",
+      "days_booked": 4,
+      "date_booked": "2022-03-24T12:49:57.567Z",
+      "check_in_time": "2022-03-25T12:00:00.000+00:00",
+      "check_out_time": "2022-03-28T12:00:00.000+00:00",
       "price_status": "not_paid",
       "stay_type": "guest",
       "channel": "Direct",
-      "rent_total": 26,
-      "extras_total": 165,
-      "booking_total": 193,
+      "rent_total": 4193,
+      "extras_total": 0,
+      "booking_total": 4193,
       "quote_line_items": [
         {
-          "id": 200001452512,
+          "id": 200001453325,
           "name": "Room Rate",
-          "total_cents": 2600,
-          "rate": 13.0,
+          "total_cents": 419300,
+          "rate": 1397.67,
           "taxable": true,
           "item_type": "room_rate",
           "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.565Z",
-          "updated_at": "2022-02-24T12:36:04.565Z",
+          "itemizable_id": 200000078525,
+          "created_at": "2022-03-24T12:49:22.260Z",
+          "updated_at": "2022-03-24T12:52:37.371Z",
           "refundable": false,
           "optional": false,
           "additional_data": {
+            "custom_edit": true
           },
           "organization_id": 890,
           "split": "no",
@@ -2976,90 +2922,16 @@ data | Object | Contains the details of updated reservation
           "credit_account_id": 108900000064
         },
         {
-          "id": 200001452513,
-          "name": "Cleaning Fee",
-          "total_cents": 15000,
-          "rate": null,
-          "taxable": true,
-          "item_type": "fees",
-          "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.582Z",
-          "updated_at": "2022-02-24T12:36:04.582Z",
-          "refundable": true,
-          "optional": false,
-          "additional_data": {
-            "frequency_at_creation": "per_stay",
-            "included_in_base_rent": false,
-            "los_ranges_at_creation": [
-
-            ],
-            "default_calculation_amount": 150.0
-          },
-          "organization_id": 890,
-          "split": "no",
-          "cancellation": false,
-          "occurrence_date": "arrival",
-          "debit_account_id": 108900000003,
-          "credit_account_id": 108900000075
-        },
-        {
-          "id": 200001452515,
-          "name": "test",
-          "total_cents": 260,
-          "rate": 10.0,
-          "taxable": false,
-          "item_type": "taxes",
-          "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.594Z",
-          "updated_at": "2022-02-24T12:36:04.594Z",
-          "refundable": true,
-          "optional": false,
-          "additional_data": {
-            "tax_type": "State tax",
-            "tax_account_id": 200000000080
-          },
-          "organization_id": 890,
-          "split": "no",
-          "cancellation": false,
-          "occurrence_date": "arrival",
-          "debit_account_id": 108900000002,
-          "credit_account_id": 108900000033
-        },
-        {
-          "id": 200001452516,
-          "name": "Booking Total",
-          "total_cents": 19360,
-          "rate": null,
-          "taxable": true,
-          "item_type": "total",
-          "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.599Z",
-          "updated_at": "2022-02-24T12:40:27.506Z",
-          "refundable": false,
-          "optional": false,
-          "additional_data": {
-          },
-          "organization_id": 890,
-          "split": "no",
-          "cancellation": false,
-          "occurrence_date": null,
-          "debit_account_id": null,
-          "credit_account_id": null
-        },
-        {
-          "id": 200001452514,
+          "id": 200001453326,
           "name": "Additional Guest Fee",
-          "total_cents": 1500,
+          "total_cents": 0,
           "rate": null,
           "taxable": true,
           "item_type": "fees",
           "itemizable_type": "Quote",
-          "itemizable_id": 200000078480,
-          "created_at": "2022-02-24T12:36:04.588Z",
-          "updated_at": "2022-02-24T12:40:27.397Z",
+          "itemizable_id": 200000078525,
+          "created_at": "2022-03-24T12:49:22.280Z",
+          "updated_at": "2022-03-24T12:51:33.824Z",
           "refundable": true,
           "optional": false,
           "additional_data": {
@@ -3078,15 +2950,59 @@ data | Object | Contains the details of updated reservation
           "occurrence_date": "check_in",
           "debit_account_id": null,
           "credit_account_id": null
+        },
+        {
+          "id": 200001453327,
+          "name": "Security Deposit",
+          "total_cents": 1000,
+          "rate": null,
+          "taxable": false,
+          "item_type": "deposit",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078525,
+          "created_at": "2022-03-24T12:49:22.285Z",
+          "updated_at": "2022-03-24T12:49:22.285Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": null,
+          "debit_account_id": null,
+          "credit_account_id": null
+        },
+        {
+          "id": 200001453328,
+          "name": "Booking Total",
+          "total_cents": 419300,
+          "rate": null,
+          "taxable": true,
+          "item_type": "total",
+          "itemizable_type": "Quote",
+          "itemizable_id": 200000078525,
+          "created_at": "2022-03-24T12:49:22.290Z",
+          "updated_at": "2022-03-24T12:49:22.290Z",
+          "refundable": false,
+          "optional": false,
+          "additional_data": {
+          },
+          "organization_id": 890,
+          "split": "no",
+          "cancellation": false,
+          "occurrence_date": null,
+          "debit_account_id": null,
+          "credit_account_id": null
         }
       ],
       "price_paid": "0.0",
-      "price_remaining": "193.6",
-      "date_cancelled": "2022-02-24T12:42:46.398Z",
+      "price_remaining": "4193.0",
+      "date_cancelled": "2022-03-24T12:52:44.286Z",
       "customer": {
-        "name": "whtest123",
-        "email": "whtest@test.com",
-        "telephone": "934875389475",
+        "name": "WHTest",
+        "email": "test_mail@test.com",
+        "telephone": "97864785348",
         "location": {
           "city": null,
           "state": null,
@@ -3124,39 +3040,41 @@ Below webhook events can be availed in Promotions:
 
 ```json
    [
-      {
+  {
   "event": {
     "type": "promotion_create",
-    "timestamp": "2022-02-24 18:03:32 +0530",
+    "timestamp": "2022-03-24 18:24:21 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "promotion",
     "version": "1.0"
   },
   "data": {
     "promotion": {
-      "id": 200000000086,
+      "id": 200000000099,
       "special_type": "flat",
-      "amount": 8,
+      "amount": 12,
       "req_nights": null,
-      "travel_date_start": "2022-02-24",
-      "travel_end_date": "2022-02-24",
-      "promo_start_date": "2022-02-24",
-      "promo_end_date": "2022-02-24",
+      "travel_date_start": "2022-03-24",
+      "travel_end_date": "2022-03-24",
+      "promo_start_date": "2022-03-24",
+      "promo_end_date": "2022-03-24",
       "days_of_week": null,
       "code_req": false,
       "coupon_code": null,
-      "name": "BS_WH_PM",
-      "internal_name": "",
+      "name": "New_Promo",
+      "internal_name": "Test_Promo",
       "distro_list": null,
       "portfolio_id": 108900000004,
       "subportfolio_id": null,
-      "created_at": "2022-02-24T12:33:31.956Z",
-      "updated_at": "2022-02-24T12:33:31.956Z",
+      "created_at": "2022-03-24T12:54:21.693Z",
+      "updated_at": "2022-03-24T12:54:21.693Z",
       "active": true,
       "organization_id": 890
     }
   }
 }
+
 
    ]
 ```
@@ -3178,31 +3096,32 @@ data | Object | Contains the details of updated reservation
   {
   "event": {
     "type": "promotion_update",
-    "timestamp": "2022-02-24 18:04:39 +0530",
+    "timestamp": "2022-03-24 18:25:09 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "promotion",
     "version": "1.0"
   },
   "data": {
     "promotion": {
-      "id": 200000000086,
+      "id": 200000000099,
       "special_type": "flat",
-      "amount": 15,
+      "amount": 12,
       "req_nights": 1,
-      "travel_date_start": "2022-02-24",
-      "travel_end_date": "2022-02-24",
-      "promo_start_date": "2022-02-24",
-      "promo_end_date": "2022-02-24",
+      "travel_date_start": "2022-03-24",
+      "travel_end_date": "2022-03-24",
+      "promo_start_date": "2022-03-24",
+      "promo_end_date": "2022-03-24",
       "days_of_week": null,
       "code_req": false,
       "coupon_code": null,
-      "name": "BS_WH_PM123",
-      "internal_name": "",
+      "name": "New_Promo",
+      "internal_name": "Test_Promo",
       "distro_list": null,
-      "portfolio_id": 108900000004,
+      "portfolio_id": 200000000102,
       "subportfolio_id": null,
-      "created_at": "2022-02-24T12:33:31.956Z",
-      "updated_at": "2022-02-24T12:34:39.735Z",
+      "created_at": "2022-03-24T12:54:21.693Z",
+      "updated_at": "2022-03-24T12:55:09.442Z",
       "active": true,
       "organization_id": 890
     }
@@ -3227,39 +3146,41 @@ data | Object | Contains the details of updated reservation
 > The above webhook triggers JSON structure like this
 
 ```json
-   {
+  {
   "event": {
     "type": "promotion_delete",
-    "timestamp": "2022-02-24 18:05:15 +0530",
+    "timestamp": "2022-03-24 18:25:41 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "promotion",
     "version": "1.0"
   },
   "data": {
     "promotion": {
-      "id": 200000000086,
+      "id": 200000000099,
       "special_type": "flat",
-      "amount": 15,
+      "amount": 12,
       "req_nights": 1,
-      "travel_date_start": "2022-02-24",
-      "travel_end_date": "2022-02-24",
-      "promo_start_date": "2022-02-24",
-      "promo_end_date": "2022-02-24",
+      "travel_date_start": "2022-03-24",
+      "travel_end_date": "2022-03-24",
+      "promo_start_date": "2022-03-24",
+      "promo_end_date": "2022-03-24",
       "days_of_week": null,
       "code_req": false,
       "coupon_code": null,
-      "name": "BS_WH_PM123",
-      "internal_name": "",
+      "name": "New_Promo",
+      "internal_name": "Test_Promo",
       "distro_list": null,
-      "portfolio_id": 108900000004,
+      "portfolio_id": 200000000102,
       "subportfolio_id": null,
-      "created_at": "2022-02-24T12:33:31.956Z",
-      "updated_at": "2022-02-24T12:34:39.735Z",
+      "created_at": "2022-03-24T12:54:21.693Z",
+      "updated_at": "2022-03-24T12:55:09.442Z",
       "active": true,
       "organization_id": 890
     }
   }
 }
+
 ```
 This Webhook is triggered whenever a Promotion is Deleted.
 
@@ -3291,30 +3212,31 @@ Below webhook events can be availed in Property:
    {
   "event": {
     "type": "property_create",
-    "timestamp": "2022-02-24 17:53:33 +0530",
+    "timestamp": "2022-03-24 18:12:17 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "property",
     "version": "1.0"
   },
   "data": {
     "property": {
-      "id": 200000002284,
-      "name": "WH_Test_Prop",
+      "id": 200000002374,
+      "name": "Test_Doc_Prop",
       "unit_code": null,
-      "updated_at": "2022-02-24T12:23:32.877Z",
-      "active": false,
+      "updated_at": "2022-03-24T12:42:17.478Z",
+      "active": null,
       "summary_description": null,
       "summary_headline": null,
       "summary_rules": null,
       "address": {
-        "addressLine1": "566 Avenida Vélez Sarsfield",
+        "addressLine1": "105 Valle de San Juan",
         "addressLine2": "",
-        "city": "",
-        "state": "B",
-        "country": "AR",
-        "postalCode": "C1282",
-        "lat": -34.6412514,
-        "lng": -58.3893694
+        "city": "León",
+        "state": "GUA",
+        "country": "MX",
+        "postalCode": "37538",
+        "lat": 21.0716851,
+        "lng": -101.6344657
       },
       "features": {
       },
@@ -3328,6 +3250,7 @@ Below webhook events can be availed in Property:
     }
   }
 }
+
 ```
 
 This Webhook is triggered whenever a property is created.
@@ -3348,8 +3271,9 @@ data | Object | Contains the details of updated reservation
   {
   "event": {
     "type": "property_update",
-    "timestamp": "2022-03-07 18:34:20 +0530",
+    "timestamp": "2022-03-24 18:13:59 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "property",
     "version": "1.0"
   },
@@ -3386,7 +3310,8 @@ data | Object | Contains the details of updated reservation
           "active": false,
           "description": "",
           "propertyType": "PROPERTY_TYPE_APARTMENT",
-          "currency": "USD",
+          "currency"
+          : "USD",
           "name": "Full Property: Webhook_Test_Prop",
           "occupancy": 1,
           "bathrooms": [
@@ -3478,8 +3403,9 @@ data | Object | Contains the details of updated reservation
    {
   "event": {
     "type": "property_delete",
-    "timestamp": "2022-02-24 18:14:55 +0530",
+    "timestamp": "2022-03-24 18:13:59 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "property",
     "version": "1.0"
   },
@@ -3542,18 +3468,20 @@ Below webhook events can be availed in Unit Rates:
    {
   "event": {
     "type": "unit_rate_update",
-    "timestamp": "2022-02-24 18:16:25 +0530",
+    "timestamp": "2022-03-24 18:16:34 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "unit_rate",
     "version": "1.0"
   },
   "data": {
     "unit_rate": {
+      "unit_id": 200000002137,
       "currency": "USD",
-      "updated_at": "2022-02-24T12:46:25.269Z",
-      "default_nightly_weekend": 22.0,
-      "default_nightly_weekday": 15.0,
-      "tax_rate": 10.0,
+      "updated_at": "2022-03-24T12:46:34.555Z",
+      "default_nightly_weekend": 16.0,
+      "default_nightly_weekday": 11.0,
+      "tax_rate": 0.0,
       "adj_tax": 0.0,
       "max_night_with_tax_rate": 0,
       "exclude_tax": false,
@@ -3565,15 +3493,15 @@ Below webhook events can be availed in Unit Rates:
             7,
             27
           ],
-          "percent": "0.75"
+          "percent": "1.0"
         }
       ],
       "fees": [
         {
-          "id": 200000007800,
+          "id": 200000007854,
           "name": "Cleaning Fee",
           "calculation_type": "flat",
-          "calculation_amount": "150.0",
+          "calculation_amount": "122.0",
           "taxable": true,
           "is_addon": "false"
         }
@@ -3595,6 +3523,7 @@ Below webhook events can be availed in Unit Rates:
     }
   }
 }
+
 
 ```
 
@@ -3622,30 +3551,32 @@ Below webhook events can be availed in Unit Availability:
    {
   "event": {
     "type": "unit_availability_update",
-    "timestamp": "2022-02-24 18:17:11 +0530",
+    "timestamp": "2022-03-24 18:15:37 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "unit_availability",
     "version": "1.0"
   },
   "data": {
     "unit_availability": {
+      "unit_id": 200000002137,
       "availabilityDefault": "Y",
       "stayIncrementDefault": "D",
       "changeOverDefault": "C",
       "availableUnitCountDefault": 1,
-      "updated_at": "2022-02-24T12:47:11.540Z",
-      "default_stay_min": 2,
+      "updated_at": "2022-03-24T12:45:37.318Z",
+      "default_stay_min": 1,
       "default_stay_max": 7,
-      "default_prior_notify_min": null,
+      "default_prior_notify_min": 1,
       "dateRange": {
-        "beginDate": "2022-02-24",
-        "endDate": "2025-02-23"
+        "beginDate": "2022-03-24",
+        "endDate": "2025-03-23"
       },
       "availability": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
       "changeOver": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
       "maxStay": "7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7",
-      "minPriorNotify": ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
-      "minStay": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
+      "minPriorNotify": "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1",
+      "minStay": "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1",
       "stayIncrement": "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
     }
   }
@@ -3665,17 +3596,18 @@ data | Object | Contains the details of updated reservation
 
 Below webhook events can be availed in Statement: 
 
-1. Statement Update 
+1. Statement delete 
 
-## Statement Update
+## Statement Delete
 > The above webhook triggers JSON structure like this
 
 ```json
   {
   "event": {
-    "type": "statement_update",
+    "type": "statement_delete",
     "timestamp": "2022-02-24 18:16:25 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "statement",
     "version": "1.0"
   },
@@ -3717,18 +3649,19 @@ data | Object | Contains the details of updated reservation
 
 Below webhook events can be availed in Review: 
 
-1. Review Update 
+1. Review Create 
 
-## Review Update
+## Review Create
 
 > The above webhook triggers JSON structure like this
 
 ```json
-   {
+{
   "event": {
-    "type": "review_update",
+    "type": "review_create",
     "timestamp": "2022-02-24 18:16:25 +0530",
     "from": "directsoftware",
+    "organization_id": 890,
     "entity": "review",
     "version": "1.0"
   },
@@ -3752,7 +3685,7 @@ Below webhook events can be availed in Review:
     "customer_id": 200000039981,
     "response": "Testing a response.",
     "responded_at": null
-}
+  }
 }
 ```
 
