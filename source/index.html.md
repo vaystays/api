@@ -2260,7 +2260,7 @@ U_ID | The ID of the unit to retrieve
 
 Key | Values
 --- | ---
-availability | Y (available) or N (not available)
+availability | Y (available), R (request) or N (not available)
 changeOver | C (any), I (check in), O (check out), or X (none)
 stayIncrement | D (day) or W (week)
 
