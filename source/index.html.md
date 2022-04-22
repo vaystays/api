@@ -2218,7 +2218,9 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<
 
 ```json
 {
-   "availabilityDefault":"Y",
+   "availabilityOpen":"Y",
+   "availabilityRequest": "R",
+   "availabilityClosed":"N",
    "stayIncrementDefault":"D",
    "changeOverDefault":"C",
    "availableUnitCountDefault":1,
@@ -2231,6 +2233,7 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<
       "endDate":"2022-01-01"
    },
    "availability":"YN...",
+   "defaultAvailability":"YNR...",
    "changeOver":"CC...",
    "maxStay":"30,30,...",
    "minPriorNotify":"1,1,...",
@@ -2253,14 +2256,15 @@ P_ID | The ID of the property to retrieve
 U_ID | The ID of the unit to retrieve
 
 <aside class="notice">
-  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
+   <p>Warning! Availability is being deprecated. Please us defaultAvailability as it has R for when the default availability is request. </p>
+  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>defaultAvailability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
 </aside>
 
 ### Availability Response Values
 
 Key | Values
 --- | ---
-availability | Y (available), R (request) or N (not available)
+defaultAvailability | Y (available), R (request) or N (not available)
 changeOver | C (any), I (check in), O (check out), or X (none)
 stayIncrement | D (day) or W (week)
 
