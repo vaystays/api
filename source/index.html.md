@@ -272,11 +272,13 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
    "units":[
       {
          "id":92,
+         "unit_code":"ABC-1",
          "active":true,
          "description":"<description>",
          "propertyType":"PROPERTY_TYPE_CONDO",
          "currency":"USD",
          "name":"PCWG3704",
+         "refund_policy":"Full refund if cancelled 30 days before stay",
          "occupancy": 7,
          "bookable_nightly_price": 100,
          "num_bathrooms": 1,
