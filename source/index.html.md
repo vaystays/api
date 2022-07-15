@@ -2166,19 +2166,32 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<
    "fees":[
       {
          "id":322,
-         "name":"Processing Fee",
-         "calculation_type":"percent",
-         "calculation_amount":2.0,
-         "taxable":false,
-         "is_addon":"false"
+         "name": "Linen Fee",
+         "description": "For the beds and pillows",
+         "refundable": true,
+         "included_in_base_rent": false,
+         "calculation_type": "flat",
+         "calculation_amount": "50.0",
+         "taxable": true,
+         "is_addon": "false",
+         "frequency": "per_night",
+         "quantity_fee": true,
+         "fee_quantity_max": 6,
+         "active": true
       },
       {
          "id":49,
          "name":"Cleaning Fee",
+         "refundable": true,
+         "included_in_base_rent": false,
          "calculation_type":"flat",
          "calculation_amount":100.0,
          "taxable":true,
-         "is_addon":"false"
+         "is_addon":"false",
+         "frequency": "per_stay",
+         "quantity_fee": false,
+         "fee_quantity_max": 1,
+         "active": true
       }
    ],
    "security_deposit":[],
