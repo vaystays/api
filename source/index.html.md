@@ -2192,7 +2192,42 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<
          "quantity_fee": false,
          "fee_quantity_max": 1,
          "active": true
-      }
+      },
+      {
+            "id": 100030003137,
+            "name": "Car Rental Fee",
+            "description": "We have one 4 passenger car for rent",
+            "refundable": false,
+            "included_in_base_rent": false,
+            "calculation_type": "flat",
+            "calculation_amount": "0.0",
+            "taxable": true,
+            "is_addon": "false",
+            "frequency": "per_stay",
+            "quantity_fee": false,
+            "fee_quantity_max": null,
+            "active": true,
+            "los_ranges": [
+                {
+                    "id": 200000000012,
+                    "min_nights": 1,
+                    "max_nights": 3,
+                    "calculation_amount": "100.0"
+                },
+                {
+                    "id": 200000000013,
+                    "min_nights": 4,
+                    "max_nights": 7,
+                    "calculation_amount": "200.0"
+                },
+                {
+                    "id": 200000000014,
+                    "min_nights": 8,
+                    "max_nights": 10,
+                    "calculation_amount": "300.0"
+                }
+            ]
+        }
    ],
    "security_deposit":[],
    "nightlyOverrides":[
