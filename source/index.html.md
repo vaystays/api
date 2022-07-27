@@ -373,6 +373,67 @@ start_date (optional) | The start of a date range to query for reservations that
 end_date (optional, but required if start_date present) | The end of a date range to query for reservations that check out before this date
 addon_fee_ids (optional) | Id's of fees that are addons, can be found from unit rates
 
+## List Reservations By Id
+
+```shell
+curl --location --request GET 'https://staging.getdirect.io/api/public/990/list_reservations_by_id' \
+--header 'Authorization: Token test_api_key' \
+--header 'Accept: application/vnd.direct.v1' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "ids": "200000001593, 200000001594, 200000001602, 200000001603, 200000001604"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "total_count": 5,
+  "reservations": [
+      {
+         "id": 200000001593,
+         "booking_code": "2VXUAWPE5-ZVCRY7",
+         "updated_at": "2019-01-25T01:04:39.744Z",
+         "status": {
+            "cancelled": false,
+            "confirmed": true,
+            "archived": true
+         },
+         "num_guests": 0,
+         "days_booked": 3,
+         "check_in": "2011-10-21",
+         "check_out": "2011-10-23",
+         "channel": "booking.com",
+         "customer": {
+            "name": "christopher zepf",
+            "email": "ndirish1@gmail.com",
+            "telephone": null,
+            "location": {
+               "city": "Chicago",
+               "state": "IL",
+               "postal_code": null,
+               "country": "USA"
+            }
+         }
+      },
+   ...
+  ]
+}
+```
+
+This endpoint retrieves the reservations in your organization that match the ids in the ids parameter and returns the same response as viewing a single reservation using the GET Reservation endpoint
+
+### HTTP Request
+
+`GET /list_reservations_by_id`
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+ids | Comma separated list of reservation ids. Max 100
+
 ## Create Reservation
 
 ```shell
@@ -497,7 +558,7 @@ This endpoint retrieves a specific reservation.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the reservatoion to retrieve
+ID | The ID of the reservation to retrieve
 
 ## Update Reservation
 
