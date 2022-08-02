@@ -256,6 +256,9 @@
                     <a href="#list-reservations" class="toc-h2 toc-link" data-title="List Reservations">List Reservations</a>
                   </li>
                   <li>
+                    <a href="#list-reservations-by-id" class="toc-h2 toc-link" data-title="List Reservations By Id">List Reservations By Id</a>
+                  </li>
+                  <li>
                     <a href="#create-reservation" class="toc-h2 toc-link" data-title="Create Reservation">Create Reservation</a>
                   </li>
                   <li>
@@ -788,6 +791,65 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>Id&#39;s of fees that are addons, can be found from unit rates</td>
 </tr>
 </tbody></table>
+<h2 id='list-reservations-by-id'>List Reservations By Id</h2><pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'https://staging.getdirect.io/api/public/990/list_reservations_by_id'</span> <span class="se">\</span>
+--header <span class="s1">'Authorization: Token test_api_key'</span> <span class="se">\</span>
+--header <span class="s1">'Accept: application/vnd.direct.v1'</span> <span class="se">\</span>
+--header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+--data-raw <span class="s1">'{
+  "ids": "200000001593, 200000001594, 200000001602, 200000001603, 200000001604"
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reservations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000001593</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"booking_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2VXUAWPE5-ZVCRY7"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-25T01:04:39.744Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"num_guests"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"days_booked"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"check_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-10-21"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"check_out"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-10-23"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"booking.com"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christopher zepf"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ndirish1@gmail.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicago"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IL"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+   </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the reservations in your organization that match the ids in the ids parameter and returns the same response as viewing a single reservation using the GET Reservation endpoint</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET /list_reservations_by_id</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ids</td>
+<td>Comma separated list of reservation ids. Max 100</td>
+</tr>
+</tbody></table>
 <h2 id='create-reservation'>Create Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/990/reservations"</span>
 -d <span class="s1">'{
     "property_id": 1,
@@ -843,7 +905,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>In order to create a new reservation you must first generate a Stripe customer and establish a setup intent using your Stripe API keys. Once a customer has been created, a setup intent established, and a payment method attached you can include the generated stripe_customer_id to Direct when calling the new reservation endpoint.</p>
 
 <p>Stripe provides a thorough walk-through of how to setup your payment page with the following guide: <a href="https://stripe.com/docs/payments/accept-a-payment?platform=web">Accept a Payment</a></p>
-<h3 id='request-parameters'>Request Parameters</h3>
+<h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -871,7 +933,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The client side generated ID of the Stripe customer.</td>
 </tr>
 </tbody></table>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST /reservations</code></p>
 <h2 id='get-reservation'>Get Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
@@ -908,7 +970,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific reservation.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET /reservations/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -919,7 +981,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the reservatoion to retrieve</td>
+<td>The ID of the reservation to retrieve</td>
 </tr>
 </tbody></table>
 <h2 id='update-reservation'>Update Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/3/reservations/100030030467"</span>
@@ -1240,7 +1302,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the door code for the specified reservation given.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>PUT /reservations/&lt;R_ID&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -1254,7 +1316,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the reservation to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-2'>Request Parameters</h3>
+<h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1297,7 +1359,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
    </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='request-parameters-3'>Request Parameters</h3>
+</span></code></pre><h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1321,7 +1383,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The body of the review</td>
 </tr>
 </tbody></table>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST /reviews</code></p>
 <h2 id='get-all-reviews'>Get All Reviews</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reviews"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
@@ -1353,7 +1415,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all reviews connected to your organization.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET /reviews</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
@@ -1398,7 +1460,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific review.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET /reviews/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
@@ -1902,7 +1964,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all listings connected to your organization.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET /search</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
@@ -1994,7 +2056,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all statements connected to your organization.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET /statements</code></p>
 <h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
@@ -2190,7 +2252,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a specific statement.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET /statements/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
@@ -2518,7 +2580,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all transactions connected to your organization.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET /transactions</code></p>
 <h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
@@ -2570,7 +2632,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s promotions.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/promotions</code></p>
 <h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
@@ -2697,7 +2759,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s rates.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/rates</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
@@ -2749,7 +2811,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s reviews.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/reviews</code></p>
 <h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
@@ -2796,7 +2858,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a particular unit&#39;s availability.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/availability</code></p>
 <h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
@@ -2896,7 +2958,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a quote for the specified unit given check in date, check out date, number of adults, number of children (optional), number of pets (optional) and addon fee ids (optional, can be found on the units rates when addon = true).</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/quotes</code></p>
 <h3 id='url-parameters-18'>URL Parameters</h3>
 <table><thead>
@@ -2914,7 +2976,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the unit to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-4'>Request Parameters</h3>
+<h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2962,7 +3024,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the nightly price for the specified unit given and dates found in the json.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/pricing</code></p>
 <h3 id='url-parameters-19'>URL Parameters</h3>
 <table><thead>
@@ -2980,7 +3042,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the unit to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-5'>Request Parameters</h3>
+<h3 id='request-parameters-6'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3024,7 +3086,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the minimum night stay for the speceified unit given and dates found in the json.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>POST /properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/stay-length</code></p>
 <h3 id='url-parameters-20'>URL Parameters</h3>
 <table><thead>
@@ -3042,7 +3104,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The ID of the unit to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-6'>Request Parameters</h3>
+<h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
