@@ -493,6 +493,8 @@ This endpoint creates a new reservation for the requested unit.
 
 In order to create a new reservation you must first generate a Stripe customer and establish a setup intent using your Stripe API keys. Once a customer has been created, a setup intent established, and a payment method attached you can include the generated stripe_customer_id to Direct when calling the new reservation endpoint.
 
+Reservation can be instant or request to book which is based on defined availability rules. For instant booking, the status of confirmed will be true and for request to book it will be false.
+
 Stripe provides a thorough walk-through of how to setup your payment page with the following guide: [Accept a Payment](https://stripe.com/docs/payments/accept-a-payment?platform=web)
 
 ### Request Parameters
