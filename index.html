@@ -607,6 +607,10 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>_offset (optional)</td>
 <td>Number of properties to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
+<tr>
+<td>role (optional)</td>
+<td>Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping,maintenance, and reservationist</td>
+</tr>
 </tbody></table>
 <h2 id='get-a-specific-property'>Get a Specific Property</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
@@ -675,6 +679,25 @@ You must replace <code>your_api_key</code> with your personal API key.
          </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">92</span><span class="p">,</span><span class="w">
          </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="s2">"ABC-1"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"active"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"active_users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">108900000004</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user858@gmail.com"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/assets/fallback/avatar_default.svg"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"avatar_tiny"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/assets/fallback/avatar_default.svg"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="mi">800-555-1234</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"housekeeping"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-25T17:25:37.851Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-19T21:42:25.990Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"org_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"user_active_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
          </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"&lt;description&gt;"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"propertyType"</span><span class="p">:</span><span class="s2">"PROPERTY_TYPE_CONDO"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"currency"</span><span class="p">:</span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -2837,7 +2860,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"availabilityDefault"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"availabilityOpen"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"availabilityRequest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"R"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"availabilityClosed"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"stayIncrementDefault"</span><span class="p">:</span><span class="s2">"D"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"changeOverDefault"</span><span class="p">:</span><span class="s2">"C"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"availableUnitCountDefault"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -2850,6 +2875,7 @@ You must replace <code>your_api_key</code> with your personal API key.
       </span><span class="s2">"endDate"</span><span class="p">:</span><span class="s2">"2022-01-01"</span><span class="w">
    </span><span class="p">},</span><span class="w">
    </span><span class="s2">"availability"</span><span class="p">:</span><span class="s2">"YN..."</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"defaultAvailability"</span><span class="p">:</span><span class="s2">"YNR..."</span><span class="p">,</span><span class="w">
    </span><span class="s2">"changeOver"</span><span class="p">:</span><span class="s2">"CC..."</span><span class="p">,</span><span class="w">
    </span><span class="s2">"maxStay"</span><span class="p">:</span><span class="s2">"30,30,..."</span><span class="p">,</span><span class="w">
    </span><span class="s2">"minPriorNotify"</span><span class="p">:</span><span class="s2">"1,1,..."</span><span class="p">,</span><span class="w">
@@ -2878,7 +2904,8 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tbody></table>
 
 <aside class="notice">
-  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
+   <p>Warning! Availability is being deprecated. Please us defaultAvailability as it has R for when the default availability is request. </p>
+  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>defaultAvailability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
 </aside>
 <h3 id='availability-response-values'>Availability Response Values</h3>
 <table><thead>
@@ -2888,8 +2915,8 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>availability</td>
-<td>Y (available) or N (not available)</td>
+<td>defaultAvailability</td>
+<td>Y (available), R (request) or N (not available)</td>
 </tr>
 <tr>
 <td>changeOver</td>
