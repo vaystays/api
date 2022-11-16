@@ -202,6 +202,7 @@ Parameter | Description
 --------- | -----------
 _limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
 _offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
+role (optional) | Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping,maintenance, and reservationist 
 
 ## Get a Specific Property
 
@@ -274,6 +275,25 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<ID>"
          "id":92,
          "unit_code":"ABC-1",
          "active":true,
+         "active_users": [
+                {
+                    "id": 108900000004,
+                    "email": "user858@gmail.com",
+                    "name": "John Doe",
+                    "avatar": {
+                        "url": "/assets/fallback/avatar_default.svg",
+                        "avatar_tiny": {
+                            "url": "/assets/fallback/avatar_default.svg"
+                        }
+                    },
+                    "telephone": 800-555-1234,
+                    "role": "housekeeping",
+                    "created_at": "2020-02-25T17:25:37.851Z",
+                    "updated_at": "2022-09-19T21:42:25.990Z",
+                    "org_id": 1,
+                    "user_active_status": true
+                }
+            ],
          "description":"<description>",
          "propertyType":"PROPERTY_TYPE_CONDO",
          "currency":"USD",
@@ -2395,7 +2415,9 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<
 
 ```json
 {
-   "availabilityDefault":"Y",
+   "availabilityOpen":"Y",
+   "availabilityRequest": "R",
+   "availabilityClosed":"N",
    "stayIncrementDefault":"D",
    "changeOverDefault":"C",
    "availableUnitCountDefault":1,
@@ -2408,6 +2430,7 @@ curl "https://staging.getdirect.io/api/public/<ORG_ID>/properties/<P_ID>/units/<
       "endDate":"2022-01-01"
    },
    "availability":"YN...",
+   "defaultAvailability":"YNR...",
    "changeOver":"CC...",
    "maxStay":"30,30,...",
    "minPriorNotify":"1,1,...",
@@ -2430,14 +2453,15 @@ P_ID | The ID of the property to retrieve
 U_ID | The ID of the unit to retrieve
 
 <aside class="notice">
-  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
+   <p>Warning! Availability is being deprecated. Please us defaultAvailability as it has R for when the default availability is request. </p>
+  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>defaultAvailability</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
 </aside>
 
 ### Availability Response Values
 
 Key | Values
 --- | ---
-availability | Y (available) or N (not available)
+defaultAvailability | Y (available), R (request) or N (not available)
 changeOver | C (any), I (check in), O (check out), or X (none)
 stayIncrement | D (day) or W (week)
 
