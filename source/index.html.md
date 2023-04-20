@@ -110,8 +110,11 @@ This endpoint retrieves all promotions connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of promotions to return, up to 100. Default is 20.
-_offset (optional) | Number of promotions to skip over, where the ordering is consistent but unspecified.
+limit (optional) | Maximum number of promotions to return, up to 100. Default is 20.
+offset (optional) | Number of promotions to skip over, where the ordering is consistent but unspecified.
+
+Example with all optional parameters 
+`/api/public/990/promotions?limit=50&offset=50`
 
 ## Get a Specific Promotion
 
@@ -200,9 +203,12 @@ This endpoint retrieves all properties connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
-_offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
-role (optional) | Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping,maintenance, and reservationist 
+limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
+offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
+role (optional) | Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping, maintenance, and reservationist 
+
+Example with all optional parameters 
+`/api/public/990/properties?limit=50&offset=50&role=housekeeping`
 
 ## Get a Specific Property
 
@@ -335,10 +341,9 @@ This endpoint retrieves a specific property.
 
 ### URL Parameters
 
-Parameter | Type |Description
---------- | ---- | -----------
-ID | bigint |The ID of the property to retrieve
-property_type | enum | `apartment` `apartment_building` `barn` `boat` `bnb` `building` `bungalow` `cabin` `caravan` `castle` `chacara` `chalet` `chateau` `condo` `condo_building` `condo_hotel` `cottage` `estate` `farmhouse` `guesthouse` `hotel` `house` `house_boat` `lodge` `mas` `mill` `mobile_home` `recreatioinal_vehicle` `riad` `studio` `tower` `townhome` `villa` `yacht`
+Parameter | Description
+--------- | -----------
+ID | The ID of the property to retrieve
 # Reservations
 
 ## List Reservations
@@ -387,11 +392,13 @@ This endpoint retrieves all reservations connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
-_offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
+limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
+offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
 start_date (optional) | The start of a date range to query for reservations that check in after this date
-end_date (optional, but required if start_date present) | The end of a date range to query for reservations that check out before this date
-addon_fee_ids (optional) | Id's of fees that are addons, can be found from unit rates
+end_date (required if start_date present) | The end of a date range to query for reservations that check out before this date
+
+Example with all optional parameters 
+`/api/public/990/reservations?limit=50&offset=50&start_date=2023-01-01&end_date=2023-05-30`
 
 ## List Reservations By Id
 
@@ -515,6 +522,10 @@ In order to create a new reservation you must first generate a Stripe customer a
 
 Stripe provides a thorough walk-through of how to setup your payment page with the following guide: [Accept a Payment](https://stripe.com/docs/payments/accept-a-payment?platform=web)
 
+### HTTP Request
+
+`POST /reservations`
+
 ### Request Parameters
 
 Parameter | Description
@@ -524,10 +535,6 @@ unit_id | The unique identifier of the unit being booked
 customer | Information about the customer making the inquiry
 reservation | Information about the reservation, including stay dates and guest counts
 stripe_customer_id | The client side generated ID of the Stripe customer.
-
-### HTTP Request
-
-`POST /reservations`
 
 ## Get Reservation
 
@@ -963,8 +970,8 @@ curl --location --request POST 'https://staging.getdirect.io/api/public/<ORG_ID>
 
 Parameter | Description
 --------- | -----------
-booking_code | The booking code of the stay the customer is reviewing **REQUIRED**
-rating | The rating the customer gave. Must be between 0 and 5 **REQUIRED**
+booking_code(required) | The booking code of the stay the customer is reviewing
+rating(required) | The rating the customer gave. Must be between 0 and 5
 title | The title the customer gave their review, if any
 body | The body of the review 
 
@@ -1016,8 +1023,11 @@ This endpoint retrieves all reviews connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of reviews to return, up to 100. Default is 20.
-_offset (optional) | Number of reviews to skip over, where the ordering is consistent but unspecified.
+limit (optional) | Maximum number of reviews to return, up to 100. Default is 20.
+offset (optional) | Number of reviews to skip over, where the ordering is consistent but unspecified.
+
+Example with all optional parameters 
+`/api/public/990/reviews?limit=50&offset=50`
 
 ## Get a Specific Review
 
@@ -1568,14 +1578,17 @@ This endpoint retrieves all listings connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (required) | Maximum number of reviews to return, up to 100. Default is 20.
-_booking_range (required) | A stringified json object of the booking range days.
-_brand_id (required) | The unique ID of the Direct brand.
-_amenities (optional) | A stringified json object of amenities to filter by.
-_num_bathrooms (optional) | Filter by listings with a minimum number of bathrooms.
-_num_bedrooms (optional) | Filter by listings with a minimum number of bedrooms.
-_num_guests (optional) | Filter by listings with a minimum number of guests.
-_page (optional) | Set the page of results returned.
+limit (required) | Maximum number of reviews to return, up to 100. Default is 20.
+booking_range (required) | A stringified json object of the booking range days.
+brand_id (required) | The unique ID of the Direct brand.
+amenities (optional) | A stringified json object of amenities to filter by.
+num_bathrooms (optional) | Filter by listings with a minimum number of bathrooms.
+num_bedrooms (optional) | Filter by listings with a minimum number of bedrooms.
+num_guests (optional) | Filter by listings with a minimum number of guests.
+page (optional) | Set the page of results returned.
+
+Example with all optional parameters 
+`/api/public/990/search?limit=50&booking_range=%5B%7B%22key%22%3A%2223-04-2021%22%2C%22day%22%3A5%7D%2C%7B%22key%22%3A%2224-04-2021%22%2C%22day%22%3A6%7D%2C%7B%22key%22%3A%2225-04-2021%22%2C%22day%22%3A0%7D%2C%7B%22key%22%3A%2226-04-2021%22%2C%22day%22%3A1%7D%5D&num_bathrooms=1&num_bedrooms=2&num_guests=3&page=1&brand_id=100030000048&amenities=%7B%22Property%22%3A%5B%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_FRONT%22%2C%22label%22%3A%22Beachfront%22%7D%2C%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_VIEW%22%2C%22label%22%3A%22Beach%20view%22%7D%5D%2C%22Unit%22%3A%5B%5D%7D`
 
 # Statements
 
@@ -1643,8 +1656,11 @@ This endpoint retrieves all statements connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of statements to return, up to 100. Default is 20.
-_offset (optional) | Number of statements to skip over, where the ordering is consistent but unspecified.
+limit (optional) | Maximum number of statements to return, up to 100. Default is 20.
+offset (optional) | Number of statements to skip over, where the ordering is consistent but unspecified.
+
+Example with all optional parameters 
+`/api/public/990/statements?limit=50&offset=50`
 
 ## Get a Specific Statement
 
@@ -2169,9 +2185,11 @@ This endpoint retrieves all transactions connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of transactions to return, up to 100. Default is 20.
-_offset (optional) | Number of transactions to skip over, where the ordering is consistent but unspecified.
+limit (optional) | Maximum number of transactions to return, up to 100. Default is 20.
+offset (optional) | Number of transactions to skip over, where the ordering is consistent but unspecified.
 
+Example with all optional parameters 
+`/api/public/990/transactions?limit=50&offset=50`
 
 # Units
 
@@ -2549,6 +2567,9 @@ check_out | The check out date ("YYYY-MM-DD")
 adults | The number of adult guests
 children | The number of child guests (optional, default to 0)
 pets | The number of pets (optional, default to 0)
+
+Example with all parameters 
+`/api/public/990/properties/45units/87/quotes?check_in=2023-05-01&check_out=2023-05-30&adults=2&children=1&pets=1`
 
 ## Update Pricing
 
