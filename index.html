@@ -513,14 +513,17 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>_limit (optional)</td>
+<td>limit (optional)</td>
 <td>Maximum number of promotions to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>_offset (optional)</td>
+<td>offset (optional)</td>
 <td>Number of promotions to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
+
+<p>Example with all optional parameters 
+<code>/api/public/990/promotions?limit=50&amp;offset=50</code></p>
 <h2 id='get-a-specific-promotion'>Get a Specific Promotion</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/promotions/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -600,18 +603,21 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>_limit (optional)</td>
+<td>limit (optional)</td>
 <td>Maximum number of properties to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>_offset (optional)</td>
+<td>offset (optional)</td>
 <td>Number of properties to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 <tr>
 <td>role (optional)</td>
-<td>Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping,maintenance, and reservationist</td>
+<td>Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping, maintenance, and reservationist</td>
 </tr>
 </tbody></table>
+
+<p>Example with all optional parameters 
+<code>/api/public/990/properties?limit=50&amp;offset=50&amp;role=housekeeping</code></p>
 <h2 id='get-a-specific-property'>Get a Specific Property</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -737,19 +743,12 @@ You must replace <code>your_api_key</code> with your personal API key.
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>bigint</td>
 <td>The ID of the property to retrieve</td>
-</tr>
-<tr>
-<td>property_type</td>
-<td>enum</td>
-<td><code>apartment</code> <code>apartment_building</code> <code>barn</code> <code>boat</code> <code>bnb</code> <code>building</code> <code>bungalow</code> <code>cabin</code> <code>caravan</code> <code>castle</code> <code>chacara</code> <code>chalet</code> <code>chateau</code> <code>condo</code> <code>condo_building</code> <code>condo_hotel</code> <code>cottage</code> <code>estate</code> <code>farmhouse</code> <code>guesthouse</code> <code>hotel</code> <code>house</code> <code>house_boat</code> <code>lodge</code> <code>mas</code> <code>mill</code> <code>mobile_home</code> <code>recreatioinal_vehicle</code> <code>riad</code> <code>studio</code> <code>tower</code> <code>townhome</code> <code>villa</code> <code>yacht</code></td>
 </tr>
 </tbody></table>
 <h1 id='reservations'>Reservations</h1><h2 id='list-reservations'>List Reservations</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations"</span>
@@ -794,11 +793,11 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>_limit (optional)</td>
+<td>limit (optional)</td>
 <td>Maximum number of reservations to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>_offset (optional)</td>
+<td>offset (optional)</td>
 <td>Number of reservations to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 <tr>
@@ -806,14 +805,13 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The start of a date range to query for reservations that check in after this date</td>
 </tr>
 <tr>
-<td>end_date (optional, but required if start_date present)</td>
+<td>end_date (required if start_date present)</td>
 <td>The end of a date range to query for reservations that check out before this date</td>
 </tr>
-<tr>
-<td>addon_fee_ids (optional)</td>
-<td>Id&#39;s of fees that are addons, can be found from unit rates</td>
-</tr>
 </tbody></table>
+
+<p>Example with all optional parameters 
+<code>/api/public/990/reservations?limit=50&amp;offset=50&amp;start_date=2023-01-01&amp;end_date=2023-05-30</code></p>
 <h2 id='list-reservations-by-id'>List Reservations By Id</h2><pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'https://staging.getdirect.io/api/public/990/list_reservations_by_id'</span> <span class="se">\</span>
 --header <span class="s1">'Authorization: Token test_api_key'</span> <span class="se">\</span>
 --header <span class="s1">'Accept: application/vnd.direct.v1'</span> <span class="se">\</span>
@@ -928,6 +926,8 @@ You must replace <code>your_api_key</code> with your personal API key.
 <p>In order to create a new reservation you must first generate a Stripe customer and establish a setup intent using your Stripe API keys. Once a customer has been created, a setup intent established, and a payment method attached you can include the generated stripe_customer_id to Direct when calling the new reservation endpoint.</p>
 
 <p>Stripe provides a thorough walk-through of how to setup your payment page with the following guide: <a href="https://stripe.com/docs/payments/accept-a-payment?platform=web">Accept a Payment</a></p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST /reservations</code></p>
 <h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -956,8 +956,6 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The client side generated ID of the Stripe customer.</td>
 </tr>
 </tbody></table>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST /reservations</code></p>
 <h2 id='get-reservation'>Get Reservation</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -1390,12 +1388,12 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>booking_code</td>
-<td>The booking code of the stay the customer is reviewing <strong>REQUIRED</strong></td>
+<td>booking_code(required)</td>
+<td>The booking code of the stay the customer is reviewing</td>
 </tr>
 <tr>
-<td>rating</td>
-<td>The rating the customer gave. Must be between 0 and 5 <strong>REQUIRED</strong></td>
+<td>rating(required)</td>
+<td>The rating the customer gave. Must be between 0 and 5</td>
 </tr>
 <tr>
 <td>title</td>
@@ -1448,14 +1446,17 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>_limit (optional)</td>
+<td>limit (optional)</td>
 <td>Maximum number of reviews to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>_offset (optional)</td>
+<td>offset (optional)</td>
 <td>Number of reviews to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
+
+<p>Example with all optional parameters 
+<code>/api/public/990/reviews?limit=50&amp;offset=50</code></p>
 <h2 id='get-a-specific-review'>Get a Specific Review</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reviews/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -1997,38 +1998,41 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>_limit (required)</td>
+<td>limit (required)</td>
 <td>Maximum number of reviews to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>_booking_range (required)</td>
+<td>booking_range (required)</td>
 <td>A stringified json object of the booking range days.</td>
 </tr>
 <tr>
-<td>_brand_id (required)</td>
+<td>brand_id (required)</td>
 <td>The unique ID of the Direct brand.</td>
 </tr>
 <tr>
-<td>_amenities (optional)</td>
+<td>amenities (optional)</td>
 <td>A stringified json object of amenities to filter by.</td>
 </tr>
 <tr>
-<td>_num_bathrooms (optional)</td>
+<td>num_bathrooms (optional)</td>
 <td>Filter by listings with a minimum number of bathrooms.</td>
 </tr>
 <tr>
-<td>_num_bedrooms (optional)</td>
+<td>num_bedrooms (optional)</td>
 <td>Filter by listings with a minimum number of bedrooms.</td>
 </tr>
 <tr>
-<td>_num_guests (optional)</td>
+<td>num_guests (optional)</td>
 <td>Filter by listings with a minimum number of guests.</td>
 </tr>
 <tr>
-<td>_page (optional)</td>
+<td>page (optional)</td>
 <td>Set the page of results returned.</td>
 </tr>
 </tbody></table>
+
+<p>Example with all optional parameters 
+<code>/api/public/990/search?limit=50&amp;booking_range=%5B%7B%22key%22%3A%2223-04-2021%22%2C%22day%22%3A5%7D%2C%7B%22key%22%3A%2224-04-2021%22%2C%22day%22%3A6%7D%2C%7B%22key%22%3A%2225-04-2021%22%2C%22day%22%3A0%7D%2C%7B%22key%22%3A%2226-04-2021%22%2C%22day%22%3A1%7D%5D&amp;num_bathrooms=1&amp;num_bedrooms=2&amp;num_guests=3&amp;page=1&amp;brand_id=100030000048&amp;amenities=%7B%22Property%22%3A%5B%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_FRONT%22%2C%22label%22%3A%22Beachfront%22%7D%2C%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_VIEW%22%2C%22label%22%3A%22Beach%20view%22%7D%5D%2C%22Unit%22%3A%5B%5D%7D</code></p>
 <h1 id='statements'>Statements</h1><h2 id='get-all-statements'>Get All Statements</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/statements"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -2089,14 +2093,17 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>_limit (optional)</td>
+<td>limit (optional)</td>
 <td>Maximum number of statements to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>_offset (optional)</td>
+<td>offset (optional)</td>
 <td>Number of statements to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
+
+<p>Example with all optional parameters 
+<code>/api/public/990/statements?limit=50&amp;offset=50</code></p>
 <h2 id='get-a-specific-statement'>Get a Specific Statement</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/statements/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -2613,14 +2620,17 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>_limit (optional)</td>
+<td>limit (optional)</td>
 <td>Maximum number of transactions to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>_offset (optional)</td>
+<td>offset (optional)</td>
 <td>Number of transactions to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
+
+<p>Example with all optional parameters 
+<code>/api/public/990/transactions?limit=50&amp;offset=50</code></p>
 <h1 id='units'>Units</h1><h2 id='get-promotions'>Get Promotions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/promotions"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -3031,6 +3041,9 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The number of pets (optional, default to 0)</td>
 </tr>
 </tbody></table>
+
+<p>Example with all parameters 
+<code>/api/public/990/properties/45units/87/quotes?check_in=2023-05-01&amp;check_out=2023-05-30&amp;adults=2&amp;children=1&amp;pets=1</code></p>
 <h2 id='update-pricing'>Update Pricing</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/990/properties/92/units/92/pricing"</span>
 -d <span class="s1">'{"pricing_array":
       [
