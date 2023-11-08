@@ -440,7 +440,7 @@ curl <span class="s2">"api_endpoint_here"</span>
 
 <p>Direct expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code>Authorization: your_api_key</code></p>
+<p><code>Authorization: Token your_api_key</code></p>
 
 <p><code>Accept: application/vnd.direct.v1</code></p>
 
@@ -513,17 +513,17 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>limit (optional)</td>
+<td>_limit (optional)</td>
 <td>Maximum number of promotions to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>offset (optional)</td>
+<td>_offset (optional)</td>
 <td>Number of promotions to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
 
 <p>Example with all optional parameters 
-<code>/api/public/990/promotions?limit=50&amp;offset=50</code></p>
+<code>/api/public/990/promotions?_limit=50&amp;_offset=50</code></p>
 <h2 id='get-a-specific-promotion'>Get a Specific Promotion</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/promotions/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -603,11 +603,11 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>limit (optional)</td>
+<td>_limit (optional)</td>
 <td>Maximum number of properties to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>offset (optional)</td>
+<td>_offset (optional)</td>
 <td>Number of properties to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 <tr>
@@ -617,7 +617,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tbody></table>
 
 <p>Example with all optional parameters 
-<code>/api/public/990/properties?limit=50&amp;offset=50&amp;role=housekeeping</code></p>
+<code>/api/public/990/properties?_limit=50&amp;_offset=50&amp;role=housekeeping</code></p>
 <h2 id='get-a-specific-property'>Get a Specific Property</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -793,11 +793,11 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>limit (optional)</td>
+<td>_limit (optional)</td>
 <td>Maximum number of reservations to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>offset (optional)</td>
+<td>_offset (optional)</td>
 <td>Number of reservations to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 <tr>
@@ -811,7 +811,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tbody></table>
 
 <p>Example with all optional parameters 
-<code>/api/public/990/reservations?limit=50&amp;offset=50&amp;start_date=2023-01-01&amp;end_date=2023-05-30</code></p>
+<code>/api/public/990/reservations?_limit=50&amp;_offset=50&amp;start_date=2023-01-01&amp;end_date=2023-05-30</code></p>
 <h2 id='list-reservations-by-id'>List Reservations By Id</h2><pre class="highlight shell tab-shell"><code>curl --location --request GET <span class="s1">'https://staging.getdirect.io/api/public/990/list_reservations_by_id'</span> <span class="se">\</span>
 --header <span class="s1">'Authorization: Token test_api_key'</span> <span class="se">\</span>
 --header <span class="s1">'Accept: application/vnd.direct.v1'</span> <span class="se">\</span>
@@ -1446,17 +1446,17 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>limit (optional)</td>
+<td>_limit (optional)</td>
 <td>Maximum number of reviews to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>offset (optional)</td>
+<td>_offset (optional)</td>
 <td>Number of reviews to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
 
 <p>Example with all optional parameters 
-<code>/api/public/990/reviews?limit=50&amp;offset=50</code></p>
+<code>/api/public/990/reviews?_limit=50&amp;_offset=50</code></p>
 <h2 id='get-a-specific-review'>Get a Specific Review</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reviews/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -1998,7 +1998,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>limit (required)</td>
+<td>_limit (required)</td>
 <td>Maximum number of reviews to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
@@ -2032,7 +2032,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tbody></table>
 
 <p>Example with all optional parameters 
-<code>/api/public/990/search?limit=50&amp;booking_range=%5B%7B%22key%22%3A%2223-04-2021%22%2C%22day%22%3A5%7D%2C%7B%22key%22%3A%2224-04-2021%22%2C%22day%22%3A6%7D%2C%7B%22key%22%3A%2225-04-2021%22%2C%22day%22%3A0%7D%2C%7B%22key%22%3A%2226-04-2021%22%2C%22day%22%3A1%7D%5D&amp;num_bathrooms=1&amp;num_bedrooms=2&amp;num_guests=3&amp;page=1&amp;brand_id=100030000048&amp;amenities=%7B%22Property%22%3A%5B%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_FRONT%22%2C%22label%22%3A%22Beachfront%22%7D%2C%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_VIEW%22%2C%22label%22%3A%22Beach%20view%22%7D%5D%2C%22Unit%22%3A%5B%5D%7D</code></p>
+<code>/api/public/990/search?_limit=50&amp;booking_range=%5B%7B%22key%22%3A%2223-04-2021%22%2C%22day%22%3A5%7D%2C%7B%22key%22%3A%2224-04-2021%22%2C%22day%22%3A6%7D%2C%7B%22key%22%3A%2225-04-2021%22%2C%22day%22%3A0%7D%2C%7B%22key%22%3A%2226-04-2021%22%2C%22day%22%3A1%7D%5D&amp;num_bathrooms=1&amp;num_bedrooms=2&amp;num_guests=3&amp;page=1&amp;brand_id=100030000048&amp;amenities=%7B%22Property%22%3A%5B%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_FRONT%22%2C%22label%22%3A%22Beachfront%22%7D%2C%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_VIEW%22%2C%22label%22%3A%22Beach%20view%22%7D%5D%2C%22Unit%22%3A%5B%5D%7D</code></p>
 <h1 id='statements'>Statements</h1><h2 id='get-all-statements'>Get All Statements</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/statements"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -2093,17 +2093,17 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>limit (optional)</td>
+<td>_limit (optional)</td>
 <td>Maximum number of statements to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>offset (optional)</td>
+<td>_offset (optional)</td>
 <td>Number of statements to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
 
 <p>Example with all optional parameters 
-<code>/api/public/990/statements?limit=50&amp;offset=50</code></p>
+<code>/api/public/990/statements?_limit=50&amp;_offset=50</code></p>
 <h2 id='get-a-specific-statement'>Get a Specific Statement</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/statements/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -2620,17 +2620,17 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>limit (optional)</td>
+<td>_limit (optional)</td>
 <td>Maximum number of transactions to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
-<td>offset (optional)</td>
+<td>_offset (optional)</td>
 <td>Number of transactions to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
 
 <p>Example with all optional parameters 
-<code>/api/public/990/transactions?limit=50&amp;offset=50</code></p>
+<code>/api/public/990/transactions?_limit=50&amp;offset=50</code></p>
 <h1 id='units'>Units</h1><h2 id='get-promotions'>Get Promotions</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/promotions"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
