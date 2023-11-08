@@ -110,11 +110,11 @@ This endpoint retrieves all promotions connected to your organization.
 
 Parameter | Description
 --------- | -----------
-limit (optional) | Maximum number of promotions to return, up to 100. Default is 20.
-offset (optional) | Number of promotions to skip over, where the ordering is consistent but unspecified.
+_limit (optional) | Maximum number of promotions to return, up to 100. Default is 20.
+_offset (optional) | Number of promotions to skip over, where the ordering is consistent but unspecified.
 
 Example with all optional parameters 
-`/api/public/990/promotions?limit=50&offset=50`
+`/api/public/990/promotions?_limit=50&_offset=50`
 
 ## Get a Specific Promotion
 
@@ -203,12 +203,12 @@ This endpoint retrieves all properties connected to your organization.
 
 Parameter | Description
 --------- | -----------
-limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
-offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
+_limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
+_offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
 role (optional) | Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping, maintenance, and reservationist 
 
 Example with all optional parameters 
-`/api/public/990/properties?limit=50&offset=50&role=housekeeping`
+`/api/public/990/properties?_limit=50&_offset=50&role=housekeeping`
 
 ## Get a Specific Property
 
@@ -392,13 +392,13 @@ This endpoint retrieves all reservations connected to your organization.
 
 Parameter | Description
 --------- | -----------
-limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
-offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
+_limit (optional) | Maximum number of reservations to return, up to 100. Default is 20.
+_offset (optional) | Number of reservations to skip over, where the ordering is consistent but unspecified.
 start_date (optional) | The start of a date range to query for reservations that check in after this date
 end_date (required if start_date present) | The end of a date range to query for reservations that check out before this date
 
 Example with all optional parameters 
-`/api/public/990/reservations?limit=50&offset=50&start_date=2023-01-01&end_date=2023-05-30`
+`/api/public/990/reservations?_limit=50&_offset=50&start_date=2023-01-01&end_date=2023-05-30`
 
 ## List Reservations By Id
 
@@ -1023,11 +1023,11 @@ This endpoint retrieves all reviews connected to your organization.
 
 Parameter | Description
 --------- | -----------
-limit (optional) | Maximum number of reviews to return, up to 100. Default is 20.
-offset (optional) | Number of reviews to skip over, where the ordering is consistent but unspecified.
+_limit (optional) | Maximum number of reviews to return, up to 100. Default is 20.
+_offset (optional) | Number of reviews to skip over, where the ordering is consistent but unspecified.
 
 Example with all optional parameters 
-`/api/public/990/reviews?limit=50&offset=50`
+`/api/public/990/reviews?_limit=50&_offset=50`
 
 ## Get a Specific Review
 
@@ -1578,7 +1578,7 @@ This endpoint retrieves all listings connected to your organization.
 
 Parameter | Description
 --------- | -----------
-limit (required) | Maximum number of reviews to return, up to 100. Default is 20.
+_limit (required) | Maximum number of reviews to return, up to 100. Default is 20.
 booking_range (required) | A stringified json object of the booking range days.
 brand_id (required) | The unique ID of the Direct brand.
 amenities (optional) | A stringified json object of amenities to filter by.
@@ -1588,7 +1588,7 @@ num_guests (optional) | Filter by listings with a minimum number of guests.
 page (optional) | Set the page of results returned.
 
 Example with all optional parameters 
-`/api/public/990/search?limit=50&booking_range=%5B%7B%22key%22%3A%2223-04-2021%22%2C%22day%22%3A5%7D%2C%7B%22key%22%3A%2224-04-2021%22%2C%22day%22%3A6%7D%2C%7B%22key%22%3A%2225-04-2021%22%2C%22day%22%3A0%7D%2C%7B%22key%22%3A%2226-04-2021%22%2C%22day%22%3A1%7D%5D&num_bathrooms=1&num_bedrooms=2&num_guests=3&page=1&brand_id=100030000048&amenities=%7B%22Property%22%3A%5B%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_FRONT%22%2C%22label%22%3A%22Beachfront%22%7D%2C%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_VIEW%22%2C%22label%22%3A%22Beach%20view%22%7D%5D%2C%22Unit%22%3A%5B%5D%7D`
+`/api/public/990/search?_limit=50&booking_range=%5B%7B%22key%22%3A%2223-04-2021%22%2C%22day%22%3A5%7D%2C%7B%22key%22%3A%2224-04-2021%22%2C%22day%22%3A6%7D%2C%7B%22key%22%3A%2225-04-2021%22%2C%22day%22%3A0%7D%2C%7B%22key%22%3A%2226-04-2021%22%2C%22day%22%3A1%7D%5D&num_bathrooms=1&num_bedrooms=2&num_guests=3&page=1&brand_id=100030000048&amenities=%7B%22Property%22%3A%5B%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_FRONT%22%2C%22label%22%3A%22Beachfront%22%7D%2C%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_VIEW%22%2C%22label%22%3A%22Beach%20view%22%7D%5D%2C%22Unit%22%3A%5B%5D%7D`
 
 # Statements
 
@@ -1656,11 +1656,11 @@ This endpoint retrieves all statements connected to your organization.
 
 Parameter | Description
 --------- | -----------
-limit (optional) | Maximum number of statements to return, up to 100. Default is 20.
-offset (optional) | Number of statements to skip over, where the ordering is consistent but unspecified.
+_limit (optional) | Maximum number of statements to return, up to 100. Default is 20.
+_offset (optional) | Number of statements to skip over, where the ordering is consistent but unspecified.
 
 Example with all optional parameters 
-`/api/public/990/statements?limit=50&offset=50`
+`/api/public/990/statements?_limit=50&_offset=50`
 
 ## Get a Specific Statement
 
@@ -2185,11 +2185,11 @@ This endpoint retrieves all transactions connected to your organization.
 
 Parameter | Description
 --------- | -----------
-limit (optional) | Maximum number of transactions to return, up to 100. Default is 20.
-offset (optional) | Number of transactions to skip over, where the ordering is consistent but unspecified.
+_limit (optional) | Maximum number of transactions to return, up to 100. Default is 20.
+_offset (optional) | Number of transactions to skip over, where the ordering is consistent but unspecified.
 
 Example with all optional parameters 
-`/api/public/990/transactions?limit=50&offset=50`
+`/api/public/990/transactions?_limit=50&offset=50`
 
 # Units
 
