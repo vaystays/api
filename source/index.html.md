@@ -40,7 +40,7 @@ Direct uses API keys to allow access to the API. You can register a new Direct A
 
 Direct expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: your_api_key`
+`Authorization: Token your_api_key`
 
 `Accept: application/vnd.direct.v1`
 
