@@ -3502,13 +3502,13 @@ This endpoint retrieves a particular vehicle's reviews.
 
 ### HTTP Request
 
-`GET /vehicels/<ID>/reviews`
+`GET /vehicles/<ID>/reviews`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the property to retrieve
+ID | The ID of the vehicle to retrieve
 
 # Webhooks
 
