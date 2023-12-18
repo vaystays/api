@@ -15,7 +15,7 @@ search: true
 
 # Introduction
 
-Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right. 
+Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, vehicles, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right. 
 
 Staging: `https://staging.getdirect.io/api/public/<ORG_ID>`
 
@@ -2662,6 +2662,853 @@ availability_array | An array of availability objects to process
 date | The date you wish to update ("YYYY-MM-DD")
 min_nights | The minimum nights to set on the specified date
 reason | The reason for the updated
+
+# Vehicles
+
+## Getting Started
+
+Please refer to the introduction to get started with interacting with your Vehicles API through Direct.
+
+## Get All Vehicles
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/vehicles?_limit=5&_offset=10"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "vehicles": [
+        {
+            "id": 2057,
+            "name": "2020 Airstream RV Bambi 22FB",
+            "unit_code": null,
+            "updated_at": "2023-11-01T16:50:13.447-05:00",
+            "featured_image": {
+                "id": 6269,
+                "image": {
+                    "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=209688bca8a3124c549deaf603192856af1bb81d91cdd6341f929172b10958bf",
+                    "tiny": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/tiny_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=2d714286814b06cc4f27f6a2279aa0633cf0c98b2f49d4bec21ab4cb7117a597"
+                    },
+                    "small": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/small_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a4c921e66d5547ad6c7ce13e8426c38af82109da0801c93b69c33b411ca0ae76"
+                    },
+                    "medium": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/medium_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b81a8c750f7fa4b2990a448cefcda97dad8f3dc3c9d82e941959979f331f3ffd"
+                    },
+                    "large": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/large_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=4a865fc6ab36302709d5e16408f4c86576d9e34aa3db63a3851b29420cdaad45"
+                    },
+                    "xlarge": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/xlarge_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=ed47579cc567b02e0bcbf4dc647bb8848490014f2e461d3eeeedfeec3fadd541"
+                    }
+                },
+                "image_processing": false,
+                "label": null,
+                "order": 0,
+                "height": 417,
+                "width": 626,
+                "vehicle_id": 2057,
+                "organization_id": 3,
+                "created_at": "2023-11-01T16:50:14.155-05:00",
+                "updated_at": "2023-11-01T16:50:42.243-05:00",
+                "external_id": 1839945
+            }
+        },
+        {
+            "id": 2058,
+            "name": "2020 Airstream RV Bambi 22FB",
+            "unit_code": null,
+            "updated_at": "2023-11-01T16:50:19.048-05:00",
+            "featured_image": null
+        },
+        {
+            "id": 2059,
+            "name": "2019 Airstream RV Flying Cloud 23CB Bunk",
+            "unit_code": null,
+            "updated_at": "2023-11-01T16:50:53.016-05:00",
+            "featured_image": {
+                "id": 6275,
+                "image": {
+                    "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9829d8bb6fa3371c4af8cec8363bf77e7608a3e369b137c6b429a0d858d75e35",
+                    "tiny": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/tiny_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a0ecfe8c33f2d0e50543949f106d44c44829bee335faa959977e67820844b630"
+                    },
+                    "small": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/small_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=189a7fbc3e121aed6c4b410121fae1ba98e6373fe1d87e7c677ffc40418fa1cf"
+                    },
+                    "medium": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/medium_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a0943c208b33fcc83b4c8340bba2f6cc398e91be3db67187446f33c585abc231"
+                    },
+                    "large": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/large_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&X-Amz-Date=20231127T185234Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=4682198de1b22ff9bc08c60e7e33b3e03cafef52d44b1ecfc3b96041854e172f"
+                    },
+                    "xlarge": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/xlarge_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&X-Amz-Date=20231127T185235Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=f090ddde7e3823ed6b2fc779ec7f90fecaf97322baff21cfac97a06c44af74f6"
+                    }
+                },
+                "image_processing": false,
+                "label": null,
+                "order": 0,
+                "height": 2500,
+                "width": 3335,
+                "vehicle_id": 2059,
+                "organization_id": 3,
+                "created_at": "2023-11-01T16:50:54.866-05:00",
+                "updated_at": "2023-11-01T16:51:24.738-05:00",
+                "external_id": 1839903
+            }
+        },
+        {
+            "id": 2060,
+            "name": "2020 Airstream RV Bambi 22FB",
+            "unit_code": null,
+            "updated_at": "2023-11-01T16:50:52.955-05:00",
+            "featured_image": {
+                "id": 6274,
+                "image": {
+                    "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&X-Amz-Date=20231127T185235Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=794ed54562065d99e214aaa37652432a199d1e48fb5b6e711a9cf32fc7fa9b8c",
+                    "tiny": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/tiny_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&X-Amz-Date=20231127T185235Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=deed07d4e79dd08c59eab68112ed5295daf836d2f40479e315624e47ef31dd8f"
+                    },
+                    "small": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/small_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&X-Amz-Date=20231127T185235Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=21b6cfc2d656b4ca4965b720f475dc9fd1b14661bf110d3e7bffab94574addaa"
+                    },
+                    "medium": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/medium_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&X-Amz-Date=20231127T185235Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=4c35c8c46d427de3b74f9a50ab91bc147d23f40e1757042c7b5c80039ff3ebdf"
+                    },
+                    "large": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/large_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&X-Amz-Date=20231127T185235Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=72b70b369684311d4a6b76358e0bfde3a2e946b18a74d838f250e82a9f5e9409"
+                    },
+                    "xlarge": {
+                        "url": "https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/xlarge_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&X-Amz-Date=20231127T185235Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=27999f2c85e04a0c493e6924959aa364d4485cfc9dc16fa3bea288b2799beaf9"
+                    }
+                },
+                "image_processing": false,
+                "label": null,
+                "order": 0,
+                "height": 791,
+                "width": 1024,
+                "vehicle_id": 2060,
+                "organization_id": 3,
+                "created_at": "2023-11-01T16:50:54.487-05:00",
+                "updated_at": "2023-11-01T16:51:07.785-05:00",
+                "external_id": 1839859
+            }
+        },
+        {
+            "id": 2061,
+            "name": "2020 Airstream RV Bambi 22FB",
+            "unit_code": null,
+            "updated_at": "2023-11-01T16:51:03.570-05:00",
+            "featured_image": null
+        }
+    ],
+    "total_count": 32
+}
+```
+
+This endpoint retrieves all vehicles connected to your organization.
+
+### HTTP Request
+
+`GET /vehicles`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
+_offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
+
+Example with all optional parameters 
+`/api/public/990/properties?_limit=50&_offset=5`
+
+## Get a Specific Vehicle
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/vehicles/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "vehicle": {
+        "id": 2072,
+        "organization_id": 3,
+        "created_at": "2023-11-01T16:51:49.674-05:00",
+        "updated_at": "2023-11-01T16:51:50.046-05:00",
+        "name": "2021 Thor Motor Coach ACE 30.3",
+        "active": true,
+        "vin_number": "19UUA8F25DA606447",
+        "show_manager_info": false,
+        "vehicle_type": "class_a_motorhome",
+        "headline": "This is a Thor RV motorhome",
+        "description": "Lorem ipsum florum bop flergalbergland durgle glob Lorem ipsum florum bop flergalbergland durgle glob nLorem ipsum florum bop flergalbergland durgle glob Lorem ipsum florum bop flergalbergland durgle glob Lorem ipsum florum bop flergalbergland durgle glob Lorem ipsum florum bop flergalbergland durgle glob",
+        "transmission_type": "automatic",
+        "cruise_control": true,
+        "number_of_seatbelts": 4,
+        "fuel_type": "gas",
+        "dual_battery": true,
+        "electric_service": 240,
+        "fuel_consumption": 10.0,
+        "fuel_capacity": 44,
+        "gross_weight": 2000.0,
+        "dry_weight": 1200.0,
+        "cargo_weight": 800.0,
+        "num_sleep_in_beds": 5,
+        "stationary": false,
+        "pets_allowed": false,
+        "smoking_allowed": false,
+        "wheelchair_accessible": false,
+        "minimum_age_to_rent": 25,
+        "electric_generator": true,
+        "navigation": false,
+        "kitchen_sink": false,
+        "rear_vision_camera": false,
+        "seat_belts": false,
+        "hot_and_cold_water_supply": false,
+        "slide_out": false,
+        "cd_player": false,
+        "dvd_player": false,
+        "games": false,
+        "satellite_cable_television": false,
+        "television": true,
+        "in_dash_air_conditioning": false,
+        "dryer": false,
+        "hair_dryer": false,
+        "heating": false,
+        "linens": false,
+        "towels": false,
+        "washer": false,
+        "essentials": false,
+        "dining_area": false,
+        "coffee_maker": false,
+        "utensils": false,
+        "dishwasher": false,
+        "microwave": true,
+        "oven": false,
+        "refrigerator": false,
+        "stove": false,
+        "toaster": false,
+        "first_aid_kit": false,
+        "fire_extinguisher": true,
+        "kayak_canoe": false,
+        "trailer_connector_type": null,
+        "trailer_connector_adapter_provided": null,
+        "hitch_provided": null,
+        "anti_sway_device_provided": null,
+        "trailer_ball_size": null,
+        "engine": null,
+        "power_steering": true,
+        "manufacturer": "Thor Motor Coach",
+        "make": "ACE",
+        "model": "30.3",
+        "external_id": "1569034",
+        "shower": false,
+        "toilet": false,
+        "bathroom_sink": false,
+        "fresh_water_tank": 15.0,
+        "hitch_weight": null,
+        "length": 30.3,
+        "height": 15.0,
+        "year": 2021,
+        "slides": 0,
+        "stated_value": "75000",
+        "stated_value_locked": true,
+        "portfolio_id": null,
+        "subportfolio_id": null,
+        "unit_group_id": null,
+        "roof_air_conditioning": false,
+        "ipod_docking_station": true,
+        "am_fm_radio": true,
+        "weight_distributing": null,
+        "stationary_description": "",
+        "delivery_base_fee": null,
+        "delivery_base_miles": null,
+        "delivery_overage_rate": null,
+        "delivery_overage_mile_limit": null,
+        "delivery": false,
+        "delivery_base_id": null,
+        "delivery_overage_id": null,
+        "unit_code": null,
+        "allow_sd_waiver": false,
+        "num_bedrooms": 0,
+        "num_living_rooms": 0,
+        "amenities_by_category": {
+            "Entertainment": [
+                {
+                    "key": "dvd_player",
+                    "value": false,
+                    "category": "Entertainment",
+                    "label": "Dvd Player"
+                },
+                {
+                    "key": "games",
+                    "value": false,
+                    "category": "Entertainment",
+                    "label": "Games"
+                },
+                {
+                    "key": "satellite_cable_television",
+                    "value": false,
+                    "category": "Entertainment",
+                    "label": "Satellite Cable Television"
+                },
+                {
+                    "key": "television",
+                    "value": true,
+                    "category": "Entertainment",
+                    "label": "Television"
+                },
+                {
+                    "key": "cd_player",
+                    "value": false,
+                    "category": "Entertainment",
+                    "label": "Cd Player"
+                },
+                {
+                    "key": "ipod_docking_station",
+                    "value": true,
+                    "category": "Entertainment",
+                    "label": "Ipod Docking Station"
+                },
+                {
+                    "key": "am_fm_radio",
+                    "value": true,
+                    "category": "Entertainment",
+                    "label": "Am Fm Radio"
+                }
+            ],
+            "Features": [
+                {
+                    "key": "in_dash_air_conditioning",
+                    "value": false,
+                    "category": "Features",
+                    "label": "In Dash Air Conditioning"
+                },
+                {
+                    "key": "dryer",
+                    "value": false,
+                    "category": "Features",
+                    "label": "Dryer"
+                },
+                {
+                    "key": "hair_dryer",
+                    "value": false,
+                    "category": "Features",
+                    "label": "Hair Dryer"
+                },
+                {
+                    "key": "heating",
+                    "value": false,
+                    "category": "Features",
+                    "label": "Heating"
+                },
+                {
+                    "key": "linens",
+                    "value": false,
+                    "category": "Features",
+                    "label": "Linens"
+                },
+                {
+                    "key": "towels",
+                    "value": false,
+                    "category": "Features",
+                    "label": "Towels"
+                },
+                {
+                    "key": "washer",
+                    "value": false,
+                    "category": "Features",
+                    "label": "Washer"
+                },
+                {
+                    "key": "essentials",
+                    "value": false,
+                    "category": "Features",
+                    "label": "Essentials"
+                },
+                {
+                    "key": "roof_air_conditioning",
+                    "value": false,
+                    "category": "Features",
+                    "label": "Roof Air Conditioning"
+                }
+            ],
+            "Dining": [
+                {
+                    "key": "dining_area",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Dining Area"
+                },
+                {
+                    "key": "coffee_maker",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Coffee Maker"
+                },
+                {
+                    "key": "utensils",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Utensils"
+                },
+                {
+                    "key": "dishwasher",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Dishwasher"
+                },
+                {
+                    "key": "microwave",
+                    "value": true,
+                    "category": "Dining",
+                    "label": "Microwave"
+                },
+                {
+                    "key": "oven",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Oven"
+                },
+                {
+                    "key": "refrigerator",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Refrigerator"
+                },
+                {
+                    "key": "stove",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Stove"
+                },
+                {
+                    "key": "toaster",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Toaster"
+                },
+                {
+                    "key": "kitchen_sink",
+                    "value": false,
+                    "category": "Dining",
+                    "label": "Kitchen Sink"
+                }
+            ],
+            "Bathroom": [
+                {
+                    "key": "shower",
+                    "value": false,
+                    "category": "Bathroom",
+                    "label": "Shower"
+                },
+                {
+                    "key": "toilet",
+                    "value": false,
+                    "category": "Bathroom",
+                    "label": "Toilet"
+                },
+                {
+                    "key": "bathroom_sink",
+                    "value": false,
+                    "category": "Bathroom",
+                    "label": "Bathroom Sink"
+                }
+            ],
+            "Safety": [
+                {
+                    "key": "first_aid_kit",
+                    "value": false,
+                    "category": "Safety",
+                    "label": "First Aid Kit"
+                },
+                {
+                    "key": "fire_extinguisher",
+                    "value": true,
+                    "category": "Safety",
+                    "label": "Fire Extinguisher"
+                }
+            ],
+            "Outdoors": [
+                {
+                    "key": "kayak_canoe",
+                    "value": false,
+                    "category": "Outdoors",
+                    "label": "Kayak Canoe"
+                }
+            ],
+            "Other": [
+                {
+                    "key": "electric_generator",
+                    "value": true,
+                    "category": "Other",
+                    "label": "Electric Generator"
+                },
+                {
+                    "key": "navigation",
+                    "value": false,
+                    "category": "Other",
+                    "label": "Navigation"
+                },
+                {
+                    "key": "rear_vision_camera",
+                    "value": false,
+                    "category": "Other",
+                    "label": "Rear Vision Camera"
+                },
+                {
+                    "key": "seat_belts",
+                    "value": false,
+                    "category": "Other",
+                    "label": "Seat Belts"
+                },
+                {
+                    "key": "slide_out",
+                    "value": false,
+                    "category": "Other",
+                    "label": "Slide Out"
+                }
+            ],
+            "Temperature Control": [
+                {
+                    "key": "hot_and_cold_water_supply",
+                    "value": false,
+                    "category": "Temperature Control",
+                    "label": "Hot And Cold Water Supply"
+                }
+            ]
+        },
+        "form_amenities": {
+            "electric_generator": true,
+            "navigation": false,
+            "kitchen_sink": false,
+            "rear_vision_camera": false,
+            "seat_belts": false,
+            "hot_and_cold_water_supply": false,
+            "slide_out": false,
+            "cd_player": false,
+            "dvd_player": false,
+            "games": false,
+            "satellite_cable_television": false,
+            "television": true,
+            "in_dash_air_conditioning": false,
+            "dryer": false,
+            "hair_dryer": false,
+            "heating": false,
+            "linens": false,
+            "towels": false,
+            "washer": false,
+            "essentials": false,
+            "dining_area": false,
+            "coffee_maker": false,
+            "utensils": false,
+            "dishwasher": false,
+            "microwave": true,
+            "oven": false,
+            "refrigerator": false,
+            "stove": false,
+            "toaster": false,
+            "first_aid_kit": false,
+            "fire_extinguisher": true,
+            "kayak_canoe": false,
+            "shower": false,
+            "toilet": false,
+            "bathroom_sink": false,
+            "roof_air_conditioning": false,
+            "ipod_docking_station": true,
+            "am_fm_radio": true
+        },
+        "is_towable": false,
+        "total_num_beds": 0,
+        "num_bunks": 0,
+        "num_beds": 0,
+        "display_name": "2021 Thor Motor Coach ACE 30.3",
+        "rules": [],
+        "location": {
+            "id": 200000003166,
+            "adr_street": "1234 W 5678 S",
+            "adr_unit": null,
+            "adr_city": "Salt Lake City",
+            "adr_state": "UT",
+            "adr_country": null,
+            "adr_postal_code": "84100",
+            "geo_latitude": 40.7516666,
+            "geo_longitude": -111.91111,
+            "locationable_type": "Vehicle",
+            "locationable_id": 2072,
+            "created_at": "2023-11-01T16:51:49.965-05:00",
+            "updated_at": "2023-11-01T16:51:49.965-05:00",
+            "organization_id": 3,
+            "exact": false
+        },
+        "pricing": {
+            "id": 200000002759,
+            "default_nightly_weekday": "120.0",
+            "default_nightly_weekend": "150.0",
+            "discount_full_week": "0.0",
+            "discount_full_month": "0.0",
+            "pricing_calendar": {},
+            "unit_listing_id": null,
+            "created_at": "2023-11-01T16:51:49.777-05:00",
+            "updated_at": "2023-11-14T19:04:52.251-06:00",
+            "organization_id": 3,
+            "unit_id": null,
+            "additional_guest_amount_cents": 0,
+            "additional_guest_start": 1,
+            "vehicle_id": 2072
+        }
+    }
+}
+```
+
+This endpoint retrieves a specific vehicle.
+
+### HTTP Request
+
+`GET /vehicles/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the vehicle to retrieve
+
+## Get Availability
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/vehicles/<ID>/availability"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "availabilityOpen":"Y",
+   "availabilityRequest": "R",
+   "availabilityClosed":"N",
+   "stayIncrementDefault":"D",
+   "changeOverDefault":"C",
+   "availableUnitCountDefault":1,
+   "updated_at":"2018-12-11T23:56:42.917Z",
+   "default_stay_min":2,
+   "default_stay_max":30,
+   "default_prior_notify_min":1,
+   "dateRange":{
+      "beginDate":"2019-01-02",
+      "endDate":"2022-01-01"
+   },
+   "availabilityType":"YN...",
+   "changeOver":"CC...",
+   "maxStay":"30,30,...",
+   "minPriorNotify":"1,1,...",
+   "minStay":"5,5,...",
+   "stayIncrement":"DD..."
+}
+```
+
+This endpoint retrieves a particular vehicle's availability.
+
+### HTTP Request
+
+`GET /vehicles/<V_ID>/availability`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the vehicle to retrieve
+
+<aside class="notice">
+  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availabilityType</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
+</aside>
+
+### Availability Response Values
+
+Key | Values
+--- | ---
+defaultAvailability | Y (available), R (request) or N (not available)
+changeOver | C (any), I (check in), O (check out), or X (none)
+stayIncrement | D (day) or W (week)
+
+## Get Rates
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/vehicles/<ID>/rates"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "vehicle_id": 2081,
+    "currency": "USD",
+    "updated_at": "2023-11-15T01:04:52.251Z",
+    "default_nightly_weekend": "250.0",
+    "default_nightly_weekday": "199.0",
+    "tax_rate": 0.0,
+    "adj_tax": 0.0,
+    "max_night_with_tax_rate": 0,
+    "exclude_tax": false,
+    "tax_adjustable": false,
+    "discounts": [],
+    "fees": [
+        {
+            "id": 200000001313,
+            "name": "BURNING MAN FEE",
+            "description": null,
+            "refundable": true,
+            "included_in_base_rent": false,
+            "calculation_type": "flat",
+            "calculation_amount": "2500.0",
+            "taxable": true,
+            "is_addon": "true",
+            "frequency": "per_stay",
+            "quantity_fee": false,
+            "fee_quantity_max": null,
+            "active": true,
+            "los_ranges": []
+        }
+    ],
+    "usages": [
+        {
+            "id": 2831,
+            "name": "Mileage",
+            "usage_type": "Mileage",
+            "amount_free": 75,
+            "calculation_amount": 0.12
+        },
+        {
+            "id": 2834,
+            "name": "Generator",
+            "usage_type": "Generator",
+            "amount_free": 4,
+            "calculation_amount": 0.75
+        }
+    ],
+    "security_deposit": [
+        {
+            "id": 200000001496,
+            "calculation_type": "flat",
+            "calculation_amount": "250.0"
+        }
+    ],
+    "nightlyOverrides": [
+        {
+            "amount": 259.0,
+            "nights": [
+                {
+                    "min": "2023-12-12",
+                    "max": "2023-12-14"
+                },
+                {
+                    "min": "2023-12-17",
+                    "max": "2023-12-20"
+                }
+            ]
+        },
+        {
+            "amount": 390.0,
+            "nights": [
+                {
+                    "min": "2023-12-15",
+                    "max": "2023-12-16"
+                }
+            ]
+        }
+    ],
+    "paymentSchedule": [
+        {
+            "days": null,
+            "dueType": "AT_BOOKING",
+            "type": "percent",
+            "amount": 100
+        }
+    ]
+}
+```
+
+This endpoint retrieves a particular vehicle's rates.
+
+### HTTP Request
+
+`GET /vehicles/<ID>/rates`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the vehicle to retrieve
+
+<aside class="notice">
+  The <code>nightlyOverrides</code> block returns price variants for ranges of dates. Each item in the response contains an "amount" and "nights", which is an array of date ranges to which the amount should apply.
+</aside>
+
+## Get Reviews
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/vehicles/<ID>/reviews"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+   [
+    {
+        "id": 147,
+        "vehicle_id": 2072,
+        "booking_id": 200000004745,
+        "organization_id": 3,
+        "customer_id": 200000004671,
+        "title": "Review on 2021 Jayco Redhawk 31F from JESHRYU",
+        "body": "RV was super easy to drive and had a great weekend with our daughter at college.",
+        "name": "Robin",
+        "check_in_date": "2023-11-15T00:00:00.000Z",
+        "check_out_date": "2023-11-18T00:00:00.000Z",
+        "status": "recieved",
+        "accuracy_rating": 5,
+        "amenities_rating": 5,
+        "cleanliness_rating": 5,
+        "overall_rating": 5,
+        "pick_up_rating": 5,
+        "value_rating": 5,
+        "external_id": 158600,
+        "comment_external_id": null,
+        "comment": null,
+        "communication_rating": null,
+        "private_feedback": null,
+        "reviewed_date": null
+    },
+      { ... }
+   ]
+```
+
+This endpoint retrieves a particular vehicle's reviews.
+
+### HTTP Request
+
+`GET /vehicles/<ID>/reviews`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the vehicle to retrieve
 
 # Webhooks
 
