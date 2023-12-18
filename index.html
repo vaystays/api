@@ -3343,16 +3343,16 @@ You must replace <code>your_api_key</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>_limit (optional)</td>
-<td>Maximum number of properties to return, up to 100. Default is 20.</td>
+<td>Maximum number of vehicles to return, up to 100. Default is 20.</td>
 </tr>
 <tr>
 <td>_offset (optional)</td>
-<td>Number of properties to skip over, where the ordering is consistent but unspecified.</td>
+<td>Number of vehicles to skip over, where the ordering is consistent but unspecified.</td>
 </tr>
 </tbody></table>
 
 <p>Example with all optional parameters 
-<code>/api/public/990/properties?_limit=50&amp;_offset=5</code></p>
+<code>/api/public/990/vehicles?_limit=50&amp;_offset=5</code></p>
 <h2 id='get-a-specific-vehicle'>Get a Specific Vehicle</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/vehicles/&lt;ID&gt;"</span>
   -H <span class="s2">"Authorization: Token your_api_key"</span>
   -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
