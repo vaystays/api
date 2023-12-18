@@ -337,6 +337,29 @@
               </ul>
           </li>
           <li>
+            <a href="#vehicles" class="toc-h1 toc-link" data-title="Vehicles">Vehicles</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getting-started" class="toc-h2 toc-link" data-title="Getting Started">Getting Started</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-vehicles" class="toc-h2 toc-link" data-title="Get All Vehicles">Get All Vehicles</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-vehicle" class="toc-h2 toc-link" data-title="Get a Specific Vehicle">Get a Specific Vehicle</a>
+                  </li>
+                  <li>
+                    <a href="#get-availability-2" class="toc-h2 toc-link" data-title="Get Availability">Get Availability</a>
+                  </li>
+                  <li>
+                    <a href="#get-rates-2" class="toc-h2 toc-link" data-title="Get Rates">Get Rates</a>
+                  </li>
+                  <li>
+                    <a href="#get-reviews-2" class="toc-h2 toc-link" data-title="Get Reviews">Get Reviews</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
@@ -416,7 +439,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right. </p>
+<p>Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, vehicles, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right. </p>
 
 <p>Staging: <code>https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;</code></p>
 
@@ -3168,6 +3191,854 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>The reason for the updated</td>
 </tr>
 </tbody></table>
+<h1 id='vehicles'>Vehicles</h1><h2 id='getting-started'>Getting Started</h2>
+<p>Please refer to the introduction to get started with interacting with your Vehicles API through Direct.</p>
+<h2 id='get-all-vehicles'>Get All Vehicles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/vehicles?_limit=5&amp;_offset=10"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"vehicles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2057</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020 Airstream RV Bambi 22FB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:50:13.447-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"featured_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6269</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=209688bca8a3124c549deaf603192856af1bb81d91cdd6341f929172b10958bf"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"tiny"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/tiny_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2d714286814b06cc4f27f6a2279aa0633cf0c98b2f49d4bec21ab4cb7117a597"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"small"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/small_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a4c921e66d5547ad6c7ce13e8426c38af82109da0801c93b69c33b411ca0ae76"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/medium_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b81a8c750f7fa4b2990a448cefcda97dad8f3dc3c9d82e941959979f331f3ffd"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"large"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/large_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4a865fc6ab36302709d5e16408f4c86576d9e34aa3db63a3851b29420cdaad45"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"xlarge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2057/vehicle_image/image/6269/xlarge_06b37001b39b39f81421405cae431f7a.jfif?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ed47579cc567b02e0bcbf4dc647bb8848490014f2e461d3eeeedfeec3fadd541"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"image_processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">417</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">626</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2057</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:50:14.155-05:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:50:42.243-05:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1839945</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2058</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020 Airstream RV Bambi 22FB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:50:19.048-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"featured_image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2059</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019 Airstream RV Flying Cloud 23CB Bunk"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:50:53.016-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"featured_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6275</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9829d8bb6fa3371c4af8cec8363bf77e7608a3e369b137c6b429a0d858d75e35"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"tiny"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/tiny_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a0ecfe8c33f2d0e50543949f106d44c44829bee335faa959977e67820844b630"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"small"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/small_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=189a7fbc3e121aed6c4b410121fae1ba98e6373fe1d87e7c677ffc40418fa1cf"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/medium_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a0943c208b33fcc83b4c8340bba2f6cc398e91be3db67187446f33c585abc231"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"large"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/large_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185234Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4682198de1b22ff9bc08c60e7e33b3e03cafef52d44b1ecfc3b96041854e172f"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"xlarge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2059/vehicle_image/image/6275/xlarge_8d7b21811448b08b9e69f541c0d75c0d.jpg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185235Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f090ddde7e3823ed6b2fc779ec7f90fecaf97322baff21cfac97a06c44af74f6"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"image_processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">3335</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2059</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:50:54.866-05:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:51:24.738-05:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1839903</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2060</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020 Airstream RV Bambi 22FB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:50:52.955-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"featured_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6274</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185235Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=794ed54562065d99e214aaa37652432a199d1e48fb5b6e711a9cf32fc7fa9b8c"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"tiny"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/tiny_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185235Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=deed07d4e79dd08c59eab68112ed5295daf836d2f40479e315624e47ef31dd8f"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"small"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/small_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185235Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=21b6cfc2d656b4ca4965b720f475dc9fd1b14661bf110d3e7bffab94574addaa"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/medium_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185235Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4c35c8c46d427de3b74f9a50ab91bc147d23f40e1757042c7b5c80039ff3ebdf"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"large"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/large_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185235Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=72b70b369684311d4a6b76358e0bfde3a2e946b18a74d838f250e82a9f5e9409"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"xlarge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://versailles.s3.amazonaws.com/production/tenant/blackrock-beach-properties/vehicle/2060/vehicle_image/image/6274/xlarge_7ae43f41d01ae10bc472b9179e1a8e4d.jpeg?X-Amz-Expires=86400&amp;X-Amz-Date=20231127T185235Z&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAXTKU7IFB2NA7M2HR%2F20231127%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=27999f2c85e04a0c493e6924959aa364d4485cfc9dc16fa3bea288b2799beaf9"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"image_processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">791</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2060</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:50:54.487-05:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:51:07.785-05:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1839859</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2061</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020 Airstream RV Bambi 22FB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:51:03.570-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"featured_image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all vehicles connected to your organization.</p>
+<h3 id='http-request-24'>HTTP Request</h3>
+<p><code>GET /vehicles</code></p>
+<h3 id='url-parameters-21'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_limit (optional)</td>
+<td>Maximum number of properties to return, up to 100. Default is 20.</td>
+</tr>
+<tr>
+<td>_offset (optional)</td>
+<td>Number of properties to skip over, where the ordering is consistent but unspecified.</td>
+</tr>
+</tbody></table>
+
+<p>Example with all optional parameters 
+<code>/api/public/990/properties?_limit=50&amp;_offset=5</code></p>
+<h2 id='get-a-specific-vehicle'>Get a Specific Vehicle</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/vehicles/&lt;ID&gt;"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2072</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:51:49.674-05:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:51:50.046-05:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021 Thor Motor Coach ACE 30.3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vin_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19UUA8F25DA606447"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"show_manager_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vehicle_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"class_a_motorhome"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a Thor RV motorhome"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum florum bop flergalbergland durgle glob Lorem ipsum florum bop flergalbergland durgle glob nLorem ipsum florum bop flergalbergland durgle glob Lorem ipsum florum bop flergalbergland durgle glob Lorem ipsum florum bop flergalbergland durgle glob Lorem ipsum florum bop flergalbergland durgle glob"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"transmission_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"automatic"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cruise_control"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number_of_seatbelts"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fuel_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gas"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dual_battery"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"electric_service"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fuel_consumption"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fuel_capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gross_weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dry_weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">1200.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cargo_weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">800.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"num_sleep_in_beds"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stationary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pets_allowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"smoking_allowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wheelchair_accessible"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimum_age_to_rent"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"electric_generator"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"navigation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kitchen_sink"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rear_vision_camera"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"seat_belts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hot_and_cold_water_supply"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slide_out"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cd_player"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dvd_player"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"games"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"satellite_cable_television"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"television"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"in_dash_air_conditioning"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dryer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hair_dryer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"heating"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"linens"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"towels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"washer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"essentials"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dining_area"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coffee_maker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utensils"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dishwasher"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"microwave"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"oven"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"refrigerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stove"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"toaster"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_aid_kit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fire_extinguisher"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kayak_canoe"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"trailer_connector_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"trailer_connector_adapter_provided"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hitch_provided"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"anti_sway_device_provided"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"trailer_ball_size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"engine"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"power_steering"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thor Motor Coach"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30.3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1569034"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shower"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"toilet"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bathroom_sink"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fresh_water_tank"</span><span class="p">:</span><span class="w"> </span><span class="mf">15.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hitch_weight"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">15.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slides"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stated_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stated_value_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"portfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subportfolio_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unit_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"roof_air_conditioning"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ipod_docking_station"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"am_fm_radio"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"weight_distributing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stationary_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_base_fee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_base_miles"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_overage_rate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_overage_mile_limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_base_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"delivery_overage_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unit_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"allow_sd_waiver"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"num_bedrooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"num_living_rooms"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amenities_by_category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Entertainment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dvd_player"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entertainment"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dvd Player"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"games"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entertainment"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Games"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"satellite_cable_television"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entertainment"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satellite Cable Television"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"television"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entertainment"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Television"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cd_player"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entertainment"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cd Player"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipod_docking_station"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entertainment"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ipod Docking Station"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"am_fm_radio"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entertainment"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Am Fm Radio"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"Features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_dash_air_conditioning"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In Dash Air Conditioning"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dryer"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dryer"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hair_dryer"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hair Dryer"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"heating"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heating"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linens"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linens"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"towels"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Towels"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"washer"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Washer"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"essentials"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Essentials"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"roof_air_conditioning"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Features"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roof Air Conditioning"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"Dining"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dining_area"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining Area"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coffee_maker"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Coffee Maker"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utensils"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Utensils"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dishwasher"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dishwasher"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"microwave"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microwave"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oven"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oven"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refrigerator"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refrigerator"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stove"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stove"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toaster"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toaster"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kitchen_sink"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dining"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kitchen Sink"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"Bathroom"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bathroom"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shower"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"toilet"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bathroom"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toilet"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bathroom_sink"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bathroom"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bathroom Sink"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"Safety"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_aid_kit"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Safety"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Aid Kit"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fire_extinguisher"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Safety"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fire Extinguisher"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"Outdoors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kayak_canoe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Outdoors"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kayak Canoe"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"Other"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"electric_generator"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electric Generator"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"navigation"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Navigation"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rear_vision_camera"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rear Vision Camera"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"seat_belts"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seat Belts"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"slide_out"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slide Out"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"Temperature Control"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hot_and_cold_water_supply"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Temperature Control"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hot And Cold Water Supply"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"form_amenities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"electric_generator"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"navigation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"kitchen_sink"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rear_vision_camera"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"seat_belts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"hot_and_cold_water_supply"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"slide_out"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cd_player"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dvd_player"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"games"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"satellite_cable_television"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"television"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"in_dash_air_conditioning"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dryer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"hair_dryer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"heating"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"linens"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"towels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"washer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"essentials"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dining_area"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coffee_maker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"utensils"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dishwasher"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"microwave"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"oven"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refrigerator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stove"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"toaster"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_aid_kit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fire_extinguisher"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"kayak_canoe"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shower"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"toilet"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bathroom_sink"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"roof_air_conditioning"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ipod_docking_station"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"am_fm_radio"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"is_towable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_num_beds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"num_bunks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"num_beds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021 Thor Motor Coach ACE 30.3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000003166</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"adr_street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234 W 5678 S"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"adr_unit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"adr_city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salt Lake City"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"adr_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"adr_country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"adr_postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84100"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"geo_latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.7516666</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"geo_longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-111.91111</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locationable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vehicle"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locationable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2072</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:51:49.965-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:51:49.965-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exact"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000002759</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"default_nightly_weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"default_nightly_weekend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"discount_full_week"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"discount_full_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pricing_calendar"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"unit_listing_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-01T16:51:49.777-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-14T19:04:52.251-06:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_guest_amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"additional_guest_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2072</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific vehicle.</p>
+<h3 id='http-request-25'>HTTP Request</h3>
+<p><code>GET /vehicles/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-22'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the vehicle to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='get-availability-2'>Get Availability</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/vehicles/&lt;ID&gt;/availability"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"availabilityOpen"</span><span class="p">:</span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"availabilityRequest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"R"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"availabilityClosed"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"stayIncrementDefault"</span><span class="p">:</span><span class="s2">"D"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"changeOverDefault"</span><span class="p">:</span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"availableUnitCountDefault"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2018-12-11T23:56:42.917Z"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"default_stay_min"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"default_stay_max"</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"default_prior_notify_min"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"dateRange"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"beginDate"</span><span class="p">:</span><span class="s2">"2019-01-02"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endDate"</span><span class="p">:</span><span class="s2">"2022-01-01"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"availabilityType"</span><span class="p">:</span><span class="s2">"YN..."</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"changeOver"</span><span class="p">:</span><span class="s2">"CC..."</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"maxStay"</span><span class="p">:</span><span class="s2">"30,30,..."</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"minPriorNotify"</span><span class="p">:</span><span class="s2">"1,1,..."</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"minStay"</span><span class="p">:</span><span class="s2">"5,5,..."</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"stayIncrement"</span><span class="p">:</span><span class="s2">"DD..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a particular vehicle&#39;s availability.</p>
+<h3 id='http-request-26'>HTTP Request</h3>
+<p><code>GET /vehicles/&lt;V_ID&gt;/availability</code></p>
+<h3 id='url-parameters-23'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the vehicle to retrieve</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  The response format for all non-default values is a string composed of each date's value in the provided range. For example, <code>availabilityType</code> returns "YN..." where "Y" corresponds to the first date, "N" the second date, and so on.
+</aside>
+<h3 id='availability-response-values-2'>Availability Response Values</h3>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>defaultAvailability</td>
+<td>Y (available), R (request) or N (not available)</td>
+</tr>
+<tr>
+<td>changeOver</td>
+<td>C (any), I (check in), O (check out), or X (none)</td>
+</tr>
+<tr>
+<td>stayIncrement</td>
+<td>D (day) or W (week)</td>
+</tr>
+</tbody></table>
+<h2 id='get-rates-2'>Get Rates</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/vehicles/&lt;ID&gt;/rates"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2081</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-15T01:04:52.251Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"default_nightly_weekend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"default_nightly_weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"199.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"adj_tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_night_with_tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"exclude_tax"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tax_adjustable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"discounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"fees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000001313</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BURNING MAN FEE"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"refundable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"included_in_base_rent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"calculation_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flat"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_addon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per_stay"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity_fee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee_quantity_max"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"los_ranges"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"usages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2831</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mileage"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usage_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mileage"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_free"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.12</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2834</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generator"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usage_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generator"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_free"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.75</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"security_deposit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000001496</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"calculation_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flat"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"calculation_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250.0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"nightlyOverrides"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">259.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"min"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-12"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-14"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"min"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-17"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-20"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">390.0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nights"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"min"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-15"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"max"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-16"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"paymentSchedule"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dueType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AT_BOOKING"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a particular vehicle&#39;s rates.</p>
+<h3 id='http-request-27'>HTTP Request</h3>
+<p><code>GET /vehicles/&lt;ID&gt;/rates</code></p>
+<h3 id='url-parameters-24'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the vehicle to retrieve</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  The <code>nightlyOverrides</code> block returns price variants for ranges of dates. Each item in the response contains an "amount" and "nights", which is an array of date ranges to which the amount should apply.
+</aside>
+<h2 id='get-reviews-2'>Get Reviews</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/vehicles/&lt;ID&gt;/reviews"</span>
+  -H <span class="s2">"Authorization: Token your_api_key"</span>
+  -H <span class="s2">"Accept: application/vnd.direct.v1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">   </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">147</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2072</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"booking_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000004745</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organization_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000004671</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Review on 2021 Jayco Redhawk 31F from JESHRYU"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RV was super easy to drive and had a great weekend with our daughter at college."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"check_in_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-15T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"check_out_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-18T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recieved"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accuracy_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amenities_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cleanliness_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"overall_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pick_up_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value_rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">158600</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment_external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"communication_rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"private_feedback"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reviewed_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a particular vehicle&#39;s reviews.</p>
+<h3 id='http-request-28'>HTTP Request</h3>
+<p><code>GET /vehicles/&lt;ID&gt;/reviews</code></p>
+<h3 id='url-parameters-25'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the vehicle to retrieve</td>
+</tr>
+</tbody></table>
 <h1 id='webhooks'>Webhooks</h1><h2 id='steps-for-partner-implementation'>Steps for partner implementation</h2>
 <ol>
 <li><p>Partner has to share with Direct, the URL to which the webhook events need to be triggered.</p></li>
@@ -3336,7 +4207,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 
 </span></code></pre>
 <p>This webhook is triggered whenever a new reservation is created.</p>
-<h3 id='url-parameters-21'>URL Parameters</h3>
+<h3 id='url-parameters-26'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3509,7 +4380,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 
 </span></code></pre>
 <p>This webhook is triggered whenever a reservation is updated . </p>
-<h3 id='url-parameters-22'>URL Parameters</h3>
+<h3 id='url-parameters-27'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3685,7 +4556,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This webhook is triggered whenever a reservation is cancelled . It is triggered as Reservation Update event with status of cancellation as &#39;true&#39; but provided seperately for better clarity.</p>
-<h3 id='url-parameters-23'>URL Parameters</h3>
+<h3 id='url-parameters-28'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3756,7 +4627,7 @@ You must replace <code>your_api_key</code> with your personal API key.
    </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This Webhook is triggered whenever a Promotion is created.</p>
-<h3 id='url-parameters-24'>URL Parameters</h3>
+<h3 id='url-parameters-29'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3816,7 +4687,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 
 </span></code></pre>
 <p>This Webhook is triggered whenever a Promotion is Updated.</p>
-<h3 id='url-parameters-25'>URL Parameters</h3>
+<h3 id='url-parameters-30'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3876,7 +4747,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 
 </span></code></pre>
 <p>This Webhook is triggered whenever a Promotion is Deleted.</p>
-<h3 id='url-parameters-26'>URL Parameters</h3>
+<h3 id='url-parameters-31'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3951,7 +4822,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 
 </span></code></pre>
 <p>This Webhook is triggered whenever a property is created.</p>
-<h3 id='url-parameters-27'>URL Parameters</h3>
+<h3 id='url-parameters-32'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4091,7 +4962,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span></code></pre>
 <p>This Webhook is triggered whenever a property is updated and hence it will be triggered for update across each tab.
 For a single property, if multiple updates are done simultaneously, multiple webhook push are expected.</p>
-<h3 id='url-parameters-28'>URL Parameters</h3>
+<h3 id='url-parameters-33'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4158,7 +5029,7 @@ For a single property, if multiple updates are done simultaneously, multiple web
 
 </span></code></pre>
 <p>This Webhook is triggered whenever a property is Updated.</p>
-<h3 id='url-parameters-29'>URL Parameters</h3>
+<h3 id='url-parameters-34'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4249,7 +5120,7 @@ For a single property, if multiple updates are done simultaneously, multiple web
 
 </span></code></pre>
 <p>This Webhook is triggered whenever a unit rate is updated.</p>
-<h3 id='url-parameters-30'>URL Parameters</h3>
+<h3 id='url-parameters-35'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4313,7 +5184,7 @@ For a single property, if multiple updates are done simultaneously, multiple web
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This Webhook is triggered whenever a unit availability is updated.</p>
-<h3 id='url-parameters-31'>URL Parameters</h3>
+<h3 id='url-parameters-36'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4376,7 +5247,7 @@ For a single property, if multiple updates are done simultaneously, multiple web
 
 </span></code></pre>
 <p>This Webhook is triggered whenever a statement gets updated.</p>
-<h3 id='url-parameters-32'>URL Parameters</h3>
+<h3 id='url-parameters-37'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4438,7 +5309,7 @@ For a single property, if multiple updates are done simultaneously, multiple web
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This Webhook is triggered whenever a review gets updated.</p>
-<h3 id='url-parameters-33'>URL Parameters</h3>
+<h3 id='url-parameters-38'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
