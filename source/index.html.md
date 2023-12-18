@@ -2822,11 +2822,11 @@ This endpoint retrieves all vehicles connected to your organization.
 
 Parameter | Description
 --------- | -----------
-_limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
-_offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
+_limit (optional) | Maximum number of vehicles to return, up to 100. Default is 20.
+_offset (optional) | Number of vehicles to skip over, where the ordering is consistent but unspecified.
 
 Example with all optional parameters 
-`/api/public/990/properties?_limit=50&_offset=5`
+`/api/public/990/vehicles?_limit=50&_offset=5`
 
 ## Get a Specific Vehicle
 
