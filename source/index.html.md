@@ -3705,7 +3705,7 @@ curl --location 'https://staging.getdirect.io/api/public/<ORG_ID>/conversations/
 
 This endpoint creates a message in a particular conversation.
 
-The 'body' param in the request body will have all HTML tags stripped out and then surrounded by p tags before being saved.
+The 'body' param in the request body will have all HTML tags stripped out and then be surrounded by p tags before being saved.
 
 The message will be 'sent as' the Direct user associated with the conversation.
 
