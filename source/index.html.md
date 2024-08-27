@@ -119,9 +119,9 @@ Example with all optional parameters
 ## Get a Specific Promotion
 
 ```shell
-curl "https://staging.getdirect.io/api/public/<ORG_ID>/promotions/<ID>"
-  -H "Authorization: Token your_api_key"
-  -H "Accept: application/vnd.direct.v1"
+curl "https://staging.getdirect.io/api/public/<org_id>/promotions/<id>"
+  -h "authorization: token your_api_key"
+  -h "accept: application/vnd.direct.v1"
 ```
 
 > The above command returns JSON structured like this:
@@ -3509,6 +3509,205 @@ This endpoint retrieves a particular vehicle's reviews.
 Parameter | Description
 --------- | -----------
 ID | The ID of the vehicle to retrieve
+
+# Messaging
+
+## Get All Conversations
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/conversations"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "total_count": 333,
+  "conversations": [
+    {
+      "id": 200000013530,
+      "subject": "New Inquiry",
+      "booking_id": null,
+      "unit_id": 108900000002,
+      "unit_listing_id": null,
+      "channel_id": null,
+      "property_id": 108900000002,
+      "customer_id": 200000039981,
+      "organization_id": 890,
+      "created_at": "2021-06-17T17:44:41.158Z",
+      "updated_at": "2023-08-03T15:53:27.782Z",
+      "removed_users": [],
+      "removed_employees": [],
+      "removed_customers": [],
+      "external_id": null,
+      "additional_data": {},
+      "is_airbnb_pre_approved": false,
+      "check_in": null,
+      "check_out": null,
+      "archived": false,
+      "important": false,
+      "status": "declined"
+    },
+    {
+      // ...
+    }
+  ]
+}
+```
+
+This endpoint retrieves all conversations attached to the organization. A conversation is a thread between 2 users, the renter and the Direct user(s) associated with the unit being rented, and will be associated with individual messages by ID.
+
+### HTTP Request
+
+`GET /conversations`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+_limit (optional) | Maximum number of conversations to return, up to 100. Default is 20.
+_offset (optional) | Number of conversations to skip over, where the ordering is consistent but unspecified. Default is 0.
+created_after (optional) | Filter by conversations created after a specific date.
+active (optional) | Filter by active conversations, defined as conversations associated with confirmed bookings that have a checkout date no more than 2 days past.
+
+Example with all optional parameters
+`/api/public/990/conversations?_limit=50&_offset=50&active=true&created_after=2021-06-17`
+
+## Get a Conversation
+
+```shell
+curl "https://staging.getdirect.io/api/public/<org_id>/conversations/<id>"
+  -h "authorization: token your_api_key"
+  -h "accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 200000016570,
+    "subject": "New Message",
+    "booking_id": 200000034678,
+    "unit_id": 4275,
+    "unit_listing_id": 200000016860,
+    "channel_id": 6,
+    "property_id": null,
+    "customer_id": 200000052191,
+    "organization_id": 890,
+    "created_at": "2024-08-14T19:43:11.208Z",
+    "updated_at": "2024-08-26T21:09:33.353Z",
+    "removed_users": [],
+    "removed_employees": [],
+    "removed_customers": [],
+    "external_id": null,
+    "additional_data": {},
+    "is_airbnb_pre_approved": false,
+    "check_in": "2024-10-20",
+    "check_out": "2024-10-24",
+    "archived": false,
+    "important": false,
+    "status": "pre_trip"
+}
+```
+
+This endpoint retrieves a specific conversation by ID.
+
+### HTTP Request
+
+`GET /conversations/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the conversation to retrieve
+
+## Get all Messages by Conversation Id
+
+```shell
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/conversations/<CONVERSATION_ID>/messages"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "messages": [
+    {
+      "id": 200000074591,
+      "body": "<p>this is a staging qa test</p>",
+      "read_at": "2024-08-26T21:09:41.000Z",
+      "conversation_id": 200000016570,
+      "sender_type": "Employee",
+      "sender_id": 200000001158,
+      "created_at": "2024-08-26T21:09:33.353Z",
+      "updated_at": "2024-08-26T21:09:41.574Z",
+      "sender_name": "Ryan Test Admin",
+      "original_message": null,
+      "channel_data": {},
+      "organization_id": 890,
+      "external_id": null
+    },
+    {
+      // ...
+    }
+  ]
+}
+```
+
+This endpoint retrieves all messages attached to a particular conversation.
+
+### HTTP Request
+
+`GET /conversations/<CONVERSATION_ID>/messages`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the conversation to filter messages by
+
+## Create a Message
+
+```shell
+curl --location 'https://staging.getdirect.io/api/public/<ORG_ID>/conversations/<CONVERSATION_ID>/messages' \
+--header 'Accept: application/vnd.direct.v1' \
+--header 'Authorization: Token api_token_here' \
+--header 'Content-Type: application/json' \
+--data '{
+    "body": "some message here"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": 200000074593,
+    "body": "<p>some message here</p>",
+    "read_at": null,
+    "conversation_id": 200000016570,
+    "sender_type": "Employee",
+    "sender_id": 200000001158,
+    "created_at": "2024-08-27T17:14:24.914Z",
+    "updated_at": "2024-08-27T17:14:24.914Z",
+    "sender_name": "Ryan Test Admin",
+    "original_message": null,
+    "channel_data": {},
+    "organization_id": 890,
+    "external_id": null
+}
+```
+
+This endpoint creates a message in a particular conversation.
+
+The 'body' param in the request body will have all HTML tags stripped out and then surrounded by p tags before being saved.
+
+The message will be 'sent as' the Direct user associated with the conversation.
 
 # Webhooks
 
