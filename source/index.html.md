@@ -119,9 +119,9 @@ Example with all optional parameters
 ## Get a Specific Promotion
 
 ```shell
-curl "https://staging.getdirect.io/api/public/<org_id>/promotions/<id>"
-  -h "authorization: token your_api_key"
-  -h "accept: application/vnd.direct.v1"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/promotions/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
 ```
 
 > The above command returns JSON structured like this:
@@ -3578,9 +3578,9 @@ Example with all optional parameters
 ## Get a Conversation
 
 ```shell
-curl "https://staging.getdirect.io/api/public/<org_id>/conversations/<id>"
-  -h "authorization: token your_api_key"
-  -h "accept: application/vnd.direct.v1"
+curl "https://staging.getdirect.io/api/public/<ORG_ID>/conversations/<ID>"
+  -H "Authorization: Token your_api_key"
+  -H "Accept: application/vnd.direct.v1"
 ```
 
 > The above command returns JSON structured like this:
@@ -3708,6 +3708,16 @@ This endpoint creates a message in a particular conversation.
 The 'body' param in the request body will have all HTML tags stripped out and then surrounded by p tags before being saved.
 
 The message will be 'sent as' the Direct user associated with the conversation.
+
+### HTTP Request
+
+`POST /conversations/<CONVERSATION_ID>/messages`
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+body | The body of the new message
 
 # Webhooks
 
