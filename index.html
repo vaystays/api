@@ -467,7 +467,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, vehicles, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right. </p>
+<p>Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, vehicles, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right.</p>
 
 <p>Staging: <code>https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;</code></p>
 
@@ -519,7 +519,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 
 <p>The above rate limits are currently applied to all API endpoints</p>
 
-<p>If you receive a 429 Too Many Requests error, you have reached the rate limit. Slow the requests down, spread them more evenly over time and retry. </p>
+<p>If you receive a 429 Too Many Requests error, you have reached the rate limit. Slow the requests down, spread them more evenly over time and retry.</p>
 <h1 id='promotions'>Promotions</h1><h2 id='get-all-promotions'>Get All Promotions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/promotions"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token your_api_key"</span>
   <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.direct.v1"</span>
@@ -573,7 +573,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all optional parameters 
+<p>Example with all optional parameters
 <code>/api/public/990/promotions?_limit=50&amp;_offset=50</code></p>
 <h2 id='get-a-specific-promotion'>Get a Specific Promotion</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/promotions/&lt;ID&gt;"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token your_api_key"</span>
@@ -667,7 +667,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all optional parameters 
+<p>Example with all optional parameters
 <code>/api/public/990/properties?_limit=50&amp;_offset=50&amp;role=housekeeping</code></p>
 <h2 id='get-a-specific-property'>Get a Specific Property</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;ID&gt;"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token your_api_key"</span>
@@ -861,7 +861,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all optional parameters 
+<p>Example with all optional parameters
 <code>/api/public/990/reservations?_limit=50&amp;_offset=50&amp;start_date=2023-01-01&amp;end_date=2023-05-30</code></p>
 <h2 id='list-reservations-by-id'>List Reservations By Id</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://staging.getdirect.io/api/public/990/list_reservations_by_id'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Token test_api_key'</span> <span class="se">\</span>
@@ -947,6 +947,21 @@ You must replace <code>your_api_key</code> with your personal API key.
       "children": 0,
       "pets": 0
     },
+    "payment": {
+      "number": "9999999999999999",
+      "cvv": "123",
+      "expiration_month": "01",
+      "expiration_year": "2050",
+      "name_on_card": "John Doe",
+      "billing_address": {
+        "addressLine1": "123 Main Street",
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    },
     "stripe_customer_id": "cus_000example111",
     "addon_fee_ids": [1, 2, 3]
   }'</span>
@@ -974,9 +989,19 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint creates a new reservation for the requested unit.</p>
 
-<p>In order to create a new reservation you must first generate a Stripe customer and establish a setup intent using your Stripe API keys. Once a customer has been created, a setup intent established, and a payment method attached you can include the generated stripe_customer_id to Direct when calling the new reservation endpoint.</p>
+<p>There are two options for submitting customer payment information, depending on the organization&#39;s configured payment processor.</p>
+<h3 id='submitting-payment-information-directly-lynnbrook-or-stripe-users'>Submitting Payment Information Directly (Lynnbrook or Stripe users)</h3>
+<p>To submit payment method details directly, include a <code>payment</code> request param containing the customer&#39;s credit card details. See shell example for specific structure.</p>
 
-<p>Stripe provides a thorough walk-through of how to setup your payment page with the following guide: <a href="https://stripe.com/docs/payments/accept-a-payment?platform=web">Accept a Payment</a></p>
+<p>Omit the <code>stripe_customer_id</code> request param when making your request this way.</p>
+<h3 id='submitting-tokenized-payment-information-stripe-users-only'>Submitting Tokenized Payment Information (Stripe users only)</h3>
+<p>To submit tokenized payment information, you must first generate a Stripe Customer and establish a Setup Intent using your Stripe API keys. Once a Customer has been created, a Setup Intent established, and a payment method attached to the Customer, you can include the generated <code>stripe_customer_id</code> with your request params.</p>
+
+<p>Omit the <code>payment</code> request param when making your request this way.</p>
+
+<p>Stripe provides a thorough walk-through of how to set up your site with the following guide: <a href="https://docs.stripe.com/payments/accept-a-payment-deferred?platform=web&amp;type=setup">Accept a Payment</a></p>
+
+<p>If you have any questions about working with Stripe components, please reach out to engineeringgroup@getdirect.io.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST /reservations</code></p>
 <h3 id='request-parameters-2'>Request Parameters</h3>
@@ -1003,8 +1028,12 @@ You must replace <code>your_api_key</code> with your personal API key.
 <td>Information about the reservation, including stay dates and guest counts</td>
 </tr>
 <tr>
-<td>stripe_customer_id</td>
-<td>The client side generated ID of the Stripe customer.</td>
+<td>payment (optional)</td>
+<td>Customer payment method details</td>
+</tr>
+<tr>
+<td>stripe_customer_id (optional)</td>
+<td>The client side generated ID of the Stripe Customer</td>
 </tr>
 </tbody></table>
 <h2 id='get-reservation'>Get Reservation</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reservations/&lt;ID&gt;"</span>
@@ -1506,7 +1535,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all optional parameters 
+<p>Example with all optional parameters
 <code>/api/public/990/reviews?_limit=50&amp;_offset=50</code></p>
 <h2 id='get-a-specific-review'>Get a Specific Review</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/reviews/&lt;ID&gt;"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token your_api_key"</span>
@@ -2082,7 +2111,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all optional parameters 
+<p>Example with all optional parameters
 <code>/api/public/990/search?_limit=50&amp;booking_range=%5B%7B%22key%22%3A%2223-04-2021%22%2C%22day%22%3A5%7D%2C%7B%22key%22%3A%2224-04-2021%22%2C%22day%22%3A6%7D%2C%7B%22key%22%3A%2225-04-2021%22%2C%22day%22%3A0%7D%2C%7B%22key%22%3A%2226-04-2021%22%2C%22day%22%3A1%7D%5D&amp;num_bathrooms=1&amp;num_bedrooms=2&amp;num_guests=3&amp;page=1&amp;brand_id=100030000048&amp;amenities=%7B%22Property%22%3A%5B%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_FRONT%22%2C%22label%22%3A%22Beachfront%22%7D%2C%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_VIEW%22%2C%22label%22%3A%22Beach%20view%22%7D%5D%2C%22Unit%22%3A%5B%5D%7D</code></p>
 <h1 id='statements'>Statements</h1><h2 id='get-all-statements'>Get All Statements</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/statements"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token your_api_key"</span>
@@ -2153,7 +2182,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all optional parameters 
+<p>Example with all optional parameters
 <code>/api/public/990/statements?_limit=50&amp;_offset=50</code></p>
 <h2 id='get-a-specific-statement'>Get a Specific Statement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/statements/&lt;ID&gt;"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token your_api_key"</span>
@@ -2680,7 +2709,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all optional parameters 
+<p>Example with all optional parameters
 <code>/api/public/990/transactions?_limit=50&amp;offset=50</code></p>
 <h1 id='units'>Units</h1><h2 id='get-promotions'>Get Promotions</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/properties/&lt;P_ID&gt;/units/&lt;U_ID&gt;/promotions"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token your_api_key"</span>
@@ -3093,7 +3122,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all parameters 
+<p>Example with all parameters
 <code>/api/public/990/properties/45units/87/quotes?check_in=2023-05-01&amp;check_out=2023-05-30&amp;adults=2&amp;children=1&amp;pets=1</code></p>
 <h2 id='update-pricing'>Update Pricing</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/990/properties/92/units/92/pricing"</span>
 <span class="nt">-d</span> <span class="s1">'{"pricing_array":
@@ -3379,7 +3408,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<p>Example with all optional parameters 
+<p>Example with all optional parameters
 <code>/api/public/990/vehicles?_limit=50&amp;_offset=5</code></p>
 <h2 id='get-a-specific-vehicle'>Get a Specific Vehicle</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://staging.getdirect.io/api/public/&lt;ORG_ID&gt;/vehicles/&lt;ID&gt;"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token your_api_key"</span>
@@ -4278,12 +4307,12 @@ You must replace <code>your_api_key</code> with your personal API key.
 <h1 id='webhooks'>Webhooks</h1><h2 id='steps-for-partner-implementation'>Steps for partner implementation</h2>
 <ol>
 <li><p>Partner has to share with Direct, the URL to which the webhook events need to be triggered.</p></li>
-<li><p>Partner has to to create a service to accept the incoming webhook, return http status of 200 to 300, and notifying successful capture of messages. Any http status other than 200 to 300 will be considered as failure </p></li>
-<li><p>In the event of failed webhook, the webhook message will be triggered again until it is successful. </p></li>
-<li><p>All the webhook events will be sent to the same endpoint( Partner URL). Based on the Event type, the partner has to consume it in their end.  </p></li>
+<li><p>Partner has to to create a service to accept the incoming webhook, return http status of 200 to 300, and notifying successful capture of messages. Any http status other than 200 to 300 will be considered as failure</p></li>
+<li><p>In the event of failed webhook, the webhook message will be triggered again until it is successful.</p></li>
+<li><p>All the webhook events will be sent to the same endpoint( Partner URL). Based on the Event type, the partner has to consume it in their end.</p></li>
 </ol>
 <h2 id='reservation'>Reservation</h2>
-<p>Below webhook events can be availed in Reservation: </p>
+<p>Below webhook events can be availed in Reservation:</p>
 
 <ol>
 <li><p>Reservation Create</p></li>
@@ -4615,7 +4644,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>This webhook is triggered whenever a reservation is updated . </p>
+<p>This webhook is triggered whenever a reservation is updated .</p>
 <h3 id='url-parameters-30'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4812,7 +4841,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 <h2 id='promotions-2'>Promotions</h2>
-<p>Below webhook events can be availed in Promotions: </p>
+<p>Below webhook events can be availed in Promotions:</p>
 
 <ol>
 <li><p>Promotion Creation</p></li>
@@ -5003,7 +5032,7 @@ You must replace <code>your_api_key</code> with your personal API key.
 </tr>
 </tbody></table>
 <h2 id='properties-2'>Properties</h2>
-<p>Below webhook events can be availed in Property: </p>
+<p>Below webhook events can be availed in Property:</p>
 
 <ol>
 <li><p>Property Create</p></li>
@@ -5285,10 +5314,10 @@ For a single property, if multiple updates are done simultaneously, multiple web
 </tr>
 </tbody></table>
 <h2 id='unit-rates'>Unit Rates</h2>
-<p>Below webhook events can be availed in Unit Rates: </p>
+<p>Below webhook events can be availed in Unit Rates:</p>
 
 <ol>
-<li>Unit Rate Update </li>
+<li>Unit Rate Update</li>
 </ol>
 <h2 id='unit-rate-update'>Unit Rate Update</h2>
 <blockquote>
@@ -5376,10 +5405,10 @@ For a single property, if multiple updates are done simultaneously, multiple web
 </tr>
 </tbody></table>
 <h2 id='unit-availability'>Unit Availability</h2>
-<p>Below webhook events can be availed in Unit Availability: </p>
+<p>Below webhook events can be availed in Unit Availability:</p>
 
 <ol>
-<li>Unit Availability Update </li>
+<li>Unit Availability Update</li>
 </ol>
 <h2 id='unit-availability-update'>Unit Availability Update</h2>
 <blockquote>
@@ -5440,10 +5469,10 @@ For a single property, if multiple updates are done simultaneously, multiple web
 </tr>
 </tbody></table>
 <h2 id='statements-2'>Statements</h2>
-<p>Below webhook events can be availed in Statement: </p>
+<p>Below webhook events can be availed in Statement:</p>
 
 <ol>
-<li>Statement delete </li>
+<li>Statement delete</li>
 </ol>
 <h2 id='statement-delete'>Statement Delete</h2>
 <blockquote>
@@ -5503,10 +5532,10 @@ For a single property, if multiple updates are done simultaneously, multiple web
 </tr>
 </tbody></table>
 <h2 id='reviews-2'>Reviews</h2>
-<p>Below webhook events can be availed in Review: </p>
+<p>Below webhook events can be availed in Review:</p>
 
 <ol>
-<li>Review Create </li>
+<li>Review Create</li>
 </ol>
 <h2 id='review-create'>Review Create</h2>
 <blockquote>
