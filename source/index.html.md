@@ -15,7 +15,7 @@ search: true
 
 # Introduction
 
-Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, vehicles, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right. 
+Welcome to the Direct API! You can use our API to access Direct API endpoints, including information on properties, vehicles, units, rates, availability, and quotes in our database. You can view code examples in the dark area to the right.
 
 Staging: `https://staging.getdirect.io/api/public/<ORG_ID>`
 
@@ -58,7 +58,7 @@ In an effort to ensure that our users experience constant data flow, maintain ma
 
 The above rate limits are currently applied to all API endpoints
 
-If you receive a 429 Too Many Requests error, you have reached the rate limit. Slow the requests down, spread them more evenly over time and retry. 
+If you receive a 429 Too Many Requests error, you have reached the rate limit. Slow the requests down, spread them more evenly over time and retry.
 
 # Promotions
 
@@ -113,7 +113,7 @@ Parameter | Description
 _limit (optional) | Maximum number of promotions to return, up to 100. Default is 20.
 _offset (optional) | Number of promotions to skip over, where the ordering is consistent but unspecified.
 
-Example with all optional parameters 
+Example with all optional parameters
 `/api/public/990/promotions?_limit=50&_offset=50`
 
 ## Get a Specific Promotion
@@ -205,9 +205,9 @@ Parameter | Description
 --------- | -----------
 _limit (optional) | Maximum number of properties to return, up to 100. Default is 20.
 _offset (optional) | Number of properties to skip over, where the ordering is consistent but unspecified.
-role (optional) | Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping, maintenance, and reservationist 
+role (optional) | Will only return properties with an active user of that role. Role options are: brand_owner, property_manager, property_contact, housekeeping, maintenance, and reservationist
 
-Example with all optional parameters 
+Example with all optional parameters
 `/api/public/990/properties?_limit=50&_offset=50&role=housekeeping`
 
 ## Get a Specific Property
@@ -397,7 +397,7 @@ _offset (optional) | Number of reservations to skip over, where the ordering is 
 start_date (optional) | The start of a date range to query for reservations that check in after this date
 end_date (required if start_date present) | The end of a date range to query for reservations that check out before this date
 
-Example with all optional parameters 
+Example with all optional parameters
 `/api/public/990/reservations?_limit=50&_offset=50&start_date=2023-01-01&end_date=2023-05-30`
 
 ## List Reservations By Id
@@ -489,6 +489,21 @@ curl "https://staging.getdirect.io/api/public/990/reservations"
       "children": 0,
       "pets": 0
     },
+    "payment": {
+      "number": "9999999999999999",
+      "cvv": "123",
+      "expiration_month": "01",
+      "expiration_year": "2050",
+      "name_on_card": "John Doe",
+      "billing_address": {
+        "addressLine1": "123 Main Street",
+        "addressLine2": "",
+        "city": "Chicago",
+        "state": "IL",
+        "country": "US",
+        "postal_code": "60654"
+      }
+    },
     "stripe_customer_id": "cus_000example111",
     "addon_fee_ids": [1, 2, 3]
   }'
@@ -518,9 +533,22 @@ curl "https://staging.getdirect.io/api/public/990/reservations"
 
 This endpoint creates a new reservation for the requested unit.
 
-In order to create a new reservation you must first generate a Stripe customer and establish a setup intent using your Stripe API keys. Once a customer has been created, a setup intent established, and a payment method attached you can include the generated stripe_customer_id to Direct when calling the new reservation endpoint.
+There are two options for submitting customer payment information, depending on the organization's configured payment processor.
 
-Stripe provides a thorough walk-through of how to setup your payment page with the following guide: [Accept a Payment](https://stripe.com/docs/payments/accept-a-payment?platform=web)
+### Submitting Payment Information Directly (Lynnbrook or Stripe users)
+
+To submit payment method details directly, include a `payment` request param containing the customer's credit card details. See shell example for specific structure.
+
+Omit the `stripe_customer_id` request param when making your request this way.
+
+### Submitting Tokenized Payment Information (Stripe users only)
+To submit tokenized payment information, you must first generate a Stripe Customer and establish a Setup Intent using your Stripe API keys. Once a Customer has been created, a Setup Intent established, and a payment method attached to the Customer, you can include the generated `stripe_customer_id` with your request params.
+
+Omit the `payment` request param when making your request this way.
+
+Stripe provides a thorough walk-through of how to set up your site with the following guide: [Accept a Payment](https://docs.stripe.com/payments/accept-a-payment-deferred?platform=web&type=setup)
+
+ If you have any questions about working with Stripe components, please reach out to engineeringgroup@getdirect.io.
 
 ### HTTP Request
 
@@ -534,7 +562,8 @@ property_id | The unique identifier of the property being booked
 unit_id | The unique identifier of the unit being booked
 customer | Information about the customer making the inquiry
 reservation | Information about the reservation, including stay dates and guest counts
-stripe_customer_id | The client side generated ID of the Stripe customer.
+payment (optional) | Customer payment method details
+stripe_customer_id (optional) | The client side generated ID of the Stripe Customer
 
 ## Get Reservation
 
@@ -973,7 +1002,7 @@ Parameter | Description
 booking_code(required) | The booking code of the stay the customer is reviewing
 rating(required) | The rating the customer gave. Must be between 0 and 5
 title | The title the customer gave their review, if any
-body | The body of the review 
+body | The body of the review
 
 ### HTTP Request
 
@@ -1026,7 +1055,7 @@ Parameter | Description
 _limit (optional) | Maximum number of reviews to return, up to 100. Default is 20.
 _offset (optional) | Number of reviews to skip over, where the ordering is consistent but unspecified.
 
-Example with all optional parameters 
+Example with all optional parameters
 `/api/public/990/reviews?_limit=50&_offset=50`
 
 ## Get a Specific Review
@@ -1587,7 +1616,7 @@ num_bedrooms (optional) | Filter by listings with a minimum number of bedrooms.
 num_guests (optional) | Filter by listings with a minimum number of guests.
 page (optional) | Set the page of results returned.
 
-Example with all optional parameters 
+Example with all optional parameters
 `/api/public/990/search?_limit=50&booking_range=%5B%7B%22key%22%3A%2223-04-2021%22%2C%22day%22%3A5%7D%2C%7B%22key%22%3A%2224-04-2021%22%2C%22day%22%3A6%7D%2C%7B%22key%22%3A%2225-04-2021%22%2C%22day%22%3A0%7D%2C%7B%22key%22%3A%2226-04-2021%22%2C%22day%22%3A1%7D%5D&num_bathrooms=1&num_bedrooms=2&num_guests=3&page=1&brand_id=100030000048&amenities=%7B%22Property%22%3A%5B%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_FRONT%22%2C%22label%22%3A%22Beachfront%22%7D%2C%7B%22model%22%3A%22Property%22%2C%22column%22%3A%22features_location%22%2C%22property%22%3A%22LOCATION_TYPE_BEACH_VIEW%22%2C%22label%22%3A%22Beach%20view%22%7D%5D%2C%22Unit%22%3A%5B%5D%7D`
 
 # Statements
@@ -1659,7 +1688,7 @@ Parameter | Description
 _limit (optional) | Maximum number of statements to return, up to 100. Default is 20.
 _offset (optional) | Number of statements to skip over, where the ordering is consistent but unspecified.
 
-Example with all optional parameters 
+Example with all optional parameters
 `/api/public/990/statements?_limit=50&_offset=50`
 
 ## Get a Specific Statement
@@ -2188,7 +2217,7 @@ Parameter | Description
 _limit (optional) | Maximum number of transactions to return, up to 100. Default is 20.
 _offset (optional) | Number of transactions to skip over, where the ordering is consistent but unspecified.
 
-Example with all optional parameters 
+Example with all optional parameters
 `/api/public/990/transactions?_limit=50&offset=50`
 
 # Units
@@ -2568,7 +2597,7 @@ adults | The number of adult guests
 children | The number of child guests (optional, default to 0)
 pets | The number of pets (optional, default to 0)
 
-Example with all parameters 
+Example with all parameters
 `/api/public/990/properties/45units/87/quotes?check_in=2023-05-01&check_out=2023-05-30&adults=2&children=1&pets=1`
 
 ## Update Pricing
@@ -2825,7 +2854,7 @@ Parameter | Description
 _limit (optional) | Maximum number of vehicles to return, up to 100. Default is 20.
 _offset (optional) | Number of vehicles to skip over, where the ordering is consistent but unspecified.
 
-Example with all optional parameters 
+Example with all optional parameters
 `/api/public/990/vehicles?_limit=50&_offset=5`
 
 ## Get a Specific Vehicle
@@ -3721,19 +3750,19 @@ body | The body of the new message
 
 # Webhooks
 
-## Steps for partner implementation 
+## Steps for partner implementation
 
 1. Partner has to share with Direct, the URL to which the webhook events need to be triggered.
 
-2. Partner has to to create a service to accept the incoming webhook, return http status of 200 to 300, and notifying successful capture of messages. Any http status other than 200 to 300 will be considered as failure 
+2. Partner has to to create a service to accept the incoming webhook, return http status of 200 to 300, and notifying successful capture of messages. Any http status other than 200 to 300 will be considered as failure
 
-3. In the event of failed webhook, the webhook message will be triggered again until it is successful. 
+3. In the event of failed webhook, the webhook message will be triggered again until it is successful.
 
-4. All the webhook events will be sent to the same endpoint( Partner URL). Based on the Event type, the partner has to consume it in their end.  
+4. All the webhook events will be sent to the same endpoint( Partner URL). Based on the Event type, the partner has to consume it in their end.
 
 ## Reservation
 
-Below webhook events can be availed in Reservation: 
+Below webhook events can be availed in Reservation:
 
 1. Reservation Create
 
@@ -3902,7 +3931,7 @@ This webhook is triggered whenever a new reservation is created.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of reservation created
 
 ## Reservation Update
@@ -4061,14 +4090,14 @@ data | Object | Contains the details of reservation created
 
 ```
 
-This webhook is triggered whenever a reservation is updated . 
+This webhook is triggered whenever a reservation is updated .
 
 ### URL Parameters
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
-data | Object | Contains the details of updated reservation 
+event | Object | Contains the details of the event triggered
+data | Object | Contains the details of updated reservation
 
 
 
@@ -4236,12 +4265,12 @@ This webhook is triggered whenever a reservation is cancelled . It is triggered 
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
-data | Object | Contains the details of updated reservation 
+event | Object | Contains the details of the event triggered
+data | Object | Contains the details of updated reservation
 
 ## Promotions
 
-Below webhook events can be availed in Promotions: 
+Below webhook events can be availed in Promotions:
 
 1. Promotion Creation
 
@@ -4299,7 +4328,7 @@ This Webhook is triggered whenever a Promotion is created.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 ## Promotion Update
@@ -4350,7 +4379,7 @@ This Webhook is triggered whenever a Promotion is Updated.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
@@ -4403,14 +4432,14 @@ This Webhook is triggered whenever a Promotion is Deleted.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
 
 ## Properties
 
-Below webhook events can be availed in Property: 
+Below webhook events can be availed in Property:
 
 1. Property Create
 
@@ -4473,7 +4502,7 @@ This Webhook is triggered whenever a property is created.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
@@ -4605,7 +4634,7 @@ For a single property, if multiple updates are done simultaneously, multiple web
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
@@ -4664,14 +4693,14 @@ This Webhook is triggered whenever a property is Updated.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 ## Unit Rates
 
-Below webhook events can be availed in Unit Rates: 
+Below webhook events can be availed in Unit Rates:
 
-1. Unit Rate Update 
+1. Unit Rate Update
 
 
 ## Unit Rate Update
@@ -4747,15 +4776,15 @@ This Webhook is triggered whenever a unit rate is updated.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 
 ## Unit Availability
 
-Below webhook events can be availed in Unit Availability: 
+Below webhook events can be availed in Unit Availability:
 
-1. Unit Availability Update 
+1. Unit Availability Update
 
 ## Unit Availability Update
 
@@ -4803,14 +4832,14 @@ This Webhook is triggered whenever a unit availability is updated.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 ## Statements
 
-Below webhook events can be availed in Statement: 
+Below webhook events can be availed in Statement:
 
-1. Statement delete 
+1. Statement delete
 
 ## Statement Delete
 > The above webhook triggers JSON structure like this
@@ -4856,14 +4885,14 @@ This Webhook is triggered whenever a statement gets updated.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
 ## Reviews
 
-Below webhook events can be availed in Review: 
+Below webhook events can be availed in Review:
 
-1. Review Create 
+1. Review Create
 
 ## Review Create
 
@@ -4908,6 +4937,6 @@ This Webhook is triggered whenever a review gets updated.
 
 Attribute | Type | Description
 --------- | ----------- | -----------
-event | Object | Contains the details of the event triggered 
+event | Object | Contains the details of the event triggered
 data | Object | Contains the details of updated reservation
 
